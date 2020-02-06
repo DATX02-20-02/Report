@@ -1,8 +1,30 @@
+\newpage
 \section{Problem}
 
-The goal of this project is to create a user friendly application that can
-generate impressive 3D cities, that can then be used as \textit{.fbx} files with
-any major 3D rendering software.
+The goal of this project is to create a user-friendly application that can generate modern 3D cities, and then export them as \textit{.fbx} files.
+\textit{User-friendly} means that users should need no technical expertise or coding experince to fully utilize the application.
+\textit{Modern cities} means that the cities should resemble modern industrialized
+cities such as New York, Paris, San Francisco, and Tokyo. Figure \ref{fig:ModernCities}
+showcases two examples of such modern cities.
+
+\begin{figure}[h!]
+  \centering
+
+  \begin{subfigure}[b]{0.48\textwidth}
+    \frame{\includegraphics[width=\textwidth]{figure/modern-city.png}}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.48\textwidth}
+    \frame{\includegraphics[width=\textwidth]{figure/modern-city2.png}}
+  \end{subfigure}
+
+  \caption{Examples of generated modern cities from related works \cite{yoav_and_pascal}\cite{cl3ver}.}
+  \label{fig:ModernCities}
+\end{figure}
+
+It is worth clarifying that suburban areas and rural areas are also included as
+part of such cities.
+
 The focus will be put on the roads and the buildings of the city, and not on the
 terrain around it. The surrounding terrain should help create interesting scenarios for the cities to adjust to.
 
