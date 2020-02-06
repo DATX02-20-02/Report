@@ -1,10 +1,42 @@
 \section{Problem}
-The project’s goal is to create a program using PCG which can generate a reusable 3D-model of a city and the terrain in the vicinity from a list of specifications given by the user.
-The main focus of this task is to generate versatile cities.
-The terrain is used for creating scenarios from which the cities have to adjust to, for example, rivers, oceans and steep hills.
 
-A desirable, yet not completely necessary, function would be to export the result to a standard model file such as .fbx.
-That way the result can be moved and imported to any game engine of choice or a 3D-modeling program.
-Realization for this could be done using Unity 3D and its FBX Exporter package.
+The goal of this project is to create a user friendly application that can
+generate impressive 3D cities, that can then be used as \textit{.fbx} files with
+any major 3D rendering software.
+The focus will be put on the roads and the buildings of the city, and not on the
+terrain around it. The surrounding terrain should help create interesting scenarios for the cities to adjust to.
 
+The user will interact with the program in the following way:
+\begin{enumerate}
+  \item The user specifies the size of the world in terms of a 2D plane.
+  \item The user specifies any optional parameters that affect the terrain
+    such as sea level.
+  \item The user clicks on a button that says ``Generate Terrain'' as many times
+    as they like, until they are satisfied with the generated terrain.
+  \item The user then selects which region of the generated terrain they want to use in the final model.
+  \item The user places population markers on the terrain and specifies how much
+    population each marker represents. The user can also specify any optional
+    parameters for each city such as road type.
+  \item The user clicks on a button that says ``Generate Roads'' as many times
+    as they like, until they are satisfied with the generated road network.
+  \item The user clicks on a button that says ``Generate Buildings'' as many times
+    as they like, until they are satisfied with the generated buildings.
+  \item Finally, when the user is satisfied with the result they can click on a
+    button that says ``Export to FBX'' and the the program will save the full
+    model as a \textit{.fbx} on the local filesystem.
+\end{enumerate}
+These interactions should occur through a user-friendly Graphical User Interface
+(GUI).
+
+The problem can be divided into 3 major subproblems: generation of landscape, road networks, and buildings.
+Each of the following subsections will go into more detail about these subproblems.
+
+\subsection{Terrain Generation}
+
+e.g. steep hills, rivers, and ocean.
 To start with, the algorithm has to create terrain, roads, cells and entities. 
+
+The user will provide a value for the sea level in the form of a number, and we will color the terrain based on the height levels e.g. grasslands near sea level, rocky mountain textures for the taller regions, and snow for top peaks of some of the taller mountains.
+
+\subsection{Road Generation}
+\subsection{Building Generation}
