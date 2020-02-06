@@ -35,24 +35,25 @@ One using the “road-first” strategy, and the other “cell-road”.
 
 \subsubsection{Road-First}
 The generation sequence for this strategy would be as follows.
-\begin{itemize}
+\begin{enumerate}
   \item Plotting out cities with different types (circular, manhattan, chaotic)
   \item Main roads
   \item Streets
   \item Cells with different cell types (park, empty, industrial, etc)
   \item Subdivision of cells
   \item Creation of buildings
-\end{itemize}
+\end{enumerate}
 
-The user should be able to specify exactly where cities should begin their generation sequence,
+The user should be able to specify exactly where cities should begin their generation sequence.
+Choosing which type of city
 and also which city type it has, which will affect the resulting layout of the city.
 
-The generation of the cities are handled by so called `Agents', whose only job is to walk around the landscape and leaving roads behind them.
+The generation of the cities are handled by so called `Agents', whose only job is to walk around the landscape and leave roads behind them.
 Agents can also decide to create more agents that will branch away from the road.
 This type of generation results in a lot of flexibility, because each agent can be configured to walk around differently.
-All agents has a strategy that they will follow, and when it is finished it will simply die.
-Agent strategies describe where an agent will take its next step, and also when it should die.
-This type of setup means agents can switch out their strategy at any type, for example when an agent leaves the radius of a city, it can change its strategy to a highway-type strategy.
+All agents has a strategy that they will follow, and when they are finished they simply terminate.
+Agent strategies describe where an agent will take its next step, and also when it should terminate.
+This type of setup means agents can switch out their strategy at any time, for example when an agent leaves the radius of a city, it can change its strategy to a highway-type strategy.
 
 To describe a highway-type strategy, first there needs to be a definition of a population map. The population map is a generated noise which describes density of populations, and most strategies
 will respect the density and react accordingly, to create a denser area in some places. It also defines the rough shape of the city, because lower population means less roads.
@@ -60,7 +61,7 @@ Now, highways react differently to this population map than other strategies. In
 That means that once an agent leaves a city and switches to a highway-type strategy, it will attempt to travel to nearby areas with higher population density.
 
 However, that does not mean there is always a city in the denser areas, it might find an area without a city. The idea is that the highway strategy can also create new cities if it comes across
-a very dense area and has not connected to an existing city. There are cases where a city be created right next to another city, but that would just result in both cities merging into one.
+a very dense area and has not connected to an existing city. There are cases where a city can be created right next to another city, but that would just result in both cities merging into one.
 
 
 \subsubsection{Cell-Road}
