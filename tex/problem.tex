@@ -34,7 +34,10 @@ The primary focus will be put on the generation of roads and buildings as these
 are considered the core features of a city.
 The terrain's purpose should be to help create natural
 settings for these cities to adjust to, and the terrain itself does not need
-to have realistic level of detail.
+to have realistic level of detail. Furthermore, the details of roads and
+buildings, such as textures and small meshes, are not intended to be made from
+scratch. Utilization of free resources online is encouraged to keep the workload
+focused on algorithmic problems rather than on 3D modeling.
 
 The user will interact with the application's Graphical User Interface (GUI) in the following way.
 \begin{enumerate}
@@ -46,7 +49,7 @@ The user will interact with the application's Graphical User Interface (GUI) in 
   \item The user then selects which region of the generated terrain they want to use in the final model.
   \item The user places population markers on the terrain and specifies how much
     population each marker represents. The user can also specify any optional
-    parameters for each city such as road type.
+    parameters for each marker such as road type.
   \item The user clicks on a button that says ``Generate Roads'' as many times
     as they like, until they are satisfied with the generated road network.
   \item The user clicks on a button that says ``Generate Buildings'' as many times
@@ -56,7 +59,13 @@ The user will interact with the application's Graphical User Interface (GUI) in 
     model as a \textit{.fbx} on the local filesystem.
 \end{enumerate}
 
-The problem can be divided into 3 major subproblems: generation of landscape, road networks, and buildings.
+As a stretch goal, the user should after step 7 be able to select districts of a
+city and regenerate those individually. With such a feature in place, the user
+would be able to finely adjust the generation to their preference, without the addition of
+more mandatory steps.
+
+The problem addressed in this project can be divided into 3 major subproblems:
+terrain generation, road generation, and building generation.
 Each of the following subsections will go into more detail about these subproblems.
 
 \subsection{Terrain Generation}
