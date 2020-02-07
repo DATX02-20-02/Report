@@ -4,7 +4,7 @@ A heightmap is a bitmap image where each pixel typically store values representi
 This is often visualized as a grayscale image where the black pixels represents the minimum height displacement and white the maximum elevation.
 To the projects particular use case the pixel values will store the terrain elevation and converted into a 3D mesh. % "converted into 3d mesh" true for Unity Terrain API??
 One downside of using a heightmap representation for terrain is its limitation to represent more complex 3D geometry such as caves or overhangs but since the focus of the project is on city generation and not the terrain this is not seen as a problem.
-Figure~\ref{fig:heightmap} shows an example heightmap visualized as a grayscale image.
+Figure~\ref{fig:heightmap} shows an example heightmap visualized as a grayscale image. 
 
 % NOTE(anton): image generated from https://cpetry.github.io/TextureGenerator-Online/
 \begin{figure}[h]
@@ -20,9 +20,17 @@ Gradient noise is one out of two commonly used noises used for terrain generatio
 The concept of value noise is creating lattice points with pseudorandom values. 
 The noise function then returns the interpolated values of the surrounding lattice points. 
 Where as gradient noise creates a lattice of pseudorandom gradients, the dot products of the gradients are then interpolated to obtain values between the lattices. 
-The user will provide a value for the sea level in the form of a number, and we will color the terrain based on the height levels e.g.\ grasslands near sea level, rocky mountain textures for the taller regions, and snow for top peaks of some of the taller mountains.
-The landscape might end up looking something like this, although with less water and mountains, and more flat areas for cities to be placed.
+
+The user will provide a value for the sea level in the form of a number, and we will color the terrain based on the height levels e.g.\ grasslands near sea level, rocky mountain textures for the taller regions, and snow for top peaks of some of the taller mountains. 
+higher frequency of noise corresponds to an area on the heightmap where we would like to generate an area with a small, yet intense difference in elevation.
+Whereas lower frequencies will correspond to areas of a less intense, but larger difference in elevation. 
+These could be either represent lakes or mountains depending on where they cross a certain z-axis threshold. 
+
 
 If there is still time after previously mentioned implementations have been made we intend to make the terrain more interesting by generating trees and grass throughout the world.
 The way we intend to do this is to use poisson disc sampling to distribute points for trees, and then for grass. % source: https://odr.chalmers.se/handle/20.500.12380/244588
-We should sample trees first since they will have a larger radius.  
+We should sample trees first since they will have a larger radius.
+
+ 
+
+  
