@@ -1,0 +1,10 @@
+\subsection{Terrain Generation}
+We will approach this subproblem by first generating a height map that represents the hills and the valleys of the landscape.
+We plan to generate the height map using multiple layers of simplex noise.
+The user will provide a value for the sea level in the form of a number, and we will color the terrain based on the height levels e.g.\ grasslands near sea level, rocky mountain textures for the taller regions, and snow for top peaks of some of the taller mountains.
+The landscape might end up looking something like this, although with less water and mountains, and more flat areas for cities to be placed.
+
+To make the terrain more interesting we will also generate trees and grass throughout the world.
+This is intended as a stretch goal though.
+The way we intend to do this is to use poisson disc sampling to distribute points for trees, and then for grass. % source: https://odr.chalmers.se/handle/20.500.12380/244588
+We should sample trees first since they will have a larger radius.
