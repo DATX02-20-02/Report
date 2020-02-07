@@ -2,10 +2,10 @@
 \section{Problem}
 
 The goal of this project is to create a user-friendly application that can generate modern 3D cities, and then export them as \textit{.fbx} files.
-\textit{User-friendly} means that users should need no technical expertise or coding experince to fully utilize the application.
-\textit{Modern cities} means that the cities should resemble modern industrialized
-cities such as New York, Paris, San Francisco, and Tokyo. Figure \ref{fig:ModernCities}
-showcases two examples of such modern cities.
+\textit{User-friendly} means that users should not need any technical expertise or coding experince to fully utilize the application.
+\textit{Modern cities} will in this project be defined as cities that resemble
+modern industrialized cities such as New York, Paris, San Francisco, and Tokyo.
+Figure \ref{fig:ModernCities} showcases two examples of such modern cities.
 
 \begin{figure}[h!]
   \centering
@@ -25,10 +25,18 @@ showcases two examples of such modern cities.
 It is worth clarifying that suburban areas and rural areas are also included as
 part of such cities.
 
-The focus will be put on the roads and the buildings of the city, and not on the
-terrain around it. The surrounding terrain should help create interesting scenarios for the cities to adjust to.
+The scope will be restricted to generating static models that can be exported as \textit{.fbx} files.
+Therefore, dynamic content such as simulation of road traffic, day-night cycle,
+and pedestrians are all considered out of scope for this project.
+The interior of buildings are also considered out of scope.
 
-The user will interact with the program in the following way:
+The primary focus will be put on the generation of roads and buildings as these
+are considered the core features of a city.
+The terrain's purpose should be to help create natural
+settings for these cities to adjust to, and the terrain itself does not need
+to have realistic level of detail.
+
+The user will interact with the application's Graphical User Interface (GUI) in the following way.
 \begin{enumerate}
   \item The user specifies the size of the world in terms of a 2D plane.
   \item The user specifies any optional parameters that affect the terrain
@@ -47,8 +55,6 @@ The user will interact with the program in the following way:
     button that says ``Export to FBX'' and the the program will save the full
     model as a \textit{.fbx} on the local filesystem.
 \end{enumerate}
-These interactions should occur through a user-friendly Graphical User Interface
-(GUI).
 
 The problem can be divided into 3 major subproblems: generation of landscape, road networks, and buildings.
 Each of the following subsections will go into more detail about these subproblems.
