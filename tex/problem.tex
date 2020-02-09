@@ -68,47 +68,6 @@ The problem addressed in this project can be divided into 3 major subproblems:
 terrain generation, road generation, and building generation.
 Each of the following subsections will go into more detail about these subproblems.
 
-\subsection{Terrain Generation}
-
-The problem of terrain generation can be further divided into the following tasks.
-\begin{easylist}
-  @ Generate the heights of the terrain.
-  @ Texture the terrain based on height levels.
-  @ Generate trees and shrubs.
-  @ Generate ocean.
-  @ Generate lakes.
-  @ Generate rivers that flow into lakes and the ocean. (optional)
-\end{easylist}
-
-The terrain heights need to represent the hills and valleys that define the silhouette of the world.
-The textures should aid in visually describing the landscape, as well as
-help contribute to an overall more realistic model. The following list presents
-a few concrete examples of such texturing.
-\begin{easylist}
-  @ Oceans and lakes should have a blue tint.
-  @ Landscape slanting towards oceans should transition into beaches.
-  @ Spacious plains should cover various shades of green.
-  @ Mountains should appear rocky.
-  @ Tall mountain peaks should be covered in snow.
-\end{easylist}
-
-In the context of realism, the generation should assume a season somewhere
-between spring and summer.
-This scope could potentially be extended to include other seasons as well as
-different types of landscape types.
-However this is only intended as an optional aspect that will handled in the case
-of excess time.
-
-To make the terrain more convincing there will also be generation of trees and shrubs
-throughout the world. These should grow in groups, just like forests in
-real life, and they should not intersect with any roads or buildings.
-
-The generated lakes and oceans will both restrict where roads and buildings can be placed.
-The same goes for rivers if that strech goal is met.
-These aspects should help create more interesting interactions between terrain and city.
-
-The overall terrain should follow a realistic aesthetic. Consequently it should not
-attempt follow a \textit{Low Poly} aesthetic nor be made up of visible \textit{Voxels}.
-
-\subsection{Road Generation}
-\subsection{Building Generation}
+\input{tex/problem/terrain.tex}
+\input{tex/problem/road.tex}
+\input{tex/problem/building.tex}
