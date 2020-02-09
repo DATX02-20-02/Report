@@ -1,1 +1,28 @@
 \subsection{Road Generation}
+
+The problem of road generation can be further divided into the following tasks.
+
+\begin{easylist}
+  @ Generate clusters of main roads that represent cities where population is high.
+  @ Generate streets between the main roads.
+  @ Connect roads together with intersections or roundabouts.
+  @ Ensure plots of land between roads where buildings can be built.
+  @ Ensure that the road network forms a single connected graph for each landmass.
+  @ Generate bridges over bodies of water to ensure a single connected graph. (stretch goal)
+\end{easylist}
+
+All roads should be placed on ground and may not cross any bodies of water, with the exception of bridges.
+The roads also need to adjust themselves based on the elevation levels of the terrain.
+This means that the roads need to be able to form smooth curvatures as they traverse slopes.
+Both smooth curvatures and sharp corners need to be possible when the roads turn to the left or right of their orientation.
+
+The road generation may modify the height levels of the terrain to form smooth surfaces, but it may not do so if the result causes unnatural elevations.
+As an example, connecting two tall hills by raising all the land in-between is not considered natural.
+However, flattening a slightly bumpy surface into a smooth one is considered natural.
+As a guideline, no level heights should be modified beyond the real-life equivalent of 1 meter, unless it can be clearly motivated by real-life examples.
+
+There is also a restriction on how steep slopes the roads are allowed to directly traverse.
+A road may not reach inclines that can not be supported with common real life equivalents.
+Although roads may not directly go up too steep hills, they can still form zig-zag patterns or spirals to reach the top of most peeks.
+
+Finally, it is important that roads do not overlap with each other, and the streets may not create unrealistically small areas for buildings to built on.
