@@ -1,32 +1,46 @@
 \section{Methods}
+In figure \ref{fig:generators}, you can see the different generators that should be needed to generate our procedural 3D city. 
+The basic notion is that these generators will be called from a root level in code and that the result of one or more generator will be feed into the next generator.
+Figure \ref{fig:generator-examples} shows three of the different generators and how they can be visualized in a 2D plane. 
+
 \begin{center}
-  \begin{table}[H]
-    \begin{tabular}{lllll}
-      \textit{User parameters}              & $\rightarrow$ & \textbf{TerrainGenerator}    & $\rightarrow$ & \textit{Terrain}        \\
-      \textit{Terrain, Population markers}  & $\rightarrow$ & \textbf{PopulationGenerator} & $\rightarrow$ & \textit{Population map} \\
-      \textit{Terrain, Population map}      & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{Road network}   \\
-      \textit{Road network, Population map} & $\rightarrow$ & \textbf{BlockGenerator}      & $\rightarrow$ & \textit{Block{[}{]}}    \\
-      \textit{Block}                        & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot{[}{]}}     \\
-      \textit{Plot}                         & $\rightarrow$ & \textbf{BuildingGenerator}   &               &                         \\
-      \textit{Plot}                         & $\rightarrow$ & \textbf{ParkGenerator}       &               &                        
-      \end{tabular}
-    \end{table}
+  \begin{figure}[H]
+    \begin{center}
+      \begin{table}[H]
+        \begin{tabular}{lllll}
+          \textit{User parameters}              & $\rightarrow$ & \textbf{TerrainGenerator}    & $\rightarrow$ & \textit{Terrain}        \\
+          \textit{Terrain, Population markers}  & $\rightarrow$ & \textbf{PopulationGenerator} & $\rightarrow$ & \textit{Population map} \\
+          \textit{Terrain, Population map}      & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{Road network}   \\
+          \textit{Road network, Population map} & $\rightarrow$ & \textbf{BlockGenerator}      & $\rightarrow$ & \textit{Block{[}{]}}    \\
+          \textit{Block}                        & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot{[}{]}}     \\
+          \textit{Plot}                         & $\rightarrow$ & \textbf{BuildingGenerator}   &               &                         \\
+          \textit{Plot}                         & $\rightarrow$ & \textbf{ParkGenerator}       &               &                        
+        \end{tabular}
+      \end{table}
+    \end{center}
+    \caption[]{The different proposed generators needed to generate a 3D city}
+    \label{fig:generators}
+  \end{figure}
 \end{center}
 
-\begin{figure}[H]
-  \minipage{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figure/method_generation_1.png}
-    \caption{Landscape generation}\label{fig:awesome_image1}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}
-    \includegraphics[width=\linewidth]{figure/method_generation_2.png}
-    \caption{Road generation}\label{fig:awesome_image2}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}%
-    \includegraphics[width=\linewidth]{figure/method_generation_3.png}
-    \caption{Block/plot generation}\label{fig:awesome_image3}
-  \endminipage
-\end{figure}
+\begin{center}
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+      \frame{\includegraphics[width=\linewidth]{figure/method_generation_1.png}}
+      \caption{Landscape generation}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+      \frame{\includegraphics[width=\linewidth]{figure/method_generation_2.png}}
+      \caption{Road generation}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+      \frame{\includegraphics[width=\linewidth]{figure/method_generation_3.png}}
+      \caption{Block/plot generation}
+    \end{subfigure}
+    \label{fig:generator-examples}
+  \end{figure}
+\end{center}
   
 \input{tex/method/terrain.tex}
 \input{tex/method/population.tex}
