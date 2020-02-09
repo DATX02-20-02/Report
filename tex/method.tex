@@ -1,32 +1,38 @@
 \section{Methods}
-In this project, there were two different algorithms to create the city with.
-Road-first, which is based on creating the roads first and cell-road-cell-road 
+\begin{center}
+  \begin{table}[H]
+    \begin{tabular}{lllll}
+      \textit{User parameters}              & $\rightarrow$ & \textbf{TerrainGenerator}    & $\rightarrow$ & \textit{Terrain}        \\
+      \textit{Terrain, Population markers}  & $\rightarrow$ & \textbf{PopulationGenerator} & $\rightarrow$ & \textit{Population map} \\
+      \textit{Terrain, Population map}      & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{Road network}   \\
+      \textit{Road network, Population map} & $\rightarrow$ & \textbf{BlockGenerator}      & $\rightarrow$ & \textit{Block{[}{]}}    \\
+      \textit{Block}                        & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot{[}{]}}     \\
+      \textit{Plot}                         & $\rightarrow$ & \textbf{BuildingGenerator}   &               &                         \\
+      \textit{Plot}                         & $\rightarrow$ & \textbf{ParkGenerator}       &               &                        
+      \end{tabular}
+    \end{table}
+\end{center}
 
-We will split the problem of city generation into the following 3 subproblems:
-\begin{itemize}
-  \item Landscape generation
-  \item Road generation
-  \item Building generation
-  \item (population generation?)
-\end{itemize}
-
-In essence, to generate the city model we first generate the landscape, then the road network, and then finally the buildings. 
-
-\begin{figure}[!htb]
+\begin{figure}[H]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{figure/method_generation_1.png}
-    \caption{A really Awesome Image}\label{fig:awesome_image1}
+    \caption{Landscape generation}\label{fig:awesome_image1}
   \endminipage\hfill
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{figure/method_generation_2.png}
-    \caption{A really Awesome Image}\label{fig:awesome_image2}
+    \caption{Road generation}\label{fig:awesome_image2}
   \endminipage\hfill
   \minipage{0.32\textwidth}%
     \includegraphics[width=\linewidth]{figure/method_generation_3.png}
-    \caption{A really Awesome Image}\label{fig:awesome_image3}
+    \caption{Block/plot generation}\label{fig:awesome_image3}
   \endminipage
 \end{figure}
   
 \input{tex/method/terrain.tex}
+\input{tex/method/population.tex}
 \input{tex/method/road.tex}
+\input{tex/method/block.tex}
+\input{tex/method/plot.tex}
 \input{tex/method/building.tex}
+\input{tex/method/park.tex}
+
