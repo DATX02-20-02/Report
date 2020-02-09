@@ -29,15 +29,33 @@ The scope will be restricted to generating static models that can be exported as
 Therefore, dynamic content such as simulation of road traffic, day-night cycle,
 and pedestrians are all considered out of scope for this project.
 The interior of buildings are also considered out of scope.
+The reason being that each user is predicted to have fairly unique intentions with 
+what content they want to fill the buildings with. This feature would likely not
+fit the project's time frame either.
 
-The primary focus will be put on the generation of roads and buildings as these
+The primary focus will be put on the generation of roads and buildings, as these
 are considered the core features of a city.
 The terrain's purpose should be to help create natural
-settings for these cities to adjust to, and the terrain itself does not need
+settings for the infrastructure to adjust to, and the terrain itself does not need
 to have realistic level of detail. Furthermore, the details of roads and
 buildings, such as textures and small meshes, are not intended to be made from
 scratch. Utilization of free resources online is encouraged to keep the workload
 focused on algorithmic problems rather than on 3D modeling.
+
+As a consequence of the random aspect in PCG, it is difficult to express a precise definition that can measure whether the project should be considered successful or not.
+One possible measurement is the \textit{quality} of the exported models.
+Do the cities look like real ones?
+Are they visually pleasing and are they suitable for use in other mediums such as movies and games?
+Another possible measurement is how \textit{expressive} the generation is.
+If all generated models look exactly the same, then the power of PCG has gone unused.
+Each generated model should stand out, and it should not be apparent whether a
+human or a computer made them.
+
+The subjective nature of these measurements will make evaluation challenging,
+but they can still be used to give a rough estimate.
+The plan is to measure all of the mentioned aspects from the perspective of
+the project members, the project's supervisor, and from a sample of unrelated
+university students. This will be done through a survey at the end of the project.
 
 The user will interact with the application's Graphical User Interface (GUI) in the following way.
 \begin{enumerate}
@@ -46,7 +64,7 @@ The user will interact with the application's Graphical User Interface (GUI) in 
     such as sea level.
   \item The user clicks on a button that says ``Generate Terrain'' as many times
     as they like, until they are satisfied with the generated terrain.
-  \item The user then selects which region of the generated terrain they want to use in the final model.
+  \item The user selects which region of the generated terrain they want to use in the final model.
   \item The user places population markers on the terrain and specifies how much
     population each marker represents. The user can also specify any optional
     parameters for each marker such as road type.
@@ -59,14 +77,15 @@ The user will interact with the application's Graphical User Interface (GUI) in 
     model as a \textit{.fbx} on the local filesystem.
 \end{enumerate}
 
-As a stretch goal, the user should after step 7 be able to select districts of a
+As a stretch goal, the user should after step 7 be able to select blocks of a
 city and regenerate those individually. With such a feature in place, the user
-would be able to finely adjust the generation to their preference, without the addition of
-more mandatory steps.
+would be able to finely adjust parts of the generation to their preference. This
+feature would not require any additional mandatory steps for the user to take.
 
 The problem addressed in this project can be divided into 3 major subproblems:
 terrain generation, road generation, and building generation.
-Each of the following subsections will go into more detail about these subproblems.
+Each of the following subsections will go into more detail about these
+subproblems.
 
 \input{tex/problem/terrain.tex}
 \input{tex/problem/road.tex}
