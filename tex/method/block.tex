@@ -2,14 +2,14 @@
 \begin{center}
     \textit{Road network, Population map} $\rightarrow$ \textbf{BlockGenerator} $\rightarrow$ \textit{Block{[}{]}}
 \end{center}
-This generator will from the roads and streets, and the population map, generate all the blocks used in the world.
-Formal definition of Block:
+This generator will generate all of the city blocks, based on road network and the population map.
+The formal definition of Block:
 \begin{center}
     \textit{Finite area connected to 1 or more streets that contains 1 or more plots.}
 \end{center}
-After all the roads has been generated, doing most of the work structuring the world, blocks can be mapped upon the world to give it life.
 An example of this can be found in figure \ref{fig:generatorexamples3}, the inner roads of the center area is the streets that connect and is the base for the three blocks.
+After all the roads have been generated, doing most of the work structuring the world, blocks can be mapped upon the world to give it life.
 Via the \textit{Road network} and \textit{Population map}, different blocks can be created. 
 The main technique that will be used to find the blocks created out of the \textit{Road network} is something called Minimum Cycle Basis.
 It is an algorithm used to find all cycles, which are called blocks, within an undirected graph, which will be all the roads and streets. 
-The population map will have an effect when specifing the blocks. 
+The population map will affect when specifying the blocks. 
