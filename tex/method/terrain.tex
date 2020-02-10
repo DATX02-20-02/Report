@@ -5,7 +5,7 @@
 
 We will approach this subproblem by first generating a heightmap that represents the hills and the valleys of the landscape.
 A heightmap is a bitmap image where each pixel typically store values representing a surface elevation or displacement.
-This is often visualized as a grayscale image where the black pixels represents the minimum height displacement and white the maximum elevation.
+This is often visualized as a grayscale image where the black pixels represents the minimum elevation, and white represents the maximum elevation.
 To this projects particular use case the pixel values will store the terrain elevation and rendered as a 3D mesh.
 One limitation of using a heightmap however, is that it can not represent more complex 3D geometry such as caves or overhangs, but since the main focus of the project is on procedurally generating a city not the terrain this is not deemed as a problem.
 Figure~\ref{fig:heightmap} illustrates an example heightmap visualized as a grayscale image.
