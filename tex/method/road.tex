@@ -1,11 +1,11 @@
-\subsection{Road}
+\subsection{Road Generator}
 \begin{center}
   \textit{Terrain, Population map} $\rightarrow$ \textbf{RoadGenerator} $\rightarrow$ \textit{Road network} 
 \end{center}
-Road generation is what will design the entire city, and it will do it by placing different kinds of roads.
-We will approach this generation by first allowing the user to decide where city generation shall commence by giving them the option to place a population markers for the roads to be constructed.
-The size of the city generated is defined by the user, maximum being the size of the available terrain.
+Road generation is what will design the entire frame of the city, and it will do it by placing different kinds of roads.
+The size of each city will be defined by the user through the population markers.
 Cities far away from each other will be connected by highways, and along those highways there is a chance that small villages are generated.
+The roads will be constructed using Agent-based generation.
 
 \subsubsection{Plotting out cities}
 The user should be able to specify exactly where cities should begin their generation sequence.
@@ -46,7 +46,7 @@ There are cases where a city can be created right next to another city, but that
 \subsubsection{Street generation}
 While generating main roads, new agents are created which branch off the main road to create streets.
 These are generally straight and grid-like, to mimic the patterns found in most neighborhoods.
-However, different kind of street strategies can be created to mimic other types of neighborhoods.
+However, different kind of street strategies can be created to mimic other types of neighborhoods as well.
 To ensure that streets do not cut off main roads, these agents are given a lower priority which ensures that they are always created after main roads are finished generating.
 The agents are then prioritized according to the order they were created, which means an agent will generate an entire neighborhood before the next street agent begins.
 This creates clearer patterns around the city with less agents competing over the same area.
