@@ -1,5 +1,5 @@
 \section{Method}
-In Figure~\ref{fig:generators}, you can see the different generators that should be needed to generate our procedural 3D city. 
+The subproblems in section \ref{sec:problem} have been divided further into the generators found in figure \ref{fig:generators}. 
 The basic notion is that these generators will be called from a root level in code and that the result of one or more generator will be feed into the next generator.
 Figure~\ref{fig:generatorexamples} shows three of the different generators and how they can be visualized on a 2D plane. 
 
@@ -28,20 +28,20 @@ Figure~\ref{fig:generatorexamples} shows three of the different generators and h
     \centering
     \begin{subfigure}[b]{0.32\textwidth}
       \frame{\includegraphics[width=\linewidth]{figure/method_generation_1.png}}
+      \caption{Terrain Generation}
       \label{fig:generatorexamples1}
-      \caption{Terrain generation}
     \end{subfigure}
     \begin{subfigure}[b]{0.32\textwidth}
       \frame{\includegraphics[width=\linewidth]{figure/method_generation_2.png}}
-      \label{fig:generatorexamples1}
-      \caption{Road generation}
+      \caption{Road Generation}
+      \label{fig:generatorexamples2}
     \end{subfigure}
     \begin{subfigure}[b]{0.32\textwidth}
       \frame{\includegraphics[width=\linewidth]{figure/method_generation_3.png}}
-      \label{fig:generatorexamples1}
-      \caption{Block/plot generation}
+      \caption{Block/Plot Generation}
+      \label{fig:generatorexamples3}
     \end{subfigure}
-    \caption{Visualization of the intended purpose of the Terrain, Road, and Plot/Block generators}
+    \caption{Visualization of the intended purpose of the Terrain, Road, and Plot/Block generators.}
     \label{fig:generatorexamples}
   \end{figure}
 \end{center}

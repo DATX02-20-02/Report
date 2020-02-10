@@ -1,4 +1,4 @@
-\subsection{Terrain}
+\subsection{Terrain Generator}
 \begin{center}
   \textit{User parameters} $\rightarrow$ \textbf{TerrainGenerator}  $\rightarrow$ \textit{Terrain}
 \end{center}
@@ -21,11 +21,12 @@ Figure~\ref{fig:heightmap} illustrates an example heightmap visualized as a gray
 
 We plan to generate the heightmap using multiple layers of simplex noise.
 Simplex noise is a type of gradient noise commonly used in computer graphics and procedural generation.
-The so-called gradient noise is where a psuedo-random gradient(or slope) is generated at regularly spaced points in space.
+The mentioned gradient noise is a type of noise that contains smooth slopes, which causes nearby points to be similar while still remaining random.
 The points are then interpolated using a smoothing function to achieve a wave-like texture fitting for representing the terrain.
 Each octave, or layer, of simplex noise will represent different levels of terrain granularity.
 Higher frequency of noise corresponds to an area on the heightmap where we would like to generate an area with a small, yet intense difference in elevation.
 Whereas lower frequencies will correspond to areas of a less intense, but larger difference in elevation forming the contour of the terrain.
+This can be used to generate both smooth hills and rocky mountains.
 
 The color of the terrain will be based on the height levels e.g.\ grasslands near sea level, rocky mountain textures for the taller regions, and snow for top peaks of some of the taller mountains.
 One approach for achieving this is a technique called Texture splatting that is commonly used for terrain rendering.
