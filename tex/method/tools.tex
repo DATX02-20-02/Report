@@ -1,14 +1,20 @@
 \subsection{Tools}
 These are a few of the tools that we have selected to use to create our project.
 
-\subsubsection{Git/Github}
-The industry standard for version control of code. 
-A Github project will be used to store and maintain our git project.
+\subsubsection{Git and Github}
+Git was chosen as it is the industry standard for version control of code.
+For collaboration purposes the git repository will be hosted on GitHub.
+Most project members had previous experience with both of these technologies,
+and that ended up becoming the deciding factor to use these technologies as opposed to similar technologies such as Subversion and Gitlab.
 
-\subsubsection{C\#}
-The language that will be used for our project. 
-There are two main reasons for us to choose this language, the first being that it is a language used in the game engine that we have selected. 
-The second being it that is similar to Java, which is a language that all project members have previous experience with.
+\subsubsection{Unity and C\#}
+The project needs a GUI for the visualization of cities, so there is a need for some type of library, framework, or engine that can eleviate some of this work.
+LWJGL, JMonkeyEngine, Unity, Unreal, and Godot were all options that were considered in this project.
+Unreal was excluded because of its hard learning curve, and the way its favors visual
+programming using something called \textit{blueprints}.
+Godot was excluded for its limitations in 3D and for its young and small community.
+LWJGL and JMonkeyEngine were disregarded for the amount of work that would have been required to get simple stuff like roads andvisual debugging to work.
+The choice ended up being Unity as it will allow us to focus on problem of PCG at hand.
+Further arguments for using Unity were its large community, extensive range of tutorials, good documentation, stability, cross-platform support, and its wide array of first-, and third-party tools.
 
-\subsubsection{Unity}
-The game engine that will be used to interact, via UI elements, and represents, in 3D, our application. 
+Unity officially only supports C\#, and since this language is similar to Java (a language all project members had previous experience with) the choice of programming language felt obvious.
