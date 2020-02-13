@@ -1,13 +1,17 @@
 \subsection{Plot Generator}
 \begin{center}
-    \textit{Block} $\rightarrow$ \textbf{PlotGenerator} $\rightarrow$ \textit{Plot{[}{]}}
+    \textit{Block, Population map} $\rightarrow$ \textbf{PlotGenerator} $\rightarrow$ \textit{Plot{[}{]}}
 \end{center}
-This generator will from a \textit{Block} divide where different plots should be positioned. 
-The formal definition of \textit{Plot}:
-\begin{center}
-    \textit{Piece of land where a single building or park can be fit.}
-\end{center}
-In Figure~\ref{fig:generatorexamples3}, you can see plots being marked as the polygons divided by blue lines. 
-Plots can not be divided into smaller pieces, they should be seen as the polygon area where the actual content of the city is placed such as a building or a park.
-The parameter \textit{Block} will contain information such as how much population is expected to fit into the different plots. 
-This fact will for example help determine whether building a skyscraper, apartment or a villa is more appropriate.
+This generator will divide a \textit{Block} into multiple plots of land where buildings and parks can be built.
+These \textit{Plots} are formally defined in the glossary.
+Plots can not be divided into smaller pieces, they should be seen as the smallest polygon area where buildings and parks can be built.
+
+An example of plot generation can be found in Figure~\ref{fig:generatorexamples3}.
+The areas separated by the blue lines represent the \textit{Plots}.
+These can be generated quite arbitrarly, and do not need to be of similar sizes.
+In this case they could all represent different buildings, but parks are also.
+The only requirement is that they need to have enough room for something to be built.
+One suggestion is to investigate using Voronoi diagrams, both with Euclidean distance and with Manhattan distance.
+
+The population map can be used to determine what kind of building type is most suitable.
+For instance a villa would fit well if the plot should cover a small population, while a skyscraper or an appartment complex would be suitable for high population.
