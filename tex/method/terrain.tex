@@ -47,11 +47,10 @@ As previously mentioned in the problem section, there are some things that could
 We could for example add water flowing from mountains that turns into rivers, and similarly we could make these rivers flow into lakes in order to make our terrain look more natural.
 For now we have only speculated on how we would like to approach this problem, but we have discussed forming rivers using a gradient descent starting from the mountain-tops.
 The way a river flows would be determined by \textit{river agents} based on the gradient descent function from mountain-top to ground level. 
-We could then decide to, depending on where the river agent \textit{dies}  to perform different actions on that part of the terrain.
+We could then decide to, depending on where the river agent \textit{terminates}  to perform different actions on that part of the terrain.
 If a river flows into the ocean we would not need to create anything, but if a river flows into seemingly nothing we could decide to generate a lake there. 
 
 Another approach would be to generate the lakes seemingly arbitrary at first, and then try to find a gradient descent path from the mountain-tops to the lakes.
 If no such paths are found, we do nothing, but if the agents finds a path we generate a river from the mountain to the lake. 
-
 
 
