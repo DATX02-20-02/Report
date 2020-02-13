@@ -1,29 +1,28 @@
 \section{Background}
-The problem of this report revolves around content generation within (predominantly) video games and movie creation. 
-As the modern day computer technology gains increased memory space and performance, the capacity for content in video games and similar fields grows simultaneously. 
-However, designers' capability to create the content by hand remains somewhat stagnant.
-Because of this, many major companies make use of algorithms built upon an exciting field within computer science called Procedural Content Generation (PCG). 
+% preface
+In conjunction with increasing performance, memory and storage on modern computers the capacity for a large amount of varied content in video games, or other digital media, grows respectively.
+The designers' capability to create a large amount of content by hand, however, remains a slow and expensive process.
+Because of this, many major companies in recent years leverage the use of algorithms built on an exciting field within computer science called Procedural Content Generation (PCG).
 
-PCG is a technique within computer graphics where the content, e.g.\ game-levels, is generated dynamically by an algorithm rather than handmade by a designer.
-This approach is not something that is new to the industry, but the way it is being utilized is.
-In the past PCG was primarily used when creating computer games  in order to workaround the limitations of hardware.
-Today however, it is mainly used due to how time-efficient it is. 
-With the use of PCG, companies can produce impressive environments in hours which would take designers days if not weeks to create manually.
+% define PCG & games
+PCG is where content such as game-levels, textures, stories, items, quests, music, weapons, etc.\ is generated dynamically by an algorithm rather than designed by hand~\cite[p.1]{PCG_in_games}.
+Typically, this is achieved by combining assets and algorithms with computer-generated randomness to synthesize unique content.
+In the early 1980s, PCG was primarily used in games as a work-around for the limited storage space~\cite[p.4]{PCG_in_games}.
+In recent years however, the technique has gained a lot of attraction in modern games for generating compelling and replayable experiences.
+Games such as Diablo~\cite{diablo} feature procedural generation for the creation of the maps and as well as the placement and number of items and monsters~\cite[p.4]{PCG_in_games}.
+In Spore~\cite{spore} the animation of the creature the player designs use procedural animation techniques~\cite[p.4]{PCG_in_games}.
+Furthermore, the popular game Minecraft~\cite{minecraft} make use of PCG techniques extensively for generating everything from the cave-systems to the mountains to the whole world~\cite[p.4]{PCG_in_games}.
+Procedural generation can be used to generate pretty much any virtual content you could imagine.
+Evident from the use of PCG in big commercial games there is a demand from the game industry to create large, impressive and unique environments for their player base to explore.
 
-There is a demand within the modern game industry to create large, impressive and unique environments for their player base to explore. 
-PCG is an option for all game companies (especially small companies on the market) that want to create games that accommodate brimful content (such as GTA, the Fallout franchise, etc.), as it is immensely time consuming to design by hand which in turn is very expensive. 
-By inspiration from the cave and hill generation within Minecraft, this project will attempt to create whole 3D cities using procedural generation. 
+% pros & cons
+A key question to consider is what the actual benefits are of using PCG over manual design is.
+With the help of PCG, software can produce impressive, varied and seemingly endless environments order of magnitudes faster than a human~\cite[p.3]{PCG_in_games}.
+This aids designers creating a lot more content cheaply and efficiently once the algorithm has been developed.
+Additionally, 
 
-Worth mentioning is that PCG has far more applications than city generation.
-Other applications include level generation in Diablo, weapons in Borderlands, and all the creatures encountered within Spore.
-A key question to be asked is what the actual benefits are of using PCG over manual design. 
-One could argue that in comparison to a designer, the PCG family of algorithms have a great advantage. This due to the fact that they can generate a whole spectrum of variations of a specific concept, and do so in only a fraction of the time in which a designer could. 
-
-Procedural generation can be used to generate pretty much any virtual content you could imagine. 
-Our project strives to present a possible solution for the procedural generation of cities, in our opinion, one of the vital elements of any generated world. 
-
-
-
-
-
-
+Although the output space of PCG is considerable, automatic content generation comes with a set of tradeoffs.
+One of the challenges when developing PCG systems is the ability to generate content comparable with the quality of hand-crafted content.
+In the case of hand-crafted content, the content would undoubtedly fit its intended use case whereas generated content might be deemed inadequate or specific enough.
+This difficulty also ties into the problem of generating visually distinctive and expressive content.
+If the generated content only differs with minimal variance it might not actually be perceived as varied content at all.
