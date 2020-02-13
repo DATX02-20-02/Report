@@ -44,15 +44,14 @@ Furthermore the user can provide a threshold height for the sea level where any 
 This can simply be done with drawing an animated water texture on a plane positioned at said height level. 
 
 As previously mentioned in the problem section, there are some things that could be added to our project in the later stages, if there is time for them. 
-% https://arches.liris.cnrs.fr/publications/articles/SIGGRAPH2013_PCG_Terrain.pdf
-Something that could be implemented in the later stages of the project would be to add some additional variety to our generated world. 
 We could for example add water flowing from mountains that turns into rivers, and similarly we could make these rivers flow into lakes in order to make our terrain look more natural.
-These two options being implemented rely primarily on the time which is left after our project satisfies all our primary goals, as they are not the main focus of the project. 
-The way rivers can be generated vary greatly, and where they mostly differ is the order of generation around them.
-You could choose to generate a heightmap and then try to fit a river basin around it, but some related work believes this is not the way to go. 
-The suggested approach from this paper is to combine what the paper refers to as a 'generated terrain slope control' with a 'generated river slope control'. 
-After this has been done the river network is generated automatically and the terrain is generated around it following the rules of hydrology. 
-~\cite{river_gen}
-
-We believe this will not be our approach as it would require a lot of restructuring of our original project, and not something that would simply be an extension to our final product. 
 For now we have only speculated on how we would like to approach this problem, but we have discussed forming rivers using a gradient descent starting from the mountain-tops.
+The way a river flows would be determined by \textit{river agents} based on the gradient descent function from mountain-top to ground level. 
+We could then decide to, depending on where the river agent \textit{dies}  to perform different actions on that part of the terrain.
+If a river flows into the ocean we would not need to create anything, but if a river flows into seemingly nothing we could decide to generate a lake there. 
+
+Another approach would be to generate the lakes seemingly arbitrary at first, and then try to find a gradient descent path from the mountain-tops to the lakes.
+If no such paths are found, we do nothing, but if the agents finds a path we generate a river from the mountain to the lake. 
+
+
+
