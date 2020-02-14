@@ -6,20 +6,22 @@ The designers' capability to create a large amount of content by hand, however, 
 Because of this, many major companies in recent years leverage the use of algorithms built on an exciting field within computer science called Procedural Content Generation (PCG).
 
 % What is PCG? (definition)
-PCG is where content such as game-levels, textures, stories, items, quests, music, weapons, etc.\ is generated dynamically by an algorithm rather than designed by hand~\cite[p.1]{PCG_in_games}.
-Typically, this is achieved by combining assets and algorithms with computer-generated randomness to synthesize unique content.
-
-
+PCG is an algorithm where content such as game-levels, textures, stories, items, quests, music, weapons, etc.\ is generated dynamically rather than designed by hand~\cite[p.1]{PCG_in_games}.
+Typically, this is achieved by combining assets and algorithms with computer-generated randomness to synthesize unique content. However calling it completely random would be incorrect.
+The algorithm takes advantage of randomness within its defined constraints to generate desired content~\cite{Gamasutra}.
+As for an example, if one were to create a PCG algorithm for terrain generation, it would not construct unreasonable terrain such as lakes flying in the air or trees growing upside down (unless case this is intentional). 
+	
 % History and significance
 In the early 1980s, PCG was primarily used in games as a work-around for the limited storage space~\cite[p.4]{PCG_in_games}.
 In recent years however, the technique has gained a lot of attraction in modern games for generating compelling and replayable experiences.
 Games such as Diablo~\cite{diablo} feature procedural generation for the creation of the maps and as well as the placement and number of items and monsters~\cite[p.4]{PCG_in_games}.
-In Spore~\cite{spore} the animation of the creature the player designs use procedural animation techniques~\cite[p.4]{PCG_in_games}.
+In Spore~\cite{spore}~, the animation of the creature the player designs use procedural animation techniques\cite[p.4]{PCG_in_games}.
 Furthermore, the popular game Minecraft~\cite{minecraft} make use of PCG techniques extensively for generating everything from the cave-systems to the mountains to the whole world~\cite[p.4]{PCG_in_games}.
 Procedural generation can be used to generate pretty much any virtual content you could imagine.
 Evident from the use of PCG in big commercial games there is a demand from the game industry to create large, impressive and unique environments for their player base to explore.
 
 % More specific games
+
 
 \input{tex/introduction/theory.tex}
 \input{tex/introduction/related_works.tex}
