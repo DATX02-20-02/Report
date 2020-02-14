@@ -2,7 +2,7 @@
 
 \subsubsection{Noise}
 
-One of the most funadmental tools used in PCG is noise.
+One of the most fundamental tools used in PCG is noise.
 Noise is the concept of random values, often represented using a 2D or 3D matrix of real numbers.
 The two major types of noise that are commonly used are \textit{value noise} and \textit{gradient noise}.
 
@@ -19,9 +19,9 @@ This causes nearby points to be of similar random values, while points far apart
 
 Both types of noise can be represented with intensity maps as seen in figure~\ref{fig:noisetypes}.
 An intensity map is a bitmap image where each pixel represents the value of the underlying noise.
-White pixels indicate maximum values, and black pixels represents minimum values.
+White pixels indicate maximum values, and black pixels represent minimum values.
 These maps can be used to represent many things including heights, in which case they are referred to as \textit{heightmaps}.
-They can also be used to create smooth blending between textures.
+They can also be used to create a smooth blending between textures.
 
 \begin{figure}[h!]
   \centering
@@ -43,35 +43,35 @@ They can also be used to create smooth blending between textures.
 \end{figure}
 
 A commonly used implementation of gradient noise is \textit{Perlin noise}, which later evolved into an improved version called \textit{simplex noise}.
-Ken Perlin introduced \textit{Perlin noise} in 1985 with the intention to produce more natural looking textures \cite{perlin_noise}.
+Ken Perlin introduced \textit{Perlin noise} in 1985 intending to produce more natural-looking textures \cite{perlin_noise}.
 Although \textit{simplex noise} is the improved version, the two terms are often used interchangeably. The idea of \textit{simplex noise} is described in great detail by Stefan Gustavson in his paper \textit{Simplex noise demystified} \cite{simplex_noise}.
 He also mentions several technical advantages with the technique.
-This subsection describes different ways of generating procedural content, for example Gradient noise and L-systems.
+This subsection describes different ways of generating procedural content, for example, Gradient noise and L-systems.
 
 \subsubsection{Search-based}
 One method for generating content is using a \textit{search-based} approach.
 This often involves using an evolutionary algorithm with some stochastic search/optimization algorithms to determine a solution with desired qualities.
-The general idea is that a for a given design problem we can find an acceptable solution by ``searching'' for it within the solution space.
-Solutions are iterated and then tweaked according to an evaluation function that keeps the changes which make the solution(s) ``better'' and discards any harmful changes.
-By iterating and tweaking one or many of possible solutions we will eventually arrive at a desired solution.
+The general idea is that for a given design problem we can find an acceptable solution by ``searching'' for it within the solution space.
+Solutions are iterated and then tweaked according to an evaluation function that keeps the changes that make the solution(s) ``better'' and discards any harmful changes.
+By iterating and tweaking one or many of possible solutions we will eventually arrive at the desired solution.
 
 \subsubsection{Machine Learning}
 Machine Learning (ML) is another method that can be used to procedurally generate content.
 The idea with this technique is to generate new content based patterns found from analyzing existing content.
-This technique can prove to be especially useful when it is hard to explicity define the content that should be generated.
-For instance, it is easier to analyse and replicate the design of existing cities as opposed to manually defining what a ``good'' city is.
+This technique can prove to be especially useful when it is hard to explicitly define the content that should be generated.
+For instance, it is easier to analyze and replicate the design of existing cities as opposed to manually defining what a ``good'' city is.
 The catch is that a lot of well-structured data is needed to draw these statistical conclusions.
 
 Summerville et al. refers to this synergy between ML and PCG as \textit{PCGML} (PCG via ML)~\cite{lmao_ml}.
 They also contribute with several interesting insights to this relatively unexplored field such as the use of Unsupervised Learning.
-This field is quite extensive and might need considerably more research in the case that ML wil be utilized.
+This field is quite extensive and might need considerably more research in the case that ML will be utilized.
 
 \subsubsection{Voronoi diagram}
-Voronoi diagram can be used to divide an area into subareas that look more natural than a normal grid. 
-The construction of the diagram starts with a number of points inside the area, either given by a user or randomly plotted. 
+A Voronoi diagram can be used to divide an area into subareas that look more natural than a normal grid. 
+The construction of the diagram starts with some points inside the area, either given by a user or randomly plotted. 
 These points are the black dots that can be seen in the diagrams in figure \ref{fig:voronoi}.
-Each of these black dots represent a different subareas, which are represented as different colorsin the same figure.
-Each point inside the area is then associated to the subarea of the black dot that is closest.
+Each of these black dots represents different subareas, which are represented as different colors in the same figure.
+Each point inside the area is then associated with the subarea of the black dot that is closest.
 
 \begin{figure}[H]
   \centering
@@ -93,28 +93,28 @@ Each point inside the area is then associated to the subarea of the black dot th
 An L-system is a type of formal grammar typically used in procedural generation.
 It is built up of strings which under a set of constraints recursively grow larger and more complex with each iteration.
 These strings are then used to build geometric structures.
-L-system grammars are defined by three parameters which can be denoted as following:
+L-system grammars are defined by three parameters which can be denoted as follows:
 
 \begin{itemize}
-  \item V  - The alphabet, consists of symbols which are referred to as constants or variables.
-  \item $\omega$ - axiom, an initial symbol from V which defines the initial state of the system.
-  \item P - Production rules, these are the constraints which determines how variables should be replaced.
+  \item V  - The alphabet, consists of symbols that are referred to as constants or variables.
+  \item $\omega$ - an axiom, an initial symbol from V which defines the initial state of the system.
+  \item P - Production rules, these are the constraints which determine how variables should be replaced.
 \end{itemize}
 
 The variables are replaced with a mix of variables and constants, which recursively leads to a very large and complex resulting set.
-One special attribute of L-systems is that rather than the constants and variables being evaluated one by one in a left to right manner they are all evaluated in parallel.
+One special attribute of L-systems is that rather than the constants and variables being evaluated one by one in a left to the right manner they are all evaluated in parallel.
 
 A special case of L-systems is referred to as \textit{Stochastic bracketed L-systems}.
-A grammar being stochastic means that the there are a number of production rules which can be applied to each variable that all have different probability of occurring.
+A grammar being stochastic means that there are some production rules which can be applied to each variable that all have a different probability of occurring.
 Bracketed means that we have a push/pop structure where a \textbf{[} means that we push a value, storing it, and a \textbf{]} means that we return to where we pushed most recently.
 By being able to return to a previous state, one can produce content with less continuous generation.
-This is well expressed in the book Procedural Content Generation In Games~\cite[p.77]{PCG_in_games}, where they describe the limitations of non-bracketed L-systems in the following way:
-“While interpreting L-system-generated strings as turtle instructions allows us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn “without lifting the pencil””. 
+This is well expressed in the book Procedural Content Generation in Games~\cite[p.77]{PCG_in_games}, where they describe the limitations of non-bracketed L-systems in the following way:
+“While interpreting L-system-generated strings as turtle instructions allow us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn “without lifting the pencil””. 
 
 \subsubsection{Poisson Disc Sampling}
 
 This algorithm randomizes the placement of points such that they are close to each other, but not closer than a specified distance.
-The idea is to specify a distance $R$ and then place a single \textit{active} point on a random position.
-While there are \textit{active points} left, we pick some active point and attempt to place points within a distance $[R, 2R]$.
+The idea is to specify a distance $R$ and then place a single \textit{active} point in a random position.
+While there are \textit{active points} left, we pick some active points and attempt to place points within a distance $[R, 2R]$.
 Placed points may not be closer than $R$ distance to any other point, and when no new points can be placed from an active point, we mark that active point as \textit{inactive}.
 A previous BA project utilized this technique with successful results \cite{ba_landscape}.
