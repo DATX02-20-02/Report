@@ -3,26 +3,11 @@
   \textit{User parameters} $\rightarrow$ \textbf{TerrainGenerator}  $\rightarrow$ \textit{Terrain}
 \end{center}
 
-We will approach this subproblem by first generating a heightmap that represents the hills and the valleys of the terrain.
-A heightmap is a bitmap image where each pixel typically store values representing a surface elevation or displacement.
-This is often visualized as a grayscale image where the black pixels represents the minimum elevation, and white represents the maximum elevation.
-For this project's particular use case the pixel values will store the terrain elevations, which will be rendered as a 3D mesh.
+This subproblem will be approached by first generating a heightmap whose pixels values will represent the terrain elevations, which will then be rendered as a 3D mesh.
 One limitation of using heightmaps is that they can not represent more complex 3D geometry such as caves or overhangs.
 However since the main focus of the project is on procedurally generating cities, and not terrain, this is not regarded as a problem.
-Figure~\ref{fig:heightmap} illustrates an example heightmap visualized as a grayscale image.
-
-% NOTE(anton): image generated from https://cpetry.github.io/TextureGenerator-Online/
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.25\textwidth]{figure/heightmap.png}
-  \caption{An example heightmap generated using Perlin Noise.}
-  \label{fig:heightmap}
-\end{figure}
 
 We plan to generate the heightmap using multiple layers of simplex noise.
-Simplex noise is a type of gradient noise commonly used in computer graphics and procedural generation.
-The mentioned gradient noise is a type of noise that contains smooth slopes, which causes nearby points to be similar while still remaining random.
-The points are then interpolated using a smoothing function to achieve a wave-like texture fitting for representing the terrain.
 Each octave, or layer, of simplex noise will represent different levels of terrain granularity.
 Higher frequency of noise corresponds to an area on the heightmap where we would like to generate an area with a small, yet intense difference in elevation.
 Whereas lower frequencies will correspond to areas of a less intense, but larger difference in elevation forming the contour of the terrain.
