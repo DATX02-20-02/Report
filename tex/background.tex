@@ -1,12 +1,16 @@
 \section{Background}
-% preface
+
+% Build up...
 In conjunction with increasing performance, memory and storage on modern computers the capacity for a large amount of varied content in video games, or other digital media, grows respectively.
 The designers' capability to create a large amount of content by hand, however, remains a slow and expensive process.
 Because of this, many major companies in recent years leverage the use of algorithms built on an exciting field within computer science called Procedural Content Generation (PCG).
 
-% define PCG & games
+% What is PCG? (definition)
 PCG is where content such as game-levels, textures, stories, items, quests, music, weapons, etc.\ is generated dynamically by an algorithm rather than designed by hand~\cite[p.1]{PCG_in_games}.
 Typically, this is achieved by combining assets and algorithms with computer-generated randomness to synthesize unique content.
+
+
+% History and significance
 In the early 1980s, PCG was primarily used in games as a work-around for the limited storage space~\cite[p.4]{PCG_in_games}.
 In recent years however, the technique has gained a lot of attraction in modern games for generating compelling and replayable experiences.
 Games such as Diablo~\cite{diablo} feature procedural generation for the creation of the maps and as well as the placement and number of items and monsters~\cite[p.4]{PCG_in_games}.
@@ -15,22 +19,20 @@ Furthermore, the popular game Minecraft~\cite{minecraft} make use of PCG techniq
 Procedural generation can be used to generate pretty much any virtual content you could imagine.
 Evident from the use of PCG in big commercial games there is a demand from the game industry to create large, impressive and unique environments for their player base to explore.
 
-% pros & cons
-A key question to consider is what the actual benefits are of using PCG over manual design is.
-With the help of PCG, software can produce impressive, varied and seemingly endless environments order of magnitudes faster than a human~\cite[p.3]{PCG_in_games}.
-This aids designers to create a lot more content cheaply and efficiently once the algorithm has been developed.
-Additionally, as soon as the algorithm is done it can be reused. Similar to a debugger, a PCG algorithm can be infinitely run afterwards. The algorithm can potentially be reused to generate completely different content from.
+% More specific games
 
-Although the output space of PCG is considerable, automatic content generation comes with a set of obstacles.
-One of the challenges when developing PCG systems is the ability to generate content comparable with the quality of hand-crafted content.
-In the case of hand-crafted content, the content would undoubtedly fit its intended use case whereas generated content might be deemed inadequate or specific enough.
-This difficulty also ties into the problem of generating visually distinctive and expressive content.
-If the generated content only differs with minimal variance it might not actually be perceived as varied content at all as
-the computed creativity PCG offers has its limits. For instance, there are no reasonable automatic novel creators. Kate Compton, who is a programmer that worked on Spore's and SimCity's content generation, had a presentation about the utilities that PCG offers. She mentions that writing a novel is too general of a task for PCG to generate, and that PCG excells to generate very specifically defined~\cite{PCG_for_everyone}. Although it is technically possible it would not compare well to human novel writing.
+\input{tex/introduction/theory.tex}
+\input{tex/introduction/related_works.tex}
 
+% Benefits
+% A key question to consider is what the actual benefits are of using PCG over manual design is.
+% With the help of PCG, software can produce impressive, varied and seemingly endless environments order of magnitudes faster than a human~\cite[p.3]{PCG_in_games}.
+% This aids designers to create a lot more content cheaply and efficiently once the algorithm has been developed.
+% Additionally, as soon as the algorithm is done it can be reused. Similar to a debugger, a PCG algorithm can be infinitely run afterwards. The algorithm can potentially be reused to generate completely different content from.
 
-
-
-
-
-
+% Although the output space of PCG is considerable, automatic content generation comes with a set of obstacles.
+% One of the challenges when developing PCG systems is the ability to generate content comparable with the quality of hand-crafted content.
+% In the case of hand-crafted content, the content would undoubtedly fit its intended use case whereas generated content might be deemed inadequate or specific enough.
+% This difficulty also ties into the problem of generating visually distinctive and expressive content.
+% If the generated content only differs with minimal variance it might not actually be perceived as varied content at all as
+% the computed creativity PCG offers has its limits. For instance, there are no reasonable automatic novel creators. Kate Compton, who is a programmer that worked on Spore's and SimCity's content generation, had a presentation about the utilities that PCG offers. She mentions that writing a novel is too general of a task for PCG to generate, and that PCG excells to generate very specifically defined~\cite{PCG_for_everyone}. Although it is technically possible it would not compare well to human novel writing.
