@@ -25,7 +25,6 @@ They can also be used to create smooth blending between textures.
 
 \begin{figure}[h!]
   \centering
-
   \begin{subfigure}[b]{0.30\textwidth}
     \frame{\includegraphics[width=\textwidth]{figure/value_noise.png}}
     \caption{Value noise. \cite{value_noise}}
@@ -61,6 +60,29 @@ By iterating and tweaking one or many of possible solutions we will eventually a
 Machine learning(ML) is another method that can be used to procedural generate worlds. 
 This could be useful when it is hard to explicity create logic when there is many parameters at play.
 There is a lot of parameters one could take into account when generating a city, and ML could be a solution.
+
+\subsubsection{Voronoi diagram}
+Voronoi diagram can be used to divide an area into subareas that look more natural than a normal grid. 
+The construction of the diagram starts with a number of points inside the area, either given by a user or randomly plotted. 
+These points are the black dots that can be seen in the diagrams in figure \ref{fig:voronoi}.
+Each of these black dots represent a different subareas, which are represented as different colorsin the same figure.
+Each point inside the area is then associated to the subarea of the black dot that is closest.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \frame{\includegraphics[width=\linewidth]{figure/Euclidean_Voronoi_diagram.png}}
+    \caption{Voronoi diagram using Euclidean distance \cite{voronoi_diagram_euclidean}.}
+    \label{fig:voronoi_euclidean}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \frame{\includegraphics[width=\linewidth]{figure/Manhattan_Voronoi_Diagram.png}}
+    \caption{Voronoi diagram using Manhattan distance \cite{voronoi_diagram_manhattan}.}
+    \label{fig:voronoi_manhattan}
+  \end{subfigure}
+  \caption{Voronoi diagrams with two different ways of associating each point to a position within an area.}
+  \label{fig:voronoi}
+\end{figure}
 
 \subsubsection{L-System}
 An L-system is a type of formal grammar typically used in procedural generation.
