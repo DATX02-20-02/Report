@@ -1,26 +1,30 @@
 \subsection{Related Works}
 A lot of work has been done in the field of procedural city generation and the results varies significantly.
-Usually when city generators are created, they have a specific goal in mind.
-It could be to generate realistic cities that resemble the real world or to create interesting cities in games.
+Usually when programmers decide to build a generator for cities they have a well defined idea for what their final product should look like.
+It could be to generate cities that resemble the real world, or it could be to create interesting cities in games.
 
 In the application CityGen~\cite{citygen}, the focus is placed on the generation of smaller roads and buildings, and it has different types of layouts for the building generation.
 
-Introversion Software has developed a city generator for quite some time, and it does generate quite realistic results.~\cite{citygen_subversion}. However, even though it is quite realistic, they chose to use a futuristic style instead.
-
-
+About a decade ago, Introversion Software developed a city generator that displayed some impressive use of procedural generation techniques.~\cite{citygen_subversion}. 
+Unfortunately, this project was discontinued leaving only a few demos behind which can be found online.
+Even though their project was never finished their demos can still be used as an inspiration for new developers seeking to create a model for the generation of cities.
+ 
 % Add text here
 
-\subsubsection{Road generation}
+\subsubsection{Road Generation}
 % Road generation can be accomplished in several methods, some generate more realistic road networks while others are used for cities that do not resemble the real world.
 % Some methods are more suited for simulation approaches where events occur in realtime, while others are more suited for actual city generation for game development or modeling.
+An attempt to recreate the road generation algorithm of the Introversion Software city generator~\cite{citygen_subversion} was made by Tobias Mansfield-Williams~\cite{citygen_tobias}. 
+Tobias claims that Introversion followed the paper \textit{Procedural Modeling of Cities}, however, it is unknown whether the development team has ever confirmed this statement. 
+The algorithm that Tobias implemented is using an L-system and he was also  able to produce some impressive results.
 
+Furthermore, related work using the same paper,  \textit{Procedural Modeling of Cities} was also developed~\cite{citygen_robin} by Robin. 
+This solution also uses an L-system for the generation of roads. 
+While using roughly the same method, this road generator has further restrictions on the street generation that prevents it from generating roads in certain places using a population map as reference.
+Robin has also written a paper~\cite{citygen_robin_paper} describing many different types of algorithms and their advantages and disadvantages. 
+For his own design, Robin chose to stick with an L-system, an approach similar to what Introversion Software did. 
 
-An attempt to recreate the road generation algorithm of the Introversion Software city generator~\cite{citygen_subversion} was made by Tobias Mansfield-Williams~\cite{citygen_tobias}, and he claims that they followed the paper \textit{Procedural Modeling of Cities}, however, it is difficult to find where the developers stated that fact.
-The algorithm that he implemented in his own is using an L-system according to the paper.
-
-Furthermore, related work using the same paper was also developed~\cite{citygen_robin} by Robin, which is also using L-system for the roads. This one, while using roughly the same method, generates a different structure of the road network. It has further restrictions such as restrictions on street generation that prevents them from generating in certain places using the population map as reference.
-Robin has also written a paper~\cite{citygen_robin_paper} describing many different types of algorithms and their advantages and disadvantages, and he chose to stick with an L-system, an approach similar to what Introversion Software did.
-
-So far, these methods are based on the same paper with some kind of implementation of an L-system.
-However, the algorithm described in the paper \textit{Procedural City Modeling}~\cite{citygen_lechner} is using an agent-based simulation approach. They are builders which place roads around the world based on some criteria. Agents are given different behaviors depending on what structure they should create.
+All of the projects mentioned above has to some extent made use of L-systems.
+However, the algorithm described in the paper \textit{Procedural City Modeling}~\cite{citygen_lechner} is using an agent-based simulation approach.
+Agents are builders which place roads around the world, their behavior differs depending on what structures they are tasked with creating.
 With this particular implementation, the agents only generate roads and there is no classification of which type of road it is, so it is a very simple algorithm that could potentially be extended upon.
