@@ -49,6 +49,14 @@ Although \textit{simplex noise} is the improved version, the two terms are often
 He also mentions several technical advantages with the technique.
 This subsection describes different ways of generating procedural content, for example Gradient noise and L-systems.
 
+\subsubsection{Search-based}
+One method for generating content is using a \textit{search-based} approach.
+This often involves using an evolutionary algorithm with some stochastic search/optimization algorithms to determine a solution with desired qualities.
+The general idea is that a for a given design problem we can find an acceptable solution by ``searching'' for it within the solution space.
+When iterating over the solutions they are tweaked according to an evaluation function that keeps the changes which make the solution(s) ``better'' and discards any harmful changes.
+By iterating and tweaking one or many of possible solutions we will eventually arrive at a desired solution.
+% http://pcgbook.com/wp-content/uploads/chapter02.pdf
+
 \subsubsection{L-System}
 An L-system is a type of formal grammar typically used in procedural generation.
 It is built up of strings which under a set of constraints recursively grow larger and more complex with each iteration.
