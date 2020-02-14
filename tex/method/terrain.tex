@@ -40,7 +40,7 @@ Figure~\ref{fig:texture-splatting} demonstrates this technique in action.
   \label{fig:texture-splatting}
 \end{figure}
 
-Furthermore, the user can provide a threshold height for the sea level where any point of the terrain below this threshold value will be filled with the ocean. 
+Furthermore, the user can provide a threshold height for the sea level where any point of the terrain below this threshold value will be filled with ocean. 
 This can simply be done by drawing an animated water texture on a plane positioned at said height level. 
 
 As previously mentioned in the problem section, some things could be added to our project in the later stages, if there is time for them. 
@@ -52,4 +52,3 @@ If a river flows into the ocean we would not need to create anything, but if a r
 
 Another approach would be to generate the lakes seemingly arbitrary at first and then try to find a gradient descent path from the mountain-tops to the lakes.
 If no such paths are found, we do nothing, but if the agents find a path we generate a river from the mountain to the lake. 
-
