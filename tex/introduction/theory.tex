@@ -54,12 +54,17 @@ This often involves using an evolutionary algorithm with some stochastic search/
 The general idea is that a for a given design problem we can find an acceptable solution by ``searching'' for it within the solution space.
 Solutions are iterated and then tweaked according to an evaluation function that keeps the changes which make the solution(s) ``better'' and discards any harmful changes.
 By iterating and tweaking one or many of possible solutions we will eventually arrive at a desired solution.
-% http://pcgbook.com/wp-content/uploads/chapter02.pdf
 
-\subsubsection{Machine learning}
-Machine learning(ML) is another method that can be used to procedural generate worlds. 
-This could be useful when it is hard to explicity create logic when there is many parameters at play.
-There is a lot of parameters one could take into account when generating a city, and ML could be a solution.
+\subsubsection{Machine Learning}
+Machine Learning (ML) is another method that can be used to procedurally generate content.
+The idea with this technique is to generate new content based patterns found from analyzing existing content.
+This technique can prove to be especially useful when it is hard to explicity define the content that should be generated.
+For instance, it is easier to analyse and replicate the design of existing cities as opposed to manually defining what a ``good'' city is.
+The catch is that a lot of well-structured data is needed to draw these statistical conclusions.
+
+Summerville et al. refers to this synergy between ML and PCG as \textit{PCGML} (PCG via ML)~\cite{lmao_ml}.
+They also contribute with several interesting insights to this relatively unexplored field such as the use of Unsupervised Learning.
+This field is quite extensive and might need considerably more research in the case that ML wil be utilized.
 
 \subsubsection{Voronoi diagram}
 Voronoi diagram can be used to divide an area into subareas that look more natural than a normal grid. 
