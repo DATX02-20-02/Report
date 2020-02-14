@@ -76,3 +76,15 @@ This creates clearer patterns around the city with fewer agents competing over t
 Agents with a street strategy will always look up the population map before placing a road or branching.
 Higher density means a higher chance of branching, creating denser neighborhoods near the center of the city.
 An agent that tries to travel into a place with too little of a population density will simply terminate without creating a road. 
+
+\subsubsection{Other Approaches}
+
+Instead of Agent-based generation, one could implement a formal L-system.
+This grammar could end up fairly complex though.
+By using an agent-based approach the code can easily be split up and worked on in parallel.
+
+ML was not used because the project group lacks the necessary experience.
+Search-based approaches were also considered, but as in the case with terrain generation, determining the quality of generated content with formal rules seemed too complex.
+
+There is also a promising open-source implementation of an algorithm called \textit{WaveFunctionCollapse} that generates procedural bitmaps similar to an input bitmap \cite{wavefunc}.
+Further research is needed to decide if this could be used well with road generation, but since the algorithm assumes a tile-based world it might not fit well for our purposes.
