@@ -52,7 +52,7 @@ This subsection describes different ways of generating procedural content, for e
 \subsubsection{L-System}
 An L-system is a type of formal grammar typically used in procedural generation.
 It is built up of strings which under a set of constraints recursively grow larger and more complex with each iteration.
-These strings are then often used to build geometric structures.
+These strings are then used to build geometric structures.
 L-system grammars are defined of three parameters which can be denoted as following:
 
 \begin{itemize}
@@ -66,7 +66,6 @@ One special attribute  for L-systems is that rather than the constants and varia
 A special case of L-systems is referred to as \textit{Stochastic bracketed L-systems}.
 A grammar being stochastic means that the there are a number of production rules which can be applied to each variable that all have different probability of occurring.
 Bracketed means that we have a push/pop structure where a [ means that we push a value, storing it, and a ] means that we return to where we pushed most recently.
-This means that our string is combined of letters as well as a mix of brackets.
-The reasoning for being able to return to a previously stored point in the string is that is results in less continuous generation.
-This is well put in the book Procedural Content Generation In Games[p.77], ~\cite{PCG_in_games} where they describe non-bracketed L-systems in the following way:
-``While interpreting L-system-generated strings as turtle instructions allows us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line --- the whole shape must be drawn ``without lifting the pencil'' ''.
+The reasoning for being able to return to a previously stored point in the string is that it results in less continuous generation.
+This is well expressed in the book Procedural Content Generation In Games[p.77], ~\cite{PCG_in_games} where they describe the limitations of non-bracketed L-systems in the following way:
+"While interpreting L-system-generated strings as turtle instructions allows us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn “without lifting the pencil”".
