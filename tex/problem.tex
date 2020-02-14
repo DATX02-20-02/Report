@@ -2,11 +2,11 @@
 \label{sec:problem}
 
 This section addresses the original bachelor project proposal and goes into detail about how this group chooses to further define the problem.
-The intention is to analyze the problem that will be tackled in as great detail as possible, so that concrete potential solutions can be presented in the Method section that follows.
+The intention is to analyze the problem that will be tackled in as great detail as possible, so those concrete potential solutions can be presented in the Method section that follows.
 Considering that this is a plan, some details are bound to change.
 Nonetheless, this problem definition should provide a solid foundation from which to work from.
 
-The goal of this project is to create a user-friendly application that can generate modern 3D cities, and then export them as \textit{.fbx} files.
+The goal of this project is to create a user-friendly application that can generate modern 3D cities and then export them as \textit{.fbx} files.
 \textit{User-friendly} means that users should not need any technical expertise or coding experience to fully utilize the application.
 \textit{Modern cities} will in this project be defined as cities that resemble modern industrialized cities such as New York, Paris, San Francisco, and Tokyo.
 Figure~\ref{fig:ModernCities} showcases two examples of such modern cities.
@@ -31,21 +31,21 @@ part of such cities.
 
 The scope will be restricted to generating static models that can be exported as \textit{.fbx} files.
 Therefore, dynamic content such as simulation of road traffic, day-night cycle, and pedestrians are all considered out of scope for this project.
-The interior of buildings are also considered out of scope.
+The interior of buildings is also considered out of scope.
 The reason being that each user is predicted to want more control over what content the buildings are filled with than the project's time frame can support.
 
 The primary focus will be put on the generation of roads and buildings, as these are considered the core features of a city.
-The terrain's purpose should be to help create natural settings for the infrastructure to adjust to, and the terrain itself does not need to have realistic level of detail.
+The terrain's purpose should be to help create natural settings for the infrastructure to adjust to, and the terrain itself does not need to have a realistic level of detail.
 Furthermore, the details of roads and buildings, such as textures and small meshes, are not intended to be made from scratch.
-Utilization of free resources online is encouraged to keep the workload focused on algorithmic problems rather than on 3D modeling.
+The utilization of free resources online is encouraged to keep the workload focused on algorithmic problems rather than on 3D modeling.
 
 As a consequence of the random aspect in PCG, it is difficult to express a precise definition that can measure whether the project should be considered successful or not.
 One possible measurement is the \textit{quality} of the exported models.
 Do the cities look like real ones?
 Are they visually pleasing and are they suitable for use in other mediums such as movies and games?
 Another possible measurement is how \textit{expressive} the generation is.
-If all generated models look exactly the same, then the power of PCG has gone unused.
-Each generated model should stand out, and to the untrained eye it should not be apparent whether a human or a computer made them.
+If all generated models look the same, then the power of PCG has gone unused.
+Each generated model should stand out, and to the untrained eye, it should not be apparent whether a human or a computer made them.
 
 The subjective nature of these measurements will make evaluation challenging, but they can still be used to give a rough estimate.
 The plan is to measure all of the mentioned aspects from the perspective of the project members, the project's supervisor, and from a sample of unrelated university students.
@@ -60,8 +60,7 @@ The user could interact with the application's Graphical User Interface (GUI) in
     as they like, until they are satisfied with the generated terrain.
   \item The user selects which region of the generated terrain they want to use in the final model.
   \item The user places population markers on the terrain and specifies how much
-    population each marker represents. The user can also specify any optional
-    parameters for each marker such as road type.
+    population each marker represents. The user can also specify any optional parameters for each marker such as road type.
   \item The user clicks on a button that says ``Generate Roads'' as many times
     as they like, until they are satisfied with the generated road network.
   \item The user clicks on a button that says ``Generate Buildings'' as many times
