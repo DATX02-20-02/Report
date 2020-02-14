@@ -110,3 +110,11 @@ Bracketed means that we have a push/pop structure where a \textbf{[} means that 
 By being able to return to a previous state, one can produce content with less continuous generation.
 This is well expressed in the book Procedural Content Generation In Games~\cite[p.77]{PCG_in_games}, where they describe the limitations of non-bracketed L-systems in the following way:
 “While interpreting L-system-generated strings as turtle instructions allows us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn “without lifting the pencil””. 
+
+\subsubsection{Poisson Disc Sampling}
+
+This algorithm randomizes the placement of points such that they are close to each other, but not closer than a specified distance.
+The idea is to specify a distance $R$ and then place a single \textit{active} point on a random position.
+While there are \textit{active points} left, we pick some active point and attempt to place points within a distance $[R, 2R]$.
+Placed points may not be closer than $R$ distance to any other point, and when no new points can be placed from an active point, we mark that active point as \textit{inactive}.
+A previous BA project utilized this technique with successful results \cite{ba_landscape}.
