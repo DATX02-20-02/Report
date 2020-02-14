@@ -1,1 +1,17 @@
 \subsection{Related Works}
+% Add text here
+
+\subsubsection{Road generation}
+Road generation can be accomplished in several methods, some generate more realistic road networks while others are used for cities that do not resemble the real world.
+Some methods are more suited for simulation approaches where events occur in realtime, while others are more suited for actual city generation for game development or modeling.
+
+Introversion Software has developed a city generator for quite some time, and it does generate quite realistic results.~\cite{citygen_subversion}.
+An attempt to recreate the road generation algorithm was made by Tobias Mansfield-Williams~\cite{citygen_tobias}, and he claims that they followed the paper \textit{Procedural Modeling of Cities}, however, it is difficult to find where the developers stated that fact.
+The algorithm that he implemented in his own is using an L-system according to the paper.
+
+Furthermore, related work using the same paper was also developed~\cite{citygen_robin} by Robin, which is also using L-system for the roads. This one, while using roughly the same method, generates a different structure of the road network. It has further restrictions such as restrictions on street generation that prevents them from generating in certain places using the population map as reference.
+Robin has also written a paper~\cite{citygen_robin_paper} describing many different types of algorithms and their advantages and disadvantages, and he chose to stick with an L-system, an approach similar to what Introversion Software did.
+
+So far, these methods are based on the same paper with some kind of implementation of an L-system.
+However, the algorithm described in the paper \textit{Procedural City Modeling}~\cite{citygen_lechner} is using an agent-based simulation approach. They are builders which place roads around the world based on some criteria. Agents are given different behaviors depending on what structure they should create.
+With this particular implementation, the agents only generate roads and there is no classification of which type of road it is, so it is a very simple algorithm that could potentially be extended upon.
