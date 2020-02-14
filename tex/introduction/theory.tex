@@ -69,9 +69,9 @@ These strings are then used to build geometric structures.
 L-system grammars are defined of three parameters which can be denoted as following:
 
 \begin{itemize}
-  \item V        --- The alphabet, consists of symbols which are referred to as constants or variables.
-  \item $\omega$ --- axiom, an initial symbol from V which defines the initial state of the system.
-  \item P        --- Production rules, these are the constraints which determines how variables should be replaced.
+  \item V  - The alphabet, consists of symbols which are referred to as constants or variables.
+  \item $\omega$ - axiom, an initial symbol from V which defines the initial state of the system.
+  \item P - Production rules, these are the constraints which determines how variables should be replaced.
 \end{itemize}
 
 The variables are replaced with a mix of variables and constants, which recursively leads to a very large and complex resulting set.
@@ -81,4 +81,4 @@ A grammar being stochastic means that the there are a number of production rules
 Bracketed means that we have a push/pop structure where a [ means that we push a value, storing it, and a ] means that we return to where we pushed most recently.
 The reasoning for being able to return to a previously stored point in the string is that it results in less continuous generation.
 This is well expressed in the book Procedural Content Generation In Games[p.77], ~\cite{PCG_in_games} where they describe the limitations of non-bracketed L-systems in the following way:
-"While interpreting L-system-generated strings as turtle instructions allows us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn “without lifting the pencil”".
+“While interpreting L-system-generated strings as turtle instructions allows us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn “without lifting the pencil””. 
