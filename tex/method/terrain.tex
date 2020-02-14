@@ -30,7 +30,7 @@ This can be used to generate both smooth hills and rocky mountains.
 
 The color of the terrain will be based on the height levels e.g.\ grasslands near sea level, rocky mountain textures for the taller regions, and snow for top peaks of some of the taller mountains.
 One approach for achieving this is a technique called Texture splatting that is commonly used for terrain rendering.
-This method consists of combining different textures blended according to an alpha map, also referred to as a weight map or splat map.
+This method consists of blending different textures together according to an alpha map, also referred to as a weight map or splat map.
 Figure~\ref{fig:texture-splatting} demonstrates this technique in action.
 
 \begin{figure}[H]
@@ -52,5 +52,4 @@ If a river flows into the ocean we would not need to create anything, but if a r
 
 Another approach would be to generate the lakes seemingly arbitrary at first and then try to find a gradient descent path from the mountain-tops to the lakes.
 If no such paths are found, we do nothing, but if the agents find a path we generate a river from the mountain to the lake. 
-
 
