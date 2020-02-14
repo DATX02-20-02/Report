@@ -18,7 +18,7 @@ This approach will aid in working in a more cost-effective way when developing t
 
 Once all subtasks have undergone all iterations, our efforts will be targeted at fine-tuning the final solution as well as implementing as many of our stretch goals as possible.
 
-\subsubsection{Landscape Generation}
+\subsubsection{Terrain Generation}
 \begin{description}
   \item[Iteration 1] Generate a simple height-map terrain mesh.
   \item[Iteration 2] Texture the terrain based on height levels.
@@ -27,7 +27,6 @@ Once all subtasks have undergone all iterations, our efforts will be targeted at
 
 \subsubsection{Road Generation}
 \begin{description}
-  % \item[iteration 0] Convert bezier curve into a road mesh. % this can be developed alongside iteration 1 so it doesn't fit my stupid model...
   \item[Iteration 1] Procedurally generate a convincing road-network on a 2D plane.
   \item[iteration 2] Convert the conceptual road-network into a road mesh.
   \item[Iteration 3] When generating a road from point A to point B, take the height difference in the underlying terrain into account in order to create a natural looking path.
@@ -35,13 +34,25 @@ Once all subtasks have undergone all iterations, our efforts will be targeted at
 
 \subsubsection{Building Generation}
 \begin{description}
-  \item[Iteration 1] Procedurally generate simple block buildings of skyscrapers and villas.
+  \item[Iteration 1] Procedurally generate simple block buildings of skyscrapers, villas, terraced houses, apartments, and parks.
   \item[Iteration 2] Given a plot of land, populate it with suitably placed buildings.
+\end{description}
+
+\subsubsection{Application}
+\begin{description}
+  \item[Iteration 1]
+    This iteration should have a working button for generating the terrain, roads, and buildings.
+    The generated city should also be able to be exported to a \textit{.fbx} file.
+    The quality of the generated city at this iteration is not important but rather the functionality and project skeleton to expand upon.
+  \item[Iteration 2]
+    The user should be able to specify parameters that affect the generated world.
+    This includes parameters such as sea level and the world size.
+    Also, the user should be able to place population markers using different road strategies e.g.\ Paris, Manhattan, or Chaotic.
 \end{description}
 
 \subsection{Final report}
 When it comes to the final written report we are expected to continuously work on the final report during the development.
-However we have also set a three week period strictly dedicated to finalizing the report.
+However, we have also set a three-week period strictly dedicated to finalizing the report.
 At that point we expect the algorithm to be complete as to prioritize the final report.
 
 \subsection{Project plan chart}
@@ -52,7 +63,7 @@ To get an overview of our time plan we have decided to include a GANTT chart see
   \centering
   \vspace*{-1.0cm}
   \includegraphics[angle=90, width=0.5\textwidth]{figure/time-plan.png}
-  \caption{Time plan}
+  \caption{Time plan.}
   \label{fig:time-plan}
 \end{figure}
 
