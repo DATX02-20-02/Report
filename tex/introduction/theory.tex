@@ -13,6 +13,7 @@ First off, the noise ends up with a grid-like structure because of the lattice p
 This is often undesired since it creates arbitrary patterns in the noise.
 Furthermore, neighboring lattice points may greatly differ in values which can result in sudden changes in steepness.
 
+\newpage
 \textit{Gradient noise} solves the problems with value noise by first constructing slopes, and then sample values from those.
 By interpolating slopes (or gradients) that already are smooth, we ensure that not only changes in values are smooth but also the \textit{rate of change} between them.
 This causes nearby points to be of similar random values, while points far apart to be unrelated.
