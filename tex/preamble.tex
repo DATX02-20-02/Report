@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt,a4paper,twoside]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
 \usepackage{multirow,booktabs}
@@ -15,7 +15,7 @@
 \usepackage{multicol}
 \usepackage{cancel}
 \usepackage[retainorgcmds]{IEEEtrantools}
-\usepackage[margin=3cm]{geometry}
+\usepackage[top=3cm, bottom=3cm, inner=3cm, outer=3cm]{geometry}			% Page margin lengths	
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{subcaption}
@@ -26,11 +26,7 @@
 \usepackage{empheq}
 \usepackage{framed}
 \usepackage[most]{tcolorbox}
-\usepackage{xcolor}
 \colorlet{shadecolor}{orange!15}
-\parindent 0in
-\parskip 12pt
-\geometry{margin=1in, headsep=0.25in}
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
 \newtheorem{reg}{Rule}
@@ -49,6 +45,11 @@
 \usepackage{babel}
 \usepackage{cleveref}
 \addbibresource{refs.bib}
+
+\usepackage{titlesec}		
+\titleformat{\chapter}[display]
+{\Huge\bfseries\filcenter}
+{{\fontsize{50pt}{1em}\vspace{-4.2ex}\selectfont \textnormal{\thechapter}}}{1ex}{}[]
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
@@ -95,3 +96,5 @@
   Style3*=$\circ$ ,
   Style4*=\tiny$\blacksquare$
 )
+
+\newcommand\todo[1]{\textbf{\textcolor{red}{#1}}}
