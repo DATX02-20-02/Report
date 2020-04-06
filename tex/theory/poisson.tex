@@ -1,1 +1,27 @@
 \section{Poisson Disc Sampling}
+
+Poisson Disc Sampling randomizes the placement of points in an $N$-dimensional space such that all points form a single cluster, while maintaining a minimum distance between points.
+This algorithm can be implemented in linear time \cite{poisson_fast}, and can be used for randomly placing clusters of trees and shrubs.
+
+% Figure here would be nice.
+
+The idea behind the algorithm is to specify a minimum distance $R$, a sample limit $k$, and then place an initial \textit{active point} in a random position.
+Thereafter, the following procedure is repeated until there are no more active points remaining.
+\begin{enumerate}
+  \item Sample an active point, $P$.
+  \item Place up to $k$ new points inside the $[R, 2R]$ annulus centered at $P$.
+  \item For each new point,
+  \begin{enumerate}
+    \item Remove it, if it is within $R$ radius of another point.
+    \item Otherwise, add it to the list of active points.
+  \end{enumerate}
+  \item Mark $P$ as an \textit{inactive point}.
+\end{enumerate}
+
+A depth-first variant of the above procedure has been visualized by Mike Bostock, and its JavaScript implementation has been made open-source \cite{poisson_demo}.
+
+In some scenarios it is desired to place objects of various sizes together.
+In the case of a forest, one might want to have trees, bushes and grass for instance.
+Blomqvist et al. showed that such placement could efficiently be done by separating objects of different sizes into layers, and then process the generation of each layer in decreasing order of $R$ \cite[p.32]{ba_landscape}.
+By applying this hierarchy one avoids the problem of packing small objets so tightly that no room is left for larger objects.
+Instead, large objects such as trees get priority, and then smaller objects such as grass can be generated inbetween.
