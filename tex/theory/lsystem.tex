@@ -4,11 +4,11 @@ Another fundamental concept in PCG is L-systems.
 An L-system is a type of formal grammar where all symbols are evaluated in parallel.
 It is built up of strings which under a set of constraints recursively grow larger and more complex with each iteration.
 These strings can then used to generate complex geometric structures, often with factorial properties.
-The technique's inventor, Aristid Lindenmayer originally used it to model a wide array of botanics \cite{lsystem_book}.
+The technique's inventor, Aristid Lindenmayer originally used it to model a wide array of plants \cite{lsystem_book}.
 L-systems are formally defined by three parameters which can be denoted as follows:
 
 \begin{itemize}
-  \item V  - The alphabet, consists of replacable symbols (variables or non-terminals) and static symbols (constants or terminals).
+  \item V  - The alphabet, consists of replaceable symbols (variables or non-terminals) and static symbols (constants or terminals).
   \item $\omega$ - The axiom, an initial variable from V which defines the initial state.
   \item P - The production rules, these are the constraints which determine how variables should be replaced.
 \end{itemize}
@@ -38,6 +38,6 @@ This is well expressed in the book \textit{Procedural Content Generation in Game
 
 The ideas from L-systems can also be extended beyond strings, with some examples being Shape grammars \cite{shape_grammars} and Graph grammars \cite{graph_grammars}.
 Graph grammars use graphs from discrete mathematics instead of letters.
-This difference enables graph grammars to produce non-sequential graph results, as opposed to 1-dimensional strings, making them suitable for generation of quests and level layout.
+This difference enables graph grammars to produce non-sequential graph results, as opposed to 1-dimensional strings, making them suitable for generating quests and level layout.
 Unfortunately, this feature also makes them more difficult to implement and more expensive to process than L-systems.
 Shape grammars are similar, but operate on geometrical objects instead, making them suitable for Computer-aided Architectural Design (CAAD).

@@ -31,8 +31,8 @@ Usage of Simplex noise is however restricted due to its patent \cite{opensimplex
 Fortunately, Kurt Spencer invented a well-performing variation called \textit{OpenSimplex noise} which was released into the public domain \cite{opensimplex_noise_blog} \cite{opensimplex_noise_code}.
 The details of these algorithms are beyond the scope of this paper, but further reading of Perlin noise can be found in the original paper \cite{perlin_noise}, and the ideas behind Simplex noise are described in great detail by Stefan Gustavson in his paper \textit{Simplex noise demystified} \cite{simplex_noise_explained}.
 
-In practice it is common to use a Fractional Brownian Motion (fBm) implementation, which can be constructed by summing noise functions of different amplitudes and sampling frequencies.
-The variation in frequency and amplitude between these functions are sometimes referred to as lacunarity and gain respectively.
+In practice, it is common to use a Fractional Brownian Motion (fBm) implementation, which can be constructed by summing noise functions of different amplitudes and sampling frequencies.
+The variation in frequency and the variation in amplitude between these functions are sometimes referred to as lacunarity and gain respectively.
 The usage of fBm allows for greater control over the resulting noise function's visual properties, making it more suitable for many applications in computer graphics.
 
 \begin{figure}[h!]

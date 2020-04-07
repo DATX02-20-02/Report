@@ -1,29 +1,23 @@
 \section{Searched-based PCG}
 
-% Evaluation types: direct, simulation, interactive
-
-% Can be realized with Evolutionary Algorithms (EA)
-
-% Can also be realized with Machine Learning  (ML) such as Supervised Learning (SL)
-
 For some generation purposes it can be challenging to precisely describe desired results, but easier to describe desired properties and to compare alternative results.
 A suitable technique for handling these situations is Search-based PCG (SBPCG).
 
 SBPCG is a collection of stochastic search algorithms that are combined with domain-specific evaluation functions to iteratively optimize some content \cite{search_based_pcg} \cite{search_based_pcg2}.
 Traditionally such search has primarily been performed using Evolutionary Algorithms (EA) such as the $\mu + \lambda$ evolution strategy (ES) \cite[p.18-20]{PCG_in_games}, and NSGA-II \cite{nsgaii}.
 
-SBPCG via EAs is typically done in the follow way.
+SBPCG via EAs is typically done in the following way.
 \begin{enumerate}
   \item Manually create or randomize a population of initial content candidates.
   \item Evaluate all candidates with evaluation functions.
   \item Maintain only the best performing candidates and discard the rest.
-  \item Search for new candidates similar to the current population. This step typically involves several mutation and crossover operations.
+  \item Search for new candidates similar to the current population. This step typically involves several mutations and crossover operations.
   \item Repeat from step 2, unless current candidates are satisfactory.
 \end{enumerate}
 
 The core idea of this process is based on natural selection.
-There is a population of individuals (candidates) in each generation which are evaluated, and the fittest (highest evaluated) individuals get the chance to reproduce, while the least fit are removed.
-The evaluation of indivduals may depend on multiple properties and in PCG it is often desired to maintain diversity in the population as well.
+There is a population of individuals (candidates) in each generation that are evaluated, and the fittest (highest evaluated) individuals get the chance to reproduce, while those least fit are removed.
+The evaluation of individuals may depend on multiple properties and in PCG it is often desired to maintain diversity in the population as well.
 Diversity is important to avoid local maximums, but also to ensure results have enough variation.
 
 Machine Learning (ML) is another method that can be used instead of EAs, in which case the generation is often referred to as Procedural Content Generation via Machine Learning (PCGML) \cite{pcgml} \cite{pcgml2} \cite{pcgml3}.
@@ -33,7 +27,7 @@ For instance, PCGML could be used to extract patterns from existing bridges in o
 The main drawback is that such well-structured data of quality content can be difficult to obtain.
 
 There are three main cateogries to consider when deciding on what evaluation functions to use, and these categories are \textit{direct}, \textit{simulation-based}, and \textit{interactive} \cite[p.5-7]{search_based_pcg}.
-In direct evaluation, content's quality is determined directly by its properties such as size and weight.
-In simulation-based evaluation, the interaction between the content and some artifical agent is judged instead.
+In direct evaluation, content quality is determined directly by its properties such as size and weight.
+In simulation-based evaluation, the interaction between the content and some artificial agent is judged instead.
 Finally, in interactive evaluation a human is employed to interact with the generated content.
 The human then either explicitly answers what content they preferred, or such feedback is extracted implicitly from gameplay data.
