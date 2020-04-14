@@ -1,1 +1,77 @@
 \subsection{Road Generation}
+The most basic aspect of a city that describes the overall city structure is the
+road network. As such, it was important to get this right early on in the
+development of the city generator. The application needed a method that was both
+flexible and also offered realistic looking results.
+
+At least two methods were considered when designing the road generator. One of
+them were based on a recursive approach where the world is divided into multiple
+cells and roads were placed between these cells. However, this type of algorithm
+did not provide realistic looking results and, while being quite flexible, was
+overly complex for creating a good road network.
+
+Instead, the algorithm that was chosen was an Agent-based solution that works by
+simulating road workers, which will be referred to as Agents, which only goal is
+walking around the world depending on certain strategies and creating roads.
+Agents could also decide to branch into multiple, new Agents, creating
+intersections in the road network.
+This algorithm resulted in realistic and good looking results and also offered
+lots of flexibility. The goal of this chapter is describing how this method was
+used to generate the cities in the application.
+
+\subsubsection{Agent Strategies}
+This section is dedicated to describing exactly what a strategy is. The use of
+strategies means that Agents are considered to be ``dumb'', and can only move
+around when it is told where to move. Which strategy to use depends entirely on
+what the goal of the generation is.
+
+Strategies also defines the configuration of the Agent, such as step size, how
+many steps an Agent can take before terminating and how many times an Agent can
+branch. The strategy that the Agent uses is responsible for deciding when an
+Agent should terminate, except for step count which is handled automatically for
+all strategies.
+
+\subsubsection{Plotting Cities}
+The algorithm requires some inputs in order to get started, and that consists of
+a city type and a position. Then, depending on the city type, some other
+variables are needed; Paris-like cities need a radius in order to define the
+rough size of the resulting city, while Manhattan-like cities need a rough width
+and height.
+
+In the GUI of the application, the user needs to place down city markers in the
+world with the desired position and size, then the generator can be started
+which creates Agents that will act according to the city type that was chosen by
+the user.
+
+\subsubsection{Agent Road Generation}
+The first step of the generation is to create a rough structure of the road
+network. This includes the main roads of the city that is commonly found near
+the center and boundaries of cities, but also highways outside the city.
+
+The generation for main roads are different depending on the city strategy. For
+example, Paris-like cities have distinct rings within the city boundaries, while
+Manhattan-like cities generally follow a more organized and grid-like structure.
+The generation of the main roads should mimic these characteristics.
+
+So far, Paris and Manhattan-like cities have been described, but the algorithm
+can be tuned to simulate other types of cities, the only thing that is needed is
+a suitable strategy fo the Agents to follow. For example, if one wanted to
+generate a chaotic strategy without any sensible rules, one could implement a
+strategy that would make the Agents walk completely randomly.
+
+Furthermore, Agents can switch strategy mid-generation, be it randomly or
+depending on some variables that the Agent has access to. One example of this
+might be that if an Agent detects that there is a relatively low population
+density, it might decide to switch to an industrial type of strategy, which
+could make multiple long, parallel lines of roads which is often found in
+industrial areas in Sweden.
+
+\subsubsection{Highway Generation}
+The algorithm aims to create highways outside the boundaries of the cities,
+which has a strategy that makes Agents prefer moving towards higher population
+density. This type of strategy resulted in the tendency that connections between
+cities are created.
+
+Highways also have a lower probability of branching into more agents, which
+resulted in roads that are longer with less exits, mimicking what can be seen in
+the real world.
