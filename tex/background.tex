@@ -3,10 +3,10 @@
 % Background to explain context and significance of the question we are addressing.
 
 % What is PCG? (definition and explain with examples)
-PCG is a family of algorithms that automatically and randomly generates synthetic media such as 3D models, textures, items, quests, levels and music~\cite[p.1]{pcg_in_games}.
+PCG is a family of algorithms that automatically (and often randomly) generates synthetic media such as 3D models, textures, items, quests, levels and music~\cite[p.1]{pcg_in_games}.
 Typically, this generation is achieved by combining manually designed assets with stochastic, yet controllable algorithms.
-The algorithms are restricted by manually designed rules to only produce quality content, and utilize randomness within these constraints to generate diverse results~\cite{gamasutra}.
-For instance, a correct PCG algorithm for car generation would always produce functional cars, but the resulting cars will still vary by configurable properties such as wheels, seats, size, engine, price, and name.
+The algorithms are restricted by domain-specific rules to only produce desired content, and utilize randomness within these constraints to generate diverse results~\cite{gamasutra}.
+For instance, a correct PCG algorithm for car generation always produces functional cars, but the resulting cars will still vary by configurable properties such as wheels, seats, size, engine, price, and name.
 
 % History
 In the early 1980s, PCG was primarily used in games as a workaround for the limited storage space in computers~\cite[p.4]{pcg_in_games}.
@@ -14,7 +14,7 @@ This workaround has lead to a whole new genre of games called \textit{roguelike}
 However, in recent years PCG has gained traction for other reasons than small file sizes.
 
 Populating large games with content is a labor-intensive process if done by hand, and PCG has been used to tackle this problem by speeding up development times and by producing new experiences for each playthrough.
-For instance, the game \textit{Minecraft} \cite{minecraft} uses PCG to generate all of its procedural worlds (See figure \ref{fig:minecraft}).
+For instance, the game \textit{Minecraft} \cite{minecraft} uses PCG to generate all of its procedural worlds (see figure \ref{fig:minecraft}).
 
 \begin{figure}[h!]
   \centering
@@ -29,11 +29,11 @@ For instance, the game \textit{Minecraft} \cite{minecraft} uses PCG to generate 
 PCG can be performed either before or during runtime, in which case the generation is referred to as offline or online respectively \cite[p. 7-8]{pcg_in_games}.
 Since online generation is performed while a user is interacting with the media, it is critical that any computations are light enough for the software to run smoothly and that all results produced are acceptable to the end-user.
 Meanwhile, offline generation has typically significantly looser requirements since it is performed during the development process.
-However, online generation has the crucial advantage of being able to dynamically adjust its generated content based on user interactions.
+Online generation, however, has the crucial advantage of being able to dynamically adjust its generated content based on user interactions.
 
 % Examples usages of offline generation
-Offline is arguably the most common type of generation due to its broad definition and its loose restrictions.
-It is commonly used to accelerate the work of artists by generating good candidates which artists can then manually refine, examples include the creation of landscape in \textit{Oblivion} \cite{elder_scrolls_iv}.
+Offline generation is arguably the most common type of generation due to its broad definition and its loose restrictions.
+It is commonly used to accelerate the work of artists by generating good candidates which artists can then manually refine. Examples of such usage include the creation of landscape in \textit{Oblivion} \cite{elder_scrolls_iv}.
 This approach is also the typical way software like SpeedTree \cite{speedtree} is used, and is the intended way to use the city generation software presented in this report.
 
 % Examples usages of online generation
