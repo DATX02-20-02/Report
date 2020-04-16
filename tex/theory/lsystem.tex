@@ -28,7 +28,7 @@ The above example could be used to build a corridor where A represents empty spa
 
 There is a special case of L-systems which is called \textit{Stochastic bracketed L-systems}.
 Stochastic means that all production rules have a probability of being used for an evaluation, which implies that multiple rules can target the same source string.
-Bracketed means that we have a stack structure where the '\textbf{[}' symbol pushes the current state, and '\textbf{]}' pops and restores the previously pushed state.
+Bracketed means that a stack structure is used where the '\textbf{[}' symbol pushes the current state, and '\textbf{]}' pops and restores the previously pushed state.
 
 By being able to return to a previous state, one can produce content with non-continuous generation.
 This is well expressed in the book \textit{Procedural Content Generation in Games}~\cite[p.77]{pcg_in_games}, where the authors describe the limitations of non-bracketed L-systems in the following way:
