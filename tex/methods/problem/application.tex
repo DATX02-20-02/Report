@@ -1,1 +1,56 @@
 \subsection{Application}
+
+It was agreed upon that a GUI was needed for the application to be accessible.
+But before the application was designed, it was deemed necessary to first formalize how the users would interact with it by writing down a user flow.
+The initial user flow underwent several iterations, but eventually went as follows.
+
+\begin{enumerate}
+\item The user starts the application and is greeted with an endless ocean and a few options for terrain generation.
+\item The user clicks on a button that says “Generate Terrain”, which will generate a landmass in the ocean. The user can re-generate a new terrain as many times as they like. They may also modify any optional parameters that affect the generation, but good defaults are provided.
+\item The user places markers on the terrain which represent cities and further specifies how much population each marker roughly represents. The user can also specify optional parameters for each marker e.g. Manhattan-style roads.
+\item The user clicks on a button that says “Generate Roads”, which will generate a rough outline of the road network. This may be generated multiple times.
+\item The user clicks on a button that says “Generate Streets”, which will complete the road network by creating all the streets that go between the main roads. These may also be generated multiple times.
+\item The user clicks on a button that says “Generate Buildings” as many times as they like until they are satisfied with the generated buildings.
+\item Finally, when the user is satisfied they can click on a button that says “Export” and the full model will be exported as a file on the local file system.
+\end{enumerate}
+
+At any time during the flow, the user would be able to control the camera that visualizes the world in order to zoom in and see the model from different perspectives.
+It would also be possible to deviate from the flow by going backward and undoing previous generation steps.
+
+Both GUI and 3D graphics would inevitably be an aspect of this research but they were not seen as the core parts.
+Thus, a 3D library, framework, or engine was needed to leverage the workload on this front.
+LWJGL \cite{lwjgl}, JMonkeyEngine \cite{jmonkey}, Unity \cite{unity}, Unreal Engine \cite{unreal}, and Godot \cite{godot} were all the options that were considered in this project.
+Unreal Engine was excluded because of its steep learning curve, and the way it favors visual programming using something called \textit{blueprints}.
+Godot was excluded for its limitations in 3D and its young and small community.
+LWJGL and JMonkeyEngine were omitted for the amount of work that would have been required to implement simple features like visual debugging and live recompilation.
+
+The choice ended up being the Unity 3D engine because of its large community, extensive range of tutorials, concise documentation, stability, cross-platform support, and wide array of first- and third-party tools.
+Moreover, a few group members already had previous experience with this engine, so this choice also included fewer uncertainties than the other options did.
+
+At the time, Unity officially only supported C\#, so the choice of programming language became straightforward.
+This aspect was taken into consideration when choosing the engine, and did not occur as a concern since all project members had previous experience with the Java programming language, which is similar to C\#.
+
+Thus, the application would be designed and debugged from the Unity editor, but it also had to be able to run outside of the editor as a standalone program.
+Consequently, the application could not depend on functionality provided in Unity's editor to work.
+This restriction is normally not a problem, but it did complicate the serialization of runtime objects into standard 3D file formats, which was needed to export the city models.
+
+The cities had to be exported into some widely used format, and this had to be done through a library for the process to be stable and to save time.
+For this task, the UnityGLTF \cite{unity_gltf} library was used to export models into the glTF (\textit{.gltf} and \textit{.glb}) \cite{gltf} format.
+This library was primarly chosen as it could run without the Unity editor, but it had several other attractive properties besides that.
+
+Firstly, both UnityGLTF and glTF should be stable options as they are maintained by the Khronos Group \cite{unity_gltf} \cite{gltf}, which is an open industry consortium responsible for open-source 3D graphics standards such as Vulkan, OpenGL, and WebGL \cite{khronos_about}.
+Secondly, many 3D file formats are available, but glTF seems to be moving towards industry-standard judging by its extensive ecosystem and industry support \cite{gltf}.
+The exported cities should thus integrate well with a wide array of industry software if glTF is used.
+Lastly, the UnityGLTF library itself was easy to set up and configure.
+
+Other 3D file formats were considered but none of them had libraries that satisfied the requirements of this project.
+Unity's FBX Exporter \cite{fbxexporter} could be used to produce \textit{.fbx} \cite{fbx} files, which is a proprietary but powerful format.
+This library was especially attractive due to its ease of use and official support from Unity and Autodesk \cite{fbxexporter}.
+Unfortunately, the FBX Exporter heavily depended on the Unity editor.
+Wavefront's \textit{.obj} \cite{obj_files} and \textit{.mtl} \cite{mtl_files} files were also considered, but the libraries found either depended on the Unity editor or were deprecated.
+Similar issues were also found with the COLLADA (\textit{.dae}) \cite{collada_files} format.
+Thus, glTF using UnityGLTF was the only reasonable option found.
+
+The correctness of the exported cities had to be verified somehow, and for this purpose the open-source 3D modeling software Blender \cite{blender} was used. 
+The idea being that, if the models worked well in Blender, then in the worst-case scenario the cities could at least be re-exported from Blender to other tools.
+%Ideally, one would have constructed an automated pipeline and verified against multiple third-party software, but this approach appeared sufficient for this project.
