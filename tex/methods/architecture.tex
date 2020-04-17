@@ -1,10 +1,13 @@
-\section{Problem}
+\section{City Generation Architecture}
 
-In order to approach the problem addressed in this project it was necessary to first break it down into manageable modules that could be worked on in parallel.
-First, a user interface would be necessary for users to be able to control and see any generation -- preferably a GUI (Graphical User Interface) since user-friendliness was a key requirement.
+In order to approach the problem of 3D city generation it was necessary to first break it down into manageable modules that could be worked on in parallel.
+First, one module had to be responsible for the GUI presented in the previous subchapter.
+This module was simply named \textit{Application} and could be kept relatively small as most logic was handled by the Unity engine.
 There also had to exist some module responsible for the PCG, since that is the core of this research.
 This module was named the \textit{WorldGenerator}.
 \textit{WorldGenerator} was then further split into eight submodules that would each be responsible for a distinct part of the model generation.
+
+\newpage
 
 The user interface would be rather simple and was thus treated as a single module, while the generation needed some architecture to handle the communication between submodules.
 The two main architectures considered for the generation were a function-based and a pipeline-based approach (see figure \ref{fig:architecture_approaches}).
@@ -60,9 +63,7 @@ Consequently, the function-based architecture was chosen.
 \vspace{-1.75cm}
 
 An overview of the eight generators that were decided upon is shown in table \ref{table:generators}, while the implementations and responsibilities of these generators will be detailed in the following subchapters.
-The first subchapter will describe the user-facing application, which should clarify how the generators combine to create a whole, while the subsequent subchapters will go into detail about each specific generator.
 
-\input{tex/methods/problem/application.tex}
 \input{tex/methods/problem/terrain.tex}
 \input{tex/methods/problem/population.tex}
 \input{tex/methods/problem/roads.tex}
