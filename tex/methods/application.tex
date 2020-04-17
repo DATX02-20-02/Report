@@ -1,6 +1,6 @@
-\subsection{Application}
+\section{GUI Application}
 
-It was agreed upon that a GUI was needed for the application to be accessible.
+A user interface would be necessary for users to be able to control and see any generation, and it was agreed upon that a GUI (Graphical User Interface) would be used as user-friendliness was a key requirement.
 But before the application was designed, it was deemed necessary to first formalize how the users would interact with it by writing down a user flow.
 The initial user flow underwent several iterations, but eventually went as follows.
 
@@ -34,6 +34,8 @@ Thus, the application would be designed and debugged from the Unity editor, but 
 Consequently, the application could not depend on functionality provided in Unity's editor to work.
 This restriction is normally not a problem, but it did complicate the serialization of runtime objects into standard 3D file formats, which was needed to export the city models.
 
+\newpage
+
 The cities had to be exported into some widely used format, and this had to be done through a library for the process to be stable and to save time.
 For this task, the UnityGLTF \cite{unity_gltf} library was used to export models into the glTF (\textit{.gltf} and \textit{.glb}) \cite{gltf} format.
 This library was primarly chosen as it could run without the Unity editor, but it had several other attractive properties besides that.
@@ -43,7 +45,7 @@ Secondly, many 3D file formats are available, but glTF seems to be moving toward
 The exported cities should thus integrate well with a wide array of industry software if glTF is used.
 Lastly, the UnityGLTF library itself was easy to set up and configure.
 
-Other 3D file formats were considered but none of them had libraries that satisfied the requirements of this project.
+Other 3D file formats were also considered but none of them had libraries that satisfied the requirements of this project.
 Unity's FBX Exporter \cite{fbxexporter} could be used to produce \textit{.fbx} \cite{fbx} files, which is a proprietary but powerful format.
 This library was especially attractive due to its ease of use and official support from Unity and Autodesk \cite{fbxexporter}.
 Unfortunately, the FBX Exporter heavily depended on the Unity editor.
@@ -53,4 +55,4 @@ Thus, glTF using UnityGLTF was the only reasonable option found.
 
 The correctness of the exported cities had to be verified somehow, and for this purpose the open-source 3D modeling software Blender \cite{blender} was used. 
 The idea being that, if the models worked well in Blender, then in the worst-case scenario the cities could at least be re-exported from Blender to other tools.
-%Ideally, one would have constructed an automated pipeline and verified against multiple third-party software, but this approach appeared sufficient for this project.
+%Ideally, one would have constructed an automated pipeline and verified against multiple third-party software, but this did not appear necessary for this project.
