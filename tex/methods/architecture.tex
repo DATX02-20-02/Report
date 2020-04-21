@@ -1,13 +1,13 @@
 \section{City Generation Architecture}
 
 In order to approach the problem of 3D city generation it was necessary to first break it down into manageable modules that could be worked on in parallel.
-First, one module had to be responsible for the GUI presented in the previous subchapter.
-This module was simply named \textit{Application} and could be kept relatively small as most logic was handled by the Unity engine.
-There also had to exist some module responsible for the PCG, since that is the core of this research.
+One of these modules had to be responsible for the GUI presented in the previous subchapter.
+This module was named \textit{Application} and could be kept relatively small as most logic would be handled by the Unity engine.
+There also needed to exist some module responsible for the PCG, since that is the core of this research.
 This module was named the \textit{WorldGenerator}.
 \textit{WorldGenerator} was then further split into eight submodules that would each be responsible for a distinct part of the model generation.
 
-The user interface would be rather simple and was thus treated as a single module, while the generation needed some architecture to handle the communication between submodules.
+The implementation of the user interface would be rather simple and was thus treated as a single module, while the generation needed some architecture to handle the communication between submodules.
 The two main architectures considered for the generation were a function-based and a pipeline-based approach (see Figure~\ref{fig:architecture_approaches}).
 
 The pipeline had the advantage of less overhead since each generator would directly (or through an interface) pass data onto the next.
