@@ -10,7 +10,7 @@ This module was named the \textit{WorldGenerator}.
 \newpage
 
 The user interface would be rather simple and was thus treated as a single module, while the generation needed some architecture to handle the communication between submodules.
-The two main architectures considered for the generation were a function-based and a pipeline-based approach (see figure \ref{fig:architecture_approaches}).
+The two main architectures considered for the generation were a function-based and a pipeline-based approach (see Figure~\ref{fig:architecture_approaches}).
 
 The pipeline had the advantage of less overhead since each generator would directly (or through an interface) pass data onto the next.
 However, this lack of overhead could impose limitations and there still needed to exist some module responsible for receiving and exporting all the generated model data.
@@ -62,7 +62,7 @@ Consequently, the function-based architecture was chosen.
 \end{center}
 \vspace{-1.75cm}
 
-An overview of the eight generators that were decided upon is shown in table \ref{table:generators}, while the implementations and responsibilities of these generators will be detailed in the following subchapters.
+An overview of the eight generators that were decided upon is shown in Table \ref{table:generators}, while the implementations and responsibilities of these generators will be detailed in the following subchapters.
 
 \input{tex/methods/problem/terrain.tex}
 \input{tex/methods/problem/population.tex}
