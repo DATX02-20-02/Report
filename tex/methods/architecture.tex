@@ -38,27 +38,26 @@ Another recognized advantage was that generators could now be run asynchronously
 Lastly, as generation steps would be invoked from GUI buttons, possibly in non-linear order and with \textit{undo} operations, it was better suited if \textit{WorldGenerator} could communicate with each sub-generator directly.
 Consequently, the function-based architecture was chosen.
 
-\begin{center}
-  \begin{table}[H]
-    \begin{tabular}{lllll}
-      \textbf{Input}                           &               & \textbf{Function}            &               & \textbf{Output}         \\
-      \midrule
-      \textit{Size, Offset, SeaLevel}          & $\rightarrow$ & \textbf{TerrainGenerator}    & $\rightarrow$ & \textit{Terrain}        \\
-      \textit{Terrain, PopulationAmplifier[]}  & $\rightarrow$ & \textbf{PopulationGenerator} & $\rightarrow$ & \textit{PopulationMap}  \\
-      \textit{Terrain, PopulationMap}          & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{RoadNetwork}    \\
-      \textit{RoadNetwork, PopulationMap}      & $\rightarrow$ & \textbf{BlockGenerator}      & $\rightarrow$ & \textit{Block[]}        \\
-      \textit{Block, PopulationMap}            & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot[]}         \\
-      \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{BuildingGenerator}   & $\rightarrow$ & \textit{Building}       \\
-      \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkGenerator}       & $\rightarrow$ & \textit{Park}           \\
-      \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkingGeneartor}    & $\rightarrow$ & \textit{ParkingLot}     \\
-      \bottomrule
-    \end{tabular}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lllll}
+    \textbf{Input}                           &               & \textbf{Function}            &               & \textbf{Output}         \\
+    \midrule
+    \textit{Size, Offset, SeaLevel}          & $\rightarrow$ & \textbf{TerrainGenerator}    & $\rightarrow$ & \textit{Terrain}        \\
+    \textit{Terrain, PopulationAmplifier[]}  & $\rightarrow$ & \textbf{PopulationGenerator} & $\rightarrow$ & \textit{PopulationMap}  \\
+    \textit{Terrain, PopulationMap}          & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{RoadNetwork}    \\
+    \textit{RoadNetwork, PopulationMap}      & $\rightarrow$ & \textbf{BlockGenerator}      & $\rightarrow$ & \textit{Block[]}        \\
+    \textit{Block, PopulationMap}            & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot[]}         \\
+    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{BuildingGenerator}   & $\rightarrow$ & \textit{Building}       \\
+    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkGenerator}       & $\rightarrow$ & \textit{Park}           \\
+    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkingGeneartor}    & $\rightarrow$ & \textit{ParkingLot}     \\
+    \bottomrule
+  \end{tabular}
 
-    \caption[]{The proposed generator functions needed to generate the 3D cities. The invocation of these functions are handled by \textit{WorldGenerator}. '\textit{[]}' denotes plural (e.g. list or array) of the preceeding data structure.}
-    \label{table:generators}
-  \end{table}
-\end{center}
-\vspace{-1.75cm}
+  \caption[]{The proposed generator functions needed to generate the 3D cities. The invocation of these functions are handled by \textit{WorldGenerator}. '\textit{[]}' denotes plural (e.g. list or array) of the preceeding data structure.}
+  \label{table:generators}
+\end{table}
+\vspace{-0.4cm} % Mimic spacing below figures
 
 An overview of the eight generators that were decided upon is shown in Table \ref{table:generators}, while the implementations and responsibilities of these generators will be detailed in the following subchapters.
 
