@@ -1,13 +1,13 @@
 \section{Noise}
 
-Noise is one of the most fundamental concepts of PCG and there exists several flavors of it.
-The two major types of noise are \textit{value noise} and \textit{gradient noise}, which can both be expressed using the following function.
-$$
+Noise is a controlled form of randomness and one of the most fundamental concepts of PCG.
+There exists several flavors of it, with the two major ones being \textit{value noise} and \textit{gradient noise}, which can both be expressed using the following function:
+\begin{gather}
   f(\vec x) = y \in [0, 1] \text{ where }
   y \in \mathbb{R},
   \vec x \in \mathbb{R}^n,
   n \in \mathbb{Z}^+
-$$
+\end{gather}
 This function is deterministic, but the output for any single input is perceived as random.
 This is achieved by combining a Random Number Generator (RNG) with an interpolation function.
 The way that these two functions are implemented and utilized is what differs value noise from gradient noise.
