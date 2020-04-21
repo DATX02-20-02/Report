@@ -1,0 +1,22 @@
+\subsection{Exportation of Cities as 3D Models}
+
+The cities had to be exported into some widely used format, and this had to be done through a library for the process to be stable and to save time.
+For this task, the UnityGLTF \cite{unity_gltf} library was used to export models into the glTF (\textit{.gltf} and \textit{.glb}) \cite{gltf} format.
+This library was primarly chosen as it could run without the Unity editor, but it had several other attractive properties besides that.
+
+Firstly, both UnityGLTF and glTF should be stable options as they are maintained by the Khronos Group \cite{unity_gltf} \cite{gltf}, which is an open industry consortium responsible for open-source 3D graphics standards such as Vulkan, OpenGL, and WebGL \cite{khronos_about}.
+Secondly, many 3D file formats are available, but glTF seems to be moving towards industry-standard judging by its extensive ecosystem and industry support \cite{gltf}.
+The exported cities should thus integrate well with a wide array of industry software if glTF is used.
+Lastly, the UnityGLTF library itself was easy to set up and configure.
+
+Other 3D file formats were also considered but none of them had libraries that satisfied the requirements of this project.
+Unity's FBX Exporter \cite{fbxexporter} could be used to produce \textit{.fbx} \cite{fbx} files, which is a proprietary but powerful format.
+This library was especially attractive due to its ease of use and official support from Unity and Autodesk \cite{fbxexporter}.
+Unfortunately, the FBX Exporter heavily depended on the Unity editor.
+Wavefront's \textit{.obj} \cite{obj_files} and \textit{.mtl} \cite{mtl_files} files were also considered, but the libraries found either depended on the Unity editor or were deprecated.
+Similar issues were also found with the COLLADA (\textit{.dae}) \cite{collada_files} format.
+Thus, glTF using UnityGLTF was the only reasonable option found.
+
+The correctness of the exported cities had to be verified somehow, and for this purpose the open-source 3D modeling software Blender \cite{blender} was used. 
+The idea being that, if the models worked well in Blender, then in the worst-case scenario the cities could at least be re-exported from Blender to other tools.
+Ideally, one would have constructed an automated pipeline and verified against multiple third-party software, but this did not appear necessary for this project.

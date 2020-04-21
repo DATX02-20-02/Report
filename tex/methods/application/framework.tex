@@ -1,0 +1,18 @@
+\subsection{Framework}
+
+Both GUI and 3D graphics would inevitably be an aspect of this research but they were not seen as the core parts.
+Thus, a 3D library, framework, or engine was needed to leverage the workload on this front.
+LWJGL \cite{lwjgl}, JMonkeyEngine \cite{jmonkey}, Unity \cite{unity}, Unreal Engine \cite{unreal}, and Godot \cite{godot} were all the options that were considered in this project.
+Unreal Engine was excluded because of its steep learning curve, and the way it favors visual programming using something called \textit{blueprints}.
+Godot was excluded for its limitations in 3D and its young and small community.
+LWJGL and JMonkeyEngine were omitted for the amount of work that would have been required to implement simple features like visual debugging and live recompilation.
+
+The choice ended up being the Unity 3D engine because of its large community, extensive range of tutorials, concise documentation, stability, cross-platform support, and wide array of first- and third-party tools.
+Moreover, a few group members already had previous experience with this engine, so this choice also included fewer uncertainties than the other options did.
+
+At the time, Unity officially only supported C\#, so the choice of programming language became straightforward.
+This aspect was taken into consideration when choosing the engine, and did not occur as a concern since all project members had previous experience with the Java programming language, which is similar to C\#.
+
+Thus, the application would be designed and debugged from the Unity editor, but it also had to be able to run outside of the editor as a standalone program.
+Consequently, the application could not depend on functionality provided in Unity's editor to work.
+This restriction is normally not a problem, but it did complicate the serialization of runtime objects into standard 3D file formats, which was needed to export the city models.
