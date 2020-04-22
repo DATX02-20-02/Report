@@ -7,6 +7,7 @@ This algorithm can be implemented in linear time \cite{poisson_fast}, and can be
 
 The idea behind the algorithm is to specify a minimum distance $R$, a sample limit $k$, and then place an initial \textit{active point} in a random position.
 Thereafter, the following procedure is repeated until there are no more active points remaining.
+\vspace{-0.5cm} % Reasonable spacing before list
 \begin{enumerate}
   \item Sample an active point, $P$.
   \item Place up to $k$ new points inside the $[R, 2R]$ annulus centered at $P$.
