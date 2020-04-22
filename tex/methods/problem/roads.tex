@@ -1,8 +1,7 @@
 \subsection{Road Generation}
-The fundamental infrastructure of a city is the road network and as such, it was important to get this right early on in the development of the city generator.
-The application needed a method that was both flexible and also offered realistic-looking results.
+The fundamental infrastructure of a city is the road network and as such, it was important to get this right early on in development, and the generator had to be both flexible and also offer realistic-looking results.
 To generate the road network for the city, a RoadGenerator class was implemented which takes the terrain and the population map as inputs.
-These parameters are then used to produce a road network as output, as can be seen in the definition Table~\ref{table:def_roadgen}.
+These parameters are then used to produce a road network as output, as is shown in Table~\ref{table:def_roadgen}.
 
 \begin{table}[H]
   \centering
@@ -18,12 +17,13 @@ These parameters are then used to produce a road network as output, as can be se
 \end{table}
 \vspace{-0.4cm}
 
-Two major methods were considered when designing the road generator, one based on a recursive approach where the world is divided into multiple cells with roads placed between these cells.
+Two major approaches were considered when designing the road generator.
+The first were based on a recursive approach where the world were divided into multiple cells with roads placed between the cells.
 However, this type of algorithm did not provide realistic-looking results and, while being quite flexible, was overly complex for creating a good road network that mimics reality.
+The second method that was considered involved an Agent-based solution, and the goal of this chapter is to describe how this approach was used to generate the cities in the application.
 
-Instead, the algorithm that was chosen was an \textbf{Agent-based} solution that works by simulating road workers, which will be referred to as Agents, whose only goal is walking around the world depending on certain strategies and creating roads.
+The approach that was chosen works by simulating road workers, which will be referred to as Agents, whose only goal is walking around the world depending on certain strategies and creating roads.
 Agents could also decide to branch into multiple, new Agents, creating intersections in the road network.
-The goal of this chapter is to describe how this method was used to generate the cities in the application.
 
 Agents themselves do not move on their own, but if given a blueprint to create a specific road, which is referred to as a strategy, they can move around and place roads where it is told to move.
 Which strategy to use depends entirely on what the goal of the generation is, but the focus of this project has been to create a flexible base that could be extended to mimics any type of city generation.
@@ -87,8 +87,7 @@ So far, the generation of main roads within city bounds has been described, but 
 The goal of highway strategies is instructing Agents to generally move towards higher population areas.
 When a suitable strategy is implemented that accomplishes this, other strategies can make use of the ability to switch Agent strategies mid-iteration.
 
-The Paris and Manhattan strategies that were used in the project will switch the Agent strategy to a highway one once the Agent steps outside the boundaries of the city.
-This results in Agents that had a tendency to walk towards higher populated areas in the world after it has left the outskirts of the city.
+The Paris and Manhattan strategies that were used in the project would switch the Agent strategy to a highway one once the Agent stepped outside the boundaries of the city.
 See Figure~\ref{fig:road_highways}.
 
 \begin{figure}[H]
@@ -101,4 +100,17 @@ See Figure~\ref{fig:road_highways}.
 \end{figure}
 
 The highway strategies that were implemented into the project had a lower probability of branching than other strategies, which produces roads that were longer with fewer exits.
-The group aimed to produce highways that mimic the structure of highways in the real world, which this logic usually did.
+The aim was to produce highways that mimic the structure of highways in the real world, which this logic usually did by connecting cities together with long highways.
+
+\subsection{Street Generation}
+The street generator uses the same method as the road generator, which also shows the level of flexibility of the Agent-based approach.
+The only difference is that these Agents start on any of the nodes in the road network and uses a street strategy, instead of starting as a city type strategy.
+
+From what the group members have observed, Sweden typically has distinct curved streets in addition to straight intersections, more so than other countries, such as America which generally only have grid-like street blocks.
+This indicates that slight variations do exist in the real world, where some streets are curved rather than straight, but in order to limit ourselves in this project, the grid-like streets strategy was chosen as a general strategy for streets of all city types.
+However, the base of the road generator and its strategies allows any kind of street pattern to be produced, given a suitable strategy is implemented.
+The configuration of the general street strategy can still be configured per city type, which gives a small level of tweaking that matches the given city type better.
+
+Furthermore, the street strategy (and any strategy in general) can watch the population map and react accordingly, either by changing direction or terminating the Agent.
+Since the streets is a major part of the overall shape of the city, by watching the population map, the street strategy can directly shape the city according to the population map.
+If the population density is too low, it can decide to terminate the Agent, making sure it does not create streets and houses in an area where no population exists.
