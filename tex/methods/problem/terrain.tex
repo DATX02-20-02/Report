@@ -1,1 +1,55 @@
 \subsection{Terrain Generation}
+
+Even though a city can be generated on flat space, such an implementation would have made the project seem too simplistic and dull.
+A plane that could simulate a basic - yet somewhat realistic - environment for the city to be generated upon was from the beginning a self-evident feature that would be included in the project. 
+The concept of this environment, which would eventually be named "terrain", was based upon common real world aesthetics and natural biomes, such as snowy mountains, grassland, hills and bodies of water (specifically oceans/lakes).
+More aspects than that would bypass the range of the project’s goals.
+One could spend an equal amount of time to create a beautiful terrain generator as to create the city itself, so a primitive terrain was sufficient.
+This would in theory result in a sensible, nevertheless simple terrain such that more time could be spent on the main aim; the city itself.
+The addition of the terrain feature would naturally require other generators to take into account the height of the terrain and avoid uninhabitable areas like water and very steep hills. 
+
+These following tasks were the expected behaviour from running the terrain generator:
+Create the base structure for the terrain
+Generate the height levels of the terrain
+Generate ocean/lakes
+Texture the terrain based on parameters such as height levels and biomes
+Generate trees and shrubs (stretch goal)
+Generate rivers that flow into lakes and ocean (stretch goal)
+
+The terrain base could have been created in two ways: either using a mesh made of triangles or using the terrain API, an asset built-in into Unity.
+Both options had their advantages and disadvantages.
+Utilizing meshes would allow any shape of mesh to be created by connecting triangles to one another.
+Further, one could also specify factors such as normals, colors, tangents, textures and so on.
+However height-based texture splatting could be problematic.
+On the other hand, the terrain API is easy to manipulate and encompasses extensive documentation.
+
+In the first iteration for the terrain base, the terrain API by Unity seemed reasonable to choose because of simplicity. A tutorial by Brackeys guided the work in his tutorial about terrain generation, which greatly helped the early Unity stages.
+It worked splendidly during the beginning, though eventually problems would be discovered.
+The terrain API could unfortunately not easily be exported into the format wished for.
+The terrain API had to be scrapped and replaced by terrain mesh instead, which was not a concerning change as visually it looked as good as before if not better. 
+
+The next decision was to pick an algorithm that could designate height levels for the flat plane, i.e. to shape it with inward and outward facing dents that would represent valleys/ocean and mountains respectively.
+Another self-evident aspect of the terrain was that if the city were to be procedurally generated, the terrain should be too, as it would allow drastically more varied content in the generator.
+This is where noise was introduced.
+The algorithms that could aid for this task was Simplex Noise and Perlin Noise.
+These algorithms, when tied to points on the plane to determine its height, could shape the terrain in a manner similar to real world landscape.
+The difference between the two algorithms are minor, although the decision ended up in favour of perlin noise for the reason that perlin noise already was included in one of the libraries of C#, which made implementing it much simpler and it didn’t require creating code or borrowing code from other programmers. 
+
+The final aspect to include in the terrain was colour.
+An empty, white canvas would not give the feeling of an appropriate location for a city.
+Therefore textures were needed to grant the terrain the appearance for grass, mountains, water etc. to showcase their existence.
+These following bullet points are what was expected of the textures:
+
+Oceans and lakes should have a blue tint
+Terrain slanting towards oceans with low steepness should transition into beaches
+Spacious plains should cover various shades of green
+Mountains should appear rocky
+Tall mountain peaks should be covered in snow
+
+Most of these were implemented, however beaches were omitted due to time constraints.
+
+The textures were taken from Unity’s asset store community, along with the Standard Assets made by Unity themselves.
+After a lot of searching, the most effortless choice for the water texture was taken from Standard Assets by Unity.
+The rest of the textures were borrowed and resized from user ALP8310 on the Asset Store.
+
+i’ve never had the problem of actualyl trying t otype anyting o you though so i have to wonder if you are actually wondering if i have anything to be doing before you actually do something listen if you actually want those buffalo hides you have to pay some gold for them yes by thet i mean that you pay me some gold that willb e lke twenty gold unles you are a dumbass and won't let me do it you little piece of shit.
