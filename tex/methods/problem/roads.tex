@@ -41,8 +41,24 @@ The road generator uses the city markers as input to create the initial Agents t
 Each city type needs its own preset arguments for the Agents, and this was solved by assigning an Agent factory to each city type.
 The goal of the Agent factory is determining starting conditions for Agents depending on the city type.
 
+\begin{wrapfigure}[13]{r}{0.4\textwidth}
+  \centering
+  \raisebox{0pt}[\dimexpr\height-1\baselineskip\relax]{
+    \includegraphics[width=0.36\textwidth]{figure/road_network_paris.png}
+  }
+  \caption{Example of agent strategy building a Paris-like city shape.}
 
-\begin{wrapfigure}[12]{r}{0.4\textwidth}
+  \label{fig:road_network_paris}
+\end{wrapfigure}
+
+For example, in Figure~\ref{fig:road_network_paris}, the road generator started by creating a ParisAgentFactory, which takes the city position and radius as input, and spawns multiple Agents depending on random variables within the bounds of the input.
+The Agents are also given a Paris-like strategy, which instructs the Agents to generate rings around the city center as well as main roads extending outwards.
+This particular strategy was configured to have a very aggressive branching, which in turn produces lots of intersections.
+
+
+%% Intersection logic %%
+
+\begin{wrapfigure}[13]{r}{0.4\textwidth}
   \centering
   \raisebox{0pt}[\dimexpr\height-1\baselineskip\relax]{
     \includegraphics[width=0.36\textwidth]{figure/road_intersection.png}
@@ -64,24 +80,58 @@ It is the RoadNetwork class that is responsible for handling these cases when no
 When two nodes are connected, the road network will search for nearby nodes that intersect with the bounding box of the new connection, as well as a snap radius which is declared in the Agent configuration.
 
 Furthermore, there are a few cases where it is preferable to not create new nodes for Agents, but rather snap to nearby nodes or network edges.
-The algorithm tests for three different cases, visualized in Figure~\ref{fig:road_snap_cases}.
+The algorithm tests for four different cases, visualized in Figure~\ref{fig:road_connection_cases}.
+
+\begin{figure}[H]
+  \centering
+
+  \includegraphics[width=0.8\textwidth]{figure/road_connection_cases.png}
+  \caption{Four different cases that are handled in the road network connection logic.}
+
+  \label{fig:road_connection_cases}
+\end{figure}
+
+The solutions to the first three cases are similar to those found in CityGen, but it was not enough since it often happened that nodes still appeared close to roads without creating an intersection. % TODO: REFERENCE
+To combat this, the solution in the fourth case was added.
+\begin{CaseEnum}
+  \item The algorithm searches for nodes along the path to the new node, as well as within a radius around the node.
+  The distance it searches for is defined in the Agent configuration, which any strategy can define.
+  If a node is found, a connection between the previous node and that node will be made, making sure to re-run the algorithm in case paths are blocking.
+
+  \item When there is a road between the origin node and the destination node, a new node will be created, splitting the road where the intersection point is.
+  The destination node is then discarded, but note that in Figure~\ref{fig:road_intersection}, the destination node was \textbf{not} discarded.
+  In the project, however, the Agent will always stop at the intersection point rather than walk past it.
+
+  \item There are cases where an Agent lands just slightly before another road, but not near enough any other nodes.
+  In these cases, the best approach is attempting to extend the node forward a certain distance (the snapping distance), and check if any other roads are intersecting.
+  If any are found, split the road at the intersection point and connect the origin node to the intersection node.
+
+  \item The final case occurs when the angle of approach relative to another road is small enough that the extension in the previous case will fail because the intersection point is further away than the snapping distance.
+  To solve this, the network checks if there are any roads nearby by creating a perpendicular projection onto onto those roads.
+  If the distance to that projection point is within the snapping distance, the same solution is applied as in case 3.
+\end{CaseEnum}
+
 First, the algorithm will search for nodes along the path to the new node, as well as a radius around the node.
 The second test attempts to \textit{``extend''} the node further forward, and if it intersects with an edge, it will create an intersection there.
 The last test does another intersection test, but instead of extending the node forward, it will project the node to nearby edges and create an intersection there if it is within the snap radius.
 
-\begin{wrapfigure}[13]{r}{0.4\textwidth}
-  \centering
-  \raisebox{0pt}[\dimexpr\height-1\baselineskip\relax]{
-    \includegraphics[width=0.36\textwidth]{figure/road_network_paris.png}
-  }
-  \caption{Example of agent strategy building a Paris-like city shape.}
 
-  \label{fig:road_network_paris}
+\begin{wrapfigure}[9]{r}{0.3\textwidth}
+  \centering
+  \raisebox{0pt}[\dimexpr\height-2\baselineskip\relax]{
+    \includegraphics[width=0.26\textwidth]{figure/road_intersection_final_test.png}
+  }
+  \caption{Example of the test step before intersection node is created.}
+
+  \label{fig:road_intersection_final_test}
 \end{wrapfigure}
 
-For example, in Figure~\ref{fig:road_network_paris}, the road generator started by creating a ParisAgentFactory, which takes the city position and radius as input, and spawns multiple Agents depending on random variables within the bounds of the input.
-The Agents are also given a Paris-like strategy, which instructs the Agents to generate rings around the city center as well as main roads extending outwards.
-This particular strategy was configured to have a very aggressive branching, which in turn produces lots of intersections.
+While these cases solve most of the issues in the road network and make sure Agents are not creating unnecessary roads, it is still not enough to guarantee a good-looking road network.
+In cases 2, 3, and 4, one question that came up was \textit{``what happens if the node that was created at the intersection is too close to one of the nodes at the ends of the connection?''}.
+The solution to this was that before the node is created and connected, it would take the point of the intersection and check for nearby nodes on the ends of the connection.
+If any of those are within the snapping distance, it will snap to the nearest one instead.
+
+%% Highways %%
 
 So far, the generation of main roads within city bounds has been described, but the world also includes highways that connect multiple cities together.
 The goal of highway strategies is instructing Agents to generally move towards higher population areas.
@@ -99,7 +149,7 @@ See Figure~\ref{fig:road_highways}.
   \label{fig:road_highways}
 \end{figure}
 
-The highway strategies that were implemented into the project had a lower probability of branching than other strategies, which produces roads that were longer with fewer exits.
+The highway strategies that were implemented into the project had a lower probability of branching than other strategies, which produced roads that were longer with fewer exits.
 The aim was to produce highways that mimic the structure of highways in the real world, which this logic usually did by connecting cities together with long highways.
 
 \subsection{Street Generation}
