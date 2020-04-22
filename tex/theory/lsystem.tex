@@ -7,11 +7,11 @@ These strings can then used to generate complex geometric structures, often with
 The technique's inventor, Aristid Lindenmayer originally used it to model a wide array of plants \cite{lsystem_book}.
 L-systems are formally defined by three parameters which can be denoted as follows:
 
-\begin{itemize}
-  \item V  - The alphabet, consists of replaceable symbols (variables or non-terminals) and static symbols (constants or terminals).
-  \item $\omega$ - The axiom, an initial variable from V which defines the initial state.
-  \item P - The production rules, these are the constraints which determine how variables should be replaced.
-\end{itemize}
+\begin{easylist}
+  @ V  - The alphabet, consists of replaceable symbols (variables or non-terminals) and static symbols (constants or terminals).
+  @ $\omega$ - The axiom, an initial variable from V which defines the initial state.
+  @ P - The production rules, these are the constraints which determine how variables should be replaced.
+\end{easylist}
 
 For instance, $G(V, \omega, P) = (\{A, B\}, A, \{(A \to AB), (B \to A)\})$ would produce
 \begin{align*}
