@@ -1,6 +1,6 @@
 \subsection{City Block Generation}
 
-A city block in this project is defined as a continuous area of land which is suitable in shape, size, and position for containing multiple buildings.
+In this project, a city block is defined as a continuous area of land which is suitable in shape, size, and position for containing multiple buildings.
 The generation of such city blocks is managed by the BlockGenerator function (see Table~\ref{table:blockgen}).
 
 \begin{table}[H]
@@ -19,11 +19,13 @@ The generation of such city blocks is managed by the BlockGenerator function (se
 
 % The example labels are incorrect, but I could make a code PR that fixes that.
 This function uses the road network from the road generation to find suitable areas of land to extract, and it uses the population map from the population generation to determine which type of city block it should label each area as.
-Examples of such labels include: \textit{industrial}, \textit{surburbs}, \textit{downtown}, \textit{skyscrapers}, \textit{appartments} and \textit{parks.}
+Examples of such labels include: \textit{industrial}, \textit{surburbs}, \textit{downtown}, \textit{skyscrapers}, \textit{apartments} and \textit{parks}.
 
 The labeling of city blocks was implemented in a rather simple manner.
 Each label was restricted to only occur within a specific range of population density and was given a weighted probability of occurring compared to other valid labels.
 In practice, this was accomplished by assigning each label a probability distribution that could then be queried using the population density of the city block area.
+With this approach, the distribution of labels can follow the population density of the city and certain labels can be weighted to occur more frequently than others.
+For instance, \textit{skyscrapers} was assigned a high weight for city centers.
 
 The trickier part was to find suitable areas of land to extract into city blocks.
 One approach composed of two iterations was considered, both of which treated the road network as an undirected graph.
@@ -41,7 +43,7 @@ This iteration would help counter the limitation mentioned in the first iteratio
 % Since I only show my creation (and not their site) I don't need to cite.
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.35\textwidth]{figure/extend_block.png}
+  \includegraphics[width=0.3\textwidth]{figure/extend_block.png}
 
   \caption{Conceptual example of what the second city block extraction iteration could have produced. Here, the new cycle $BCDEF$ has been formed. Intersections are illustrated as nodes, roads as edges, and the extended block is colored green.}
   \label{fig:extend_block}
