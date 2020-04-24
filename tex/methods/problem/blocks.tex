@@ -35,7 +35,7 @@ This approach makes it possible to distribute the frequency of labels based on p
 \end{figure}
 
 The trickier part was to find suitable areas of land to extract into city blocks.
-One approach was considered that composed of two iterations, both of which treated the road network as an undirected graph.
+The approach that was considered consisted of two iterations that both treated the road network as an undirected graph.
 The first iteration would find all the minimum cycles in the road network graph and extract the area enclosed by each cycle.
 These areas would then be treated as city blocks if their size and shape seemed suitable.
 A limitation of this iteration was that all blocks would be perfectly enclosed by roads.
