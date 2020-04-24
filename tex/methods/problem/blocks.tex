@@ -1,7 +1,7 @@
 \subsection{City Block Generation}
 
-In this project, a city block is defined as a continuous area of land which is suitable in shape, size, and position for containing multiple buildings.
-The generation of such city blocks is managed by the BlockGenerator function (see Table~\ref{table:blockgen}).
+In this project, a city block is defined as a continuous area of land which is suitable in shape, size, and position for containing multiple buildings, parks, or parking lots.
+The generation of such blocks is managed by BlockGenerator (see Table~\ref{table:blockgen}).
 
 \begin{table}[H]
   \centering
@@ -24,11 +24,18 @@ Examples of such labels include: \textit{industrial}, \textit{surburbs}, \textit
 The labeling of city blocks was implemented in a rather simple manner.
 Each label was restricted to only occur within a specific range of population density and was given a weighted probability of occurring compared to other valid labels.
 In practice, this was accomplished by assigning each label a probability distribution that could then be queried using the population density of the city block area.
-With this approach, the distribution of labels can follow the population density of the city and certain labels can be weighted to occur more frequently than others.
-For instance, \textit{skyscrapers} was assigned a high weight for city centers.
+This approach makes it possible to distribute the frequency of labels based on population as well as proximity, which subsequentily can be used to mimic patterns found in real-world cities such as San Francisco (see Figure \ref{fig:san_francisco}).
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figure/san_francisco.jpg}
+
+  \caption{San Francisco skyline has a cluster of skyscrapers in the city center  and suburbs surrounding it \cite{san_francisco_img}. This pattern should be possible to mimic using weighted labels.}
+  \label{fig:san_francisco}
+\end{figure}
 
 The trickier part was to find suitable areas of land to extract into city blocks.
-One approach composed of two iterations was considered, both of which treated the road network as an undirected graph.
+One approach was considered that composed of two iterations, both of which treated the road network as an undirected graph.
 The first iteration would find all the minimum cycles in the road network graph and extract the area enclosed by each cycle.
 These areas would then be treated as city blocks if their size and shape seemed suitable.
 A limitation of this iteration was that all blocks would be perfectly enclosed by roads.
