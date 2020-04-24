@@ -1,6 +1,6 @@
 \subsection{Parking Lot Generation}
 The ParkingGenerator is implemented as a function that takes a plot and its underlying terrain as input and produces a parking lot as output (see Table~\ref{table:parking}).
-This generator in particular is responsible for filling roughly ten percent of the generated cities with parking lots, a percentage based on research conducted in Phoenix,~AZ~\cite{percent}.
+This generator in particular is responsible for filling roughly ten percent of the generated cities with parking lots, a percentage based on research conducted in Phoenix,~AZ~\cite{parking_percent}.
 \begin{table}[H]
    \centering
    \begin{tabular}{lllll}
@@ -22,11 +22,12 @@ How this works is that their plots designated to be parking lots are simply pain
  
 This was at first considered to be a viable option for the project, only it was found that it offers little alternatives for modification. 
 Modification, in this remark, includes the shape of the entire parking lot as well as the size of the individual parking spaces.
-However, as every other generator provides content that is fully scalable it would be inconvenient to make use of a texture that could not be rescaled as easily, if at all.
+As every other generator provides content that is fully scalable it would be inconvenient for the ParkingGenerator to be any different.
+If it were to make use of quads with a single texture applied to them, it would remove the possibility of scaling the size of the parking spaces within the quad without scaling the quad itself.
 
 The approach instead elected for was an algorithm that generates the parking spaces individually.
 This algorithm works by first using a function for approximating the largest rectangle inside any given polygon. 
-The reasoning behind this was the group's observation that a lot of parking lots seem to be shaped in rectangular ways (see Figure~\ref{fig:parkings}).
+The reasoning behind this was the group's observation that parking lots seems to generally have a rectangular shape (see Figure~\ref{fig:parkings}).
 This shape does of course not apply to every parking lot in the world, however attempting to create parking lots of any size and shape would require a lot more effort, and was therefore deemed out of scope for this project. 
 \begin{figure}[H]
   \centering
@@ -42,4 +43,4 @@ This shape does of course not apply to every parking lot in the world, however a
   \label{fig:parkings}
 \end{figure}
 Afterwards, based on the size of the rectangle, the algorithm would then generate either two, or four columns of parking spaces (see Figure~\ref{sizebased}).
-%TODO GET GOME SO I CAN FIX IMAGES OF THIS. 
+%TODO GET HOME SO I CAN FIX IMAGES OF THIS. 
