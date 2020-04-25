@@ -17,22 +17,22 @@ These parameters are then used to produce a road network as output, as is shown 
 \end{table}
 \vspace{-0.4cm}
 
-Two major approaches were considered when designing the road generator.
+Two approaches were considered when designing the road generator.
 The first was based on a recursive approach where the world was divided into multiple cells with roads placed between the cells.
-However, this type of algorithm did not provide realistic-looking results and, while being quite flexible, was overly complex for creating a good road network that mimics reality.
+However, this type of algorithm did not provide realistic-looking results. Regardless of being flexible, it was overly complicated for the purpose of creating a good road network that was supposed to mimic reality.
 The second method that were considered involved a worker-based solution, and the remainder of this chapter describes how this approach was used to generate the cities in the application.
 
-The worker-based generation approach simulates road workers, which will be referred to as Agents, whose only goal is walking around the world depending on certain strategies and creating roads.
+The worker-based generation approach simulates road workers, which will be referred to as Agents, whose only goal was to walk around the world and create roads dependent on certain strategies.
 Agents could also decide to branch into multiple, new Agents, creating intersections in the road network.
 
 Agents themselves do not move on their own, but if given a blueprint to create a specific road, which is referred to as a strategy, they can move around and place roads where it is told to move.
-Which strategy to use depends entirely on what the goal of the generation is, but the focus of this project has been to create a flexible base that could be extended to mimics any type of city generation.
+Which strategy to use depends entirely on what the goal of the generation is, but the focus of this project has been to create a flexible base that could be extended to mimic any type of city generation.
 As such, the project only includes basic \textbf{Paris} and \textbf{Manhattan} like strategies, and the generation of main roads are different depending on the city strategy.
 Paris-like cities have distinct rings within the city boundaries, while Manhattan-like cities generally follow a more organized and grid-like structure.
 The generation of the main roads should mimic these characteristics.
 
 Furthermore, Agents can switch strategy mid-generation, be it randomly, or depending on some variables that the Agent has access to.
-One example of this might be that if an Agent detects that there is a relatively low population density, it might decide to switch to a village-type strategy that could produce smaller villages with a different layout than cities like Paris or Manhattan.
+For example, if an Agent detected a relatively low population density, it might decide to switch to a village-type strategy that could produce smaller villages with a different layout than cities like Paris or Manhattan.
 
 Strategies can also define the configuration of the Agent, such as step size, how many steps an Agent can take before terminating, and how many times an Agent can branch.
 The strategy that the Agent uses is responsible for deciding when an Agent should terminate, except for step count which is handled automatically for all strategies.
@@ -71,7 +71,7 @@ This particular strategy was configured to have a very aggressive branching, whi
 
 While Agent strategies handle how the Agent moves around in the world, it is not what decides how the roads should be placed.
 When the Agent decides to place a road, it will attempt to find nearby nodes to snap to by searching in multiple ways.
-If no nodes to snap to are found, it will create a road between its last position and its new position, and any roads that exist on the path there in between will be combined into an intersection.
+If no nodes to snap to are found, it will create a road between its last position and its new position, and any roads that exist on the path in between will be combined into an intersection.
 Figure~\ref{fig:road_intersection} demonstrates the intersection created after an Agent attempts to cross another road, as well as an optimization technique making use of an R-Tree. %TODO: REFERENCE
 
 The R-Tree is necessary to quickly search for intersecting roads by avoiding to iterate over all nodes in the road network, or else the performance would result in an unusable application.
@@ -133,7 +133,7 @@ If any of those are within the snapping distance, it will snap to the nearest on
 
 %% Highways %%
 
-So far, the generation of main roads within city bounds has been described, but the world also includes highways that connect multiple cities together.
+Along with main roads within city bounds, the world also included highways that connected cities together.
 The goal of highway strategies is instructing Agents to generally move towards higher population areas.
 When a suitable strategy is implemented that accomplishes this, other strategies can make use of the ability to switch Agent strategies mid-iteration.
 
