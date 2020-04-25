@@ -1,6 +1,6 @@
 \subsection{Road Generation}
 The fundamental infrastructure of a city is the road network and as such, it was important to get this right early on in development, and the generator had to be both flexible and also offer realistic-looking results.
-To generate the road network for the city, a RoadGenerator class was implemented which takes the terrain and the population map as inputs.
+To generate the road network for the city, a RoadGenerator function was implemented which takes the terrain and the population map as inputs.
 These parameters are then used to produce a road network as output, as is shown in Table~\ref{table:def_roadgen}.
 
 \begin{table}[H]
@@ -76,7 +76,7 @@ Figure~\ref{fig:road_intersection} demonstrates the intersection created after a
 
 The R-Tree is necessary to quickly search for intersecting roads by avoiding to iterate over all nodes in the road network, or else the performance would result in an unusable application.
 Each node is placed in the R-Tree with a bounding box that encapsulates each connecting node.
-It is the RoadNetwork class that is responsible for handling these cases when nodes are connecting, not the Agents.
+It is the RoadNetwork that is responsible for handling these cases when nodes are connecting, not the Agents.
 When two nodes are connected, the road network will search for nearby nodes that intersect with the bounding box of the new connection, as well as a snap radius which is declared in the Agent configuration.
 
 Furthermore, there are a few cases where it is preferable to not create new nodes for Agents, but rather snap to nearby nodes or network edges.
@@ -137,8 +137,7 @@ So far, the generation of main roads within city bounds has been described, but 
 The goal of highway strategies is instructing Agents to generally move towards higher population areas.
 When a suitable strategy is implemented that accomplishes this, other strategies can make use of the ability to switch Agent strategies mid-iteration.
 
-The Paris and Manhattan strategies that were used in the project would switch the Agent strategy to a highway one once the Agent stepped outside the boundaries of the city.
-See Figure~\ref{fig:road_highways}.
+The Paris and Manhattan strategies that were used in the project would switch the Agent strategy to a highway one once the Agent stepped outside the boundaries of the city (see Figure~\ref{fig:road_highways}).
 
 \begin{figure}[H]
   \centering
