@@ -18,11 +18,11 @@ These parameters are then used to produce a road network as output, as is shown 
 \vspace{-0.4cm}
 
 Two major approaches were considered when designing the road generator.
-The first were based on a recursive approach where the world were divided into multiple cells with roads placed between the cells.
+The first was based on a recursive approach where the world was divided into multiple cells with roads placed between the cells.
 However, this type of algorithm did not provide realistic-looking results and, while being quite flexible, was overly complex for creating a good road network that mimics reality.
-The second method that was considered involved an Agent-based solution, and the goal of this chapter is to describe how this approach was used to generate the cities in the application.
+The second method that were considered involved a worker-based solution, and the remainder of this chapter describes how this approach was used to generate the cities in the application.
 
-The approach that was chosen works by simulating road workers, which will be referred to as Agents, whose only goal is walking around the world depending on certain strategies and creating roads.
+The worker-based generation approach simulates road workers, which will be referred to as Agents, whose only goal is walking around the world depending on certain strategies and creating roads.
 Agents could also decide to branch into multiple, new Agents, creating intersections in the road network.
 
 Agents themselves do not move on their own, but if given a blueprint to create a specific road, which is referred to as a strategy, they can move around and place roads where it is told to move.
@@ -155,10 +155,9 @@ The aim was to produce highways that mimic the structure of highways in the real
 The street generator uses the same method as the road generator, which also shows the level of flexibility of the Agent-based approach.
 The only difference is that these Agents start on any of the nodes in the road network and uses a street strategy, instead of starting as a city type strategy.
 
-From what the group members have observed, Sweden typically has distinct curved streets in addition to straight intersections, more so than other countries, such as America which generally only have grid-like street blocks.
-This indicates that slight variations do exist in the real world, where some streets are curved rather than straight, but in order to limit ourselves in this project, the grid-like streets strategy was chosen as a general strategy for streets of all city types.
-However, the base of the road generator and its strategies allows any kind of street pattern to be produced, given a suitable strategy is implemented.
-The configuration of the general street strategy can still be configured per city type, which gives a small level of tweaking that matches the given city type better.
+The base of the road generator and its strategies allows any kind of street pattern to be produced, given a suitable strategy is implemented.
+In order to limit ourselves in this project, the street strategy was implemented to produce grid-like streets for all city types.
+Furthermore, the configuration of the general street strategy can be configured per city type, which gives a small level of tweaking that matches the given city type better.
 
 Furthermore, the street strategy (and any strategy in general) can watch the population map and react accordingly, either by changing direction or terminating the Agent.
 Since the streets is a major part of the overall shape of the city, by watching the population map, the street strategy can directly shape the city according to the population map.
