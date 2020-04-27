@@ -15,12 +15,10 @@ This generator in particular is responsible for filling roughly ten percent of t
  \end{table}
  \vspace{-0.4cm}
 
-
 One considered approach for generating parking lots was Esri CityEngine's \cite{Esri}.  % having a hard time finding this source, Anton who found it... plz help me. 
-What they use, for at least some of their generation is simply filling areas with textures, this is for example used for their parks as well as their parking lots. 
-How this works is that their plots designated to be parking lots are simply painted over with a \textit{parking lot} texture.
- 
+What they use, for at least some of their generation is simply covering areas with textures. This can be seen on their parks and parking lots. 
 This was at first considered to be a viable option for the project, only it was found that it offers little alternatives for modification. 
+
 Modification, in this remark, includes the shape of the entire parking lot as well as the size of the individual parking spaces.
 As every other generator provides content that is fully scalable it would be inconvenient for the ParkingGenerator to be any different.
 If it were to make use of quads with a single texture applied to them, it would remove the possibility of scaling the size of the parking spaces within the quad without scaling the quad itself.
@@ -38,9 +36,22 @@ This shape does of course not apply to every parking lot in the world, however a
   \begin{subfigure}[b]{0.395\textwidth}
     \frame{\includegraphics[width=\textwidth]{figure/parking2}}
   \end{subfigure}
-
   \caption{Two examples of parking lots observed by the project group, showcasing the rectangular shapes mentioned above.}
   \label{fig:parkings}
 \end{figure}
-Afterwards, based on the size of the rectangle, the algorithm would then generate either two, or four columns of parking spaces (see Figure~\ref{sizebased}).
-%TODO GET HOME SO I CAN FIX IMAGES OF THIS. 
+Afterwards, based on the size of the rectangle, the algorithm would then generate either two, or four columns of parking spaces (see Figure~\ref{fig:sizebased}).
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.56\textwidth}
+    \frame{\includegraphics[width=\textwidth]{figure/fourcol}}
+    \caption{Large parking lot consisting of four columns.}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.395\textwidth}
+    \frame{\includegraphics[width=\textwidth]{figure/twocol}}
+    \caption{Small parking lot consisting of two columns.}
+  \end{subfigure}
+    \caption{Two examples of different sized parking lots created by the generator.}
+  \label{fig:sizebased}
+\end{figure}
+
