@@ -1,24 +1,55 @@
 \subsection{Building Generation}
-The BuildingGenerator has the goal of generating different kinds of visually pleasing looking buildings. 
-Everything from small houses to towering manhattan skyscrapers. 
-This section describes the different methods used in creating a diverse BuildingGenerator and what techniques were considered and what, in the end, was chosen for the final BuildingGenerator. 
+The purpose of the BuildingGenerator is to generate different kinds of visually pleasing buildings, everything from small houses to towering Manhattan styled skyscrapers. 
+Seeing as buildings are one of the most important parts of generating a convincing modern city, it is essential to have a general generator that can create any kind of building. 
+The BuildingGenerator has three inputs: plot, terrain, and population. 
+The plot is the area of which the building must be inside.
+Terrain help decide where the building is generated in the y-axis. 
+The population can help decide, for example, how many floors the building should have to accommodate the residents. 
+The function spawns a building as a result of the world. 
 
-BuildingGenerator is needed because buildings are one of the most important parts of generating a convincing modern city. 
-It is also essential to have a general generator that can create any building. 
-This makes it easier to integrate the generation of buildings to the rest of the application. 
-Having one generator exposed to every plot label of the building would quickly increase the amount of overhead needed to create a diverse looking city. 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lllll}
+      \textbf{Input}                           &               & \textbf{Function}            &               & \textbf{Output}         \\
+      \midrule
+      \textit{Plot, Terrain, Population}       & $\rightarrow$ & \textbf{BuildingGenerator}   & $\rightarrow$ & \textit{Building}       \\
+      \bottomrule
+    \end{tabular}
+ 
+    \caption{Definition of the BlockGenerator function, which is responsible for playing a single building ontop of a plot.}
+    \label{table:buildinggen}
+  \end{table}
+  \vspace{-0.4cm} 
 
-No one algorithm can be used to create a procedurally generated building of any type. 
-The BuildingGenerator has to be able to support different kinds of generations. 
-The kind of generator that is selected to be generated onto a plot is decided by the plot label, e.g., villa or skyscraper. 
-BuildingGenerator has the input of a plot and the general population of the plot. 
-The different SubbuildingGenerators then has to generate some building that is affected by the population. 
-There are two different strategies to generate buildings: Using an L-System or spawning a model of a building. 
+Since one algorithm would not be sufficient for generating buildings of any kind, the BuildingGenerator consists of several different sub-generators, each responsible for a particular type of building, and it is the plot label decides what kind of sub-generator. 
+The different sub-generators then have to take the inputs into account to generate a building.
+There are two different strategies implemented in this project for generating buildings: Using an L-system or importing an existing model of a building. 
 
-L-system with a stochastic grammar was used to generate a visually pleasing and diverse set of buildings. 
-The L system was implemented via generics to be able to handle the generation of any objects.
-The generics that can be specified are the node types in the L-System and the data class type that is used throughout the generation. 
+% manhattan typ aktiga byggnader passar bra här
+Multiple L-systems with a stochastic grammar were used to generate a unique set of buildings. 
+The L-systems were implemented with type parameters to be able to handle the generation of any object.
+The two types of parameters are the object type in the L-system and the data class that is used for the generation.
+A building generated via L-systems has some generated floors, where each floor has walls and is built with multiple smaller wall segments. 
+Texture represents the different wall segments.
+Examples of wall segments can be ShopWindow, Window, and Door.
+The steps for generating a Manhattan-style skyscraper are as follows:
+\begin{enumerate}
+    \item An L-system is used to generate different kinds of floors for the building. Note that these floor types indicate what kind of L-system should be used later for the generation of the wall segments. Example of floor types can be:
+    \begin{itemize}
+        \item FirstFloor - A floor that has Shop Windows and Doors
+        \item OnlyWindowFloor - A floor that will only have window segments. 
+        \item MirrorFloor - Generate half of the floor segments and then copy and flip it for the next half of floor segments.
+    \end{itemize}
+    \item Each wall is then generated, floor by floor. Each flooring type has its own L-system to generate different wall segments.
+    \item After every wall has been generated; the building is put together inside the plot.
+    \item A flat roof is generated at the top of the building.
+    \item The building is then placed on the highest point of the terrain within the plot. Basement walls are then generated downwards to not make the building float in the air. %techically it's the highest point of the plot.points
+\end{enumerate}
 
-Some buildings, such as villas or kiosks, are too time-consuming to create some procedurally generated content that gives a significant result. 
-Because of this, there’s a need to spawn already finished buildings within the world that correspond to the given plot label. 
-With more time, one could start to generate these kinds of buildings as well, but we decided to draw the line at skyscrapers to lower the scope of the project.
+% Add ShopWindow, Window and Door images
+% Add FirstFloor, OnlyWindowFloor and MirrorFloor images
+
+Real-world buildings such as villas or kiosks were deemed too time-consuming and out of scope for this project.
+The reason being that these kinds of buildings are not as repeatable as a Manhattan-style skyscraper is. 
+Finished models represent some of these plot labels that do not have their generator.
+With more time, one could implement L-systems for these kinds of buildings as well, but it was decided to draw the line at skyscrapers to lower the scope of the project.
