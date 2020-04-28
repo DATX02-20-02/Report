@@ -1,3 +1,55 @@
 \section{Process and Workflow}
+This chapter details how the group collaborated to achieve the end result.
+The first subchapter describes how the group approached the software development process and how the group distributed the workload.
+The second subchapter describes tools and software that aided the group collaborate efficiently. 
 
-% How we worked and we split tasks
+\subsection{Software Development Process}
+The way in which the group decided to approach the development of the application took on an agile development process inspired by Scrum.
+Agile software development mainly involves self-organized teams working in iterations, where requirements and solutions actively evolve throughout the development process~\cite{agile101}.
+This way of working suited the project's workflow well because of the loose requirements of when the application could be considered complete.
+For this reason the group evaluated the progress of the application biweekly where new goals for the following iteration were defined.
+
+The project group scheduled meetings three times a week on which each group member was required to partake in a stand-up meeting.
+During a stand-up meeting each group member typically answered the following questions.
+
+\begin{easylist}
+  @ What did I complete since the last meeting that contributed to the iteration goal?
+  @ What do I plan on finishing until the next meeting to contribute to the iteration goal?
+  @ Do I see any obstacles that could prevent me or the team from meeting the iteration goal?
+\end{easylist}
+
+These short meetings worked to coordinate group members' activities and track the progress of each group member.
+
+Since multiple people shared and worked with the same codebase the group considered a certain level of correctness and readability valuable to impose.
+Primarily, this was enforced by requiring code reviews by someone other than the author whenever changes were requested.
+This had benefits in terms of ensuring correctness but also proved a time-consuming task of maintaining which often lead to multiple requests awaiting reviews.
+
+When dividing up the workload between group members, each generator described in Section~\ref{sec:city-gen-arch} facilitated a natural division of work.
+Mainly because a defined interface of the data exchanged between the generators had been established early on.
+This meant that each group member was assigned the main responsibility over one of the generators. This way of splitting up the workload between generators proved both beneficial and disadvantageous in some regard.
+For one, each group member could initially regard the assigned generator as a simple, confined task that could be developed in isolation.
+This allowed group members to implement different parts of the software simultaneously without any major conflicts or bottlenecks.
+For example, the first iteration of the road generator only considered a flat terrain seeing that the terrain generator was not fully implemented yet.
+As the development went on, however, the generators increased in complexity and coupling with the other generators to eventually evolve into the city generating application.
+This facilitated a parallel and time-effective workflow but that on the other hand only meant one or two group members actually had a good idea of how a particular system was implemented in detail.
+
+\subsection{Collaboration Tools}
+Version control of the application's source code was accomplished by using Git~\cite{git} and hosted on GitHub~\cite{github} for collaboration purposes.
+This approach was well suited for the application's non-linear workflow and the need for team members to work locally on different computers.
+
+The correctness of requested code changes to version control was also alleviated with the help of Continuous Integration~(CI). 
+CI is the process of automating the build and testing of code every time a developer commits changes to version control.
+The project group made use of two CI tools for validating committed code.
+One such tool compiled the code and reported compilation errors on every requested change.
+This made it easy for other reviewers to quickly see whether the requested changes were syntactically legal.
+The second tool, analyzed the code and reported stylistic deviations from what the group had defined in the tool's configuration file.
+For example, the tool would report instances of \textit{badly} formatted code indented with 2 spaces instead of 4 according to the project group's defined coding style guide.
+This tool also directly reformat the code according to the specified format.
+This helped maintain readability since the codebase was consistently formatted.
+
+Administrative documents were stored separately in a shared folder hosted on Google Drive~\cite{google_drive}.
+This includes documents related to meetings, group contract, and progress updates.
+
+Finally, communication within the group was mainly accomplished through the online messaging service Slack~\cite{slack}.
+For conducting meetings, video communication applications such as Discord~\cite{discord} and Zoom~\cite{zoom} were used. 
+
