@@ -1,1 +1,24 @@
 \subsection{Building Generation}
+The BuildingGenerator has the goal of generating different kinds of visually pleasing looking buildings. 
+Everything from small houses to towering manhattan skyscrapers. 
+This section describes the different methods used in creating a diverse BuildingGenerator and what techniques were considered and what, in the end, was chosen for the final BuildingGenerator. 
+
+BuildingGenerator is needed because buildings are one of the most important parts of generating a convincing modern city. 
+It is also essential to have a general generator that can create any building. 
+This makes it easier to integrate the generation of buildings to the rest of the application. 
+Having one generator exposed to every plot label of the building would quickly increase the amount of overhead needed to create a diverse looking city. 
+
+No one algorithm can be used to create a procedurally generated building of any type. 
+The BuildingGenerator has to be able to support different kinds of generations. 
+The kind of generator that is selected to be generated onto a plot is decided by the plot label, e.g., villa or skyscraper. 
+BuildingGenerator has the input of a plot and the general population of the plot. 
+The different SubbuildingGenerators then has to generate some building that is affected by the population. 
+There are two different strategies to generate buildings: Using an L-System or spawning a model of a building. 
+
+L-system with a stochastic grammar was used to generate a visually pleasing and diverse set of buildings. 
+The L system was implemented via generics to be able to handle the generation of any objects.
+The generics that can be specified are the node types in the L-System and the data class type that is used throughout the generation. 
+
+Some buildings, such as villas or kiosks, are too time-consuming to create some procedurally generated content that gives a significant result. 
+Because of this, there’s a need to spawn already finished buildings within the world that correspond to the given plot label. 
+With more time, one could start to generate these kinds of buildings as well, but we decided to draw the line at skyscrapers to lower the scope of the project.
