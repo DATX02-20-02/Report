@@ -36,15 +36,25 @@ Converting the mesh was done easily using Unity Editor packages, however those t
 Including Unity’s packages’ tools to convert the terrain object was not a trivial task.
 Because of this, the API had to be scrapped and the terrain was instead generated using the alternative option.
 To counteract the need to program a custom shader, the terrain only contained one texture which was gradually saturated with a different colour to illustrate the expected type of ground existing on that height level.
-Specifically, the texture’s colour would be shifted toward a white colour to illustrate mountain tops, a brown colour for hills, green for low ground grassland and a beige-yellow colour for heights slightly above water. Water is unaffected by this.
+Specifically, the texture’s colour would be shifted toward a white colour to illustrate mountain tops, a brown colour for hills, green for low ground grassland and a beige-yellow colour for heights slightly above water.
+Water is unaffected by this.
 
 The next decision was to pick an algorithm that could designate height levels for the flat plane, i.e. to shape it with inward and outward facing dents that would represent valleys/ocean and mountains respectively.
 It was decided that the terrain was to be procedurally generated, as it would allow drastically more varied content in the generator.
-The most common algorithms considered that could solve this task were simplex noise and perlin noise{reference}.
-The noise functions work by randomizing the influx of vectors to specific points.
-The vectors’ directions determine whether or not the point (in our case) should be raised or lowered on the plane.{picture}
-When the output of these functions were tied to points on the plane, it would shape the terrain in a manner similar to real-world landscape.
-The differences between simplex noise and perlin noise are faint. In the end, the noise values were collected from the noise generator module, which is based on the simplex noise.
+The most common algorithms considered that could solve this task were simplex noise and perlin noise.
+The noise functions work by creating vectors which randomizes the influx of vectors to specific points.
+The vectors’ directions determined whether or not the point (in our case) should be raised or lowered on the plane.
+\begin{figure}[h!]
+  \centering
+
+  \includegraphics[width=0.8\textwidth]{figure/perlin_noise_gradient_grid.png}
+  \caption{Grid of vectors that determine the values for each point on the plane. \cite{noise_grid_img}. Vectors pointing towards points increases their value, whilist vectors pointing away from points leaves them with decreased value.}
+
+  \label{fig:noise_grid}
+\end{figure}
+The output from these functions would be the exact height value, which would shape the terrain in a smooth manner similar to real-world landscape.
+The differences between simplex noise and perlin noise are small, but in short, simplex noise computes calculations more efficiently than perlin noise \cite{simplexnoise_stefan}.
+The noise values were in the end collected from the noise generator module, which was based on simplex noise.
 
 The final aspect to include in the terrain was texture.
 A blank, white canvas would not be appropriate as an environment, as it would appear glaringly unrealistic.
@@ -62,5 +72,5 @@ These following bullet points are what was expected of the textures:
 
 The textures were taken from Unity’s asset store community, along with the Standard Assets made by Unity themselves.
 After a lot of searching, the most effortless choice for the water texture was taken from Standard Assets by Unity.
-The rest of the textures were borrowed and resized from user ALP8310{reference} on the Asset Store.
-For the grass, mountain, snow and sand, they all had the same texture as explained previously {might change}.
+The rest of the textures were borrowed and resized from Aleksey Pakhalchyk's work (a.k.a. ``ALP8310''  on Unity Asset Store) \cite{ALP8310}.
+For the grass, mountain, snow and sand, they all had the same texture as explained previously.
