@@ -1,22 +1,32 @@
-\subsection{Plot Generation}
-A Plot in this project was similarly defined with city block, where the difference is that a block can contain multiple plots. 
-A plot can also have different types with what kind of content that is generated within it. 
-For example, it can be generated with a single building from Building Generator or a parking lot from Parking Generator. 
-The PlotGenerator has the task of creating and split a block into multiple plots of land while giving them a plot type. 
-The type of block, along with the population for each plot, is the deciding factor when plot type is selected. 
+\subsection{Plot Generation}  
+A plot in this project was similarly defined with city block, where the difference is that a block can contain multiple plots. 
+A plot can also have different labels with what kind of content that is generated within it. 
+The label of the block, along with the population for each plot, is the deciding factor when plot labels is selected. 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lllll}
+      \textbf{Input}                           &               & \textbf{Function}            &               & \textbf{Output}         \\
+      \midrule
+      \textit{Block, PopulationMap}            & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot[]}         \\
+      \bottomrule
+    \end{tabular}
+
+    \caption{Definition of the PlotGenerator function, which is responsible to split a block into one or more plot.}
+    \label{table:plotgen}
+  \end{table}
+  \vspace{-0.4cm} 
 
 PlotGenerator is needed because the blocks that are created often are too large to house, for example, a single building.
-One could ask, why not just place multiple buildings on a single block? 
-The reason why is modularity. 
+Instead of placing multiple buildings on a single block, using multiple plots leads to greater modularity to, for example, mix and match different plot labels on a single block.
 Smaller plots mean less responsibility for the different content generators. 
 They have the sole responsibility to fill their plot of land with whatever they like. 
-Having different plots also grants the ability to have a large variety of plot types within a single block. 
+Having different plots also grants the ability to have a large variety of plot labels within a single block. 
 Something that can be quite complex if there is no clear separation.
 
-Onwards, the word polygon will be used instead of blocks and plots. 
+Splitting a block into plots is essentially about dividing a polygon sensibly. 
 Both block and plot are in the end a continuous area with defined points, the same as a polygon. 
-PlotGenerator would have the task if one were to simplify, to split one polygon into multiple smaller polygons. 
-Note that block size and population are not a part of splitting the polygons, but merely how the plot type is decided. 
+Note that block size and population are not a part of splitting the polygons, but merely how the plot label is decided. 
 
 One of the proposed solutions was to draw a line through the given polygon and let the new unique sub polygons be the result. 
 This would have been a straight line going through the block. 
@@ -26,14 +36,16 @@ There’s also the issue with concave polygons where it can become hard to creat
 There is also the issue where you cannot let the number of plots be a deciding factor to find the needed cut easily. 
 This kind of algorithm would be outside of our scope of this project. 
 
-Early in the project, an article was found that explained how to split a polygon into N parts where each part would have equal size. 
-In short, the algorithm splits the size of the polygon divided by N, N - 1 time. 
+% Add figures explaing.
+An article about splitting polygon was found that explained how to split a polygon into N parts where each part would have equal size\cite{polygon_splitting_article}. 
+In this article, you can find a more in depth explanation of the article. 
 Each iteration finds possible cuts that could be made. 
 The cuts are found by finding different ways to draw lines through what is left of the polygon. 
 Some cuts are omitted in cases where concave polygons exist since they can be outside of the polygon. 
 The cut that is closest to the size for each sub polygon is the one that is applied and added to the output. 
+This was ultimately the algorithm used in the final product. 
 
-As previously mentioned, block labels and population are factors when deciding the type for each plot. 
-If the block label is, for example, a park or a parking lot, then the entire block is converted to one plot with the same corresponding plot type. 
-However, if the block label is buildings, then also the population with some randomness plays a big part in what type of building is selected. 
-If the population is high, then it is more likely that the plot type is a skyscraper to accommodate the population. 
+As previously mentioned, block labels and population are factors when deciding the label for each plot. 
+If the block label is, for example, a park or a parking lot, then the entire block is converted to one plot with the same corresponding plot label. 
+However, if the block label is \textit{buildings}, then also the population with some randomness plays a big part in what label of the building is selected. 
+If the population is high, then it is more likely that the plot label is a \textit{skyscraper} to accommodate the population. 
