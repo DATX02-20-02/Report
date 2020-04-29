@@ -1,11 +1,8 @@
 \subsection{Building Generation}
-The purpose of the BuildingGenerator is to generate different kinds of visually pleasing buildings, everything from small houses to towering Manhattan styled skyscrapers. 
+The purpose of the BuildingGenerator is to generate different kinds of visually pleasing buildings, everything from small houses to towering Manhattan-style skyscrapers. 
 Seeing as buildings are one of the most important parts of generating a convincing modern city, it is essential to have a general generator that can create any kind of building. 
-The BuildingGenerator has three inputs: plot, terrain, and population. 
-The plot is the area of which the building must be inside.
-Terrain help decide where the building is generated in the y-axis. 
-The population can help decide, for example, how many floors the building should have to accommodate the residents. 
-The function spawns a building as a result of the world. 
+The BuildingGenerator has three inputs: the plot in which to build, the terrain on which to build on top of, and the population scalar that helps determine the size of the building.
+The function spawns a building into the world. 
 
 \begin{table}[H]
     \centering
@@ -16,7 +13,7 @@ The function spawns a building as a result of the world.
       \bottomrule
     \end{tabular}
  
-    \caption{Definition of the BlockGenerator function, which is responsible for playing a single building ontop of a plot.}
+    \caption{Definition of the BlockGenerator function, which is responsible for constructing a single building on top of a plot.}
     \label{table:buildinggen}
   \end{table}
   \vspace{-0.4cm} 
@@ -31,7 +28,7 @@ The L-systems were implemented with type parameters to be able to handle the gen
 The two types of parameters are the object type in the L-system and the data class that is used for the generation.
 A building generated via L-systems has some generated floors, where each floor has walls and is built with multiple smaller wall segments. 
 Texture represents the different wall segments.
-Examples of wall segments can be ShopWindow, Window, and Door.
+Examples of wall segments can be shop windows, normal windows, and doors.
 The steps for generating a Manhattan-style skyscraper are as follows:
 \begin{enumerate}
     \item An L-system is used to generate different kinds of floors for the building. Note that these floor types indicate what kind of L-system should be used later for the generation of the wall segments. Example of floor types can be:
@@ -40,11 +37,13 @@ The steps for generating a Manhattan-style skyscraper are as follows:
         \item OnlyWindowFloor - A floor that will only have window segments. 
         \item MirrorFloor - Generate half of the floor segments and then copy and flip it for the next half of floor segments.
     \end{itemize}
-    \item Each wall is then generated, floor by floor. Each flooring type has its own L-system to generate different wall segments.
+    \item Each wall is then generated, floor-by-floor. Each floor type has its own L-system to generate different wall segments.
     \item After every wall has been generated; the building is put together inside the plot.
     \item A flat roof is generated at the top of the building.
     \item The building is then placed on the highest point of the terrain within the plot. Basement walls are then generated downwards to not make the building float in the air. %techically it's the highest point of the plot.points
 \end{enumerate}
+
+% Explain how the direction of the wall is decide. Maybe draw a picture of it?
 
 % Add ShopWindow, Window and Door images
 % Add FirstFloor, OnlyWindowFloor and MirrorFloor images
