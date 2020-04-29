@@ -27,7 +27,7 @@ This necessity becomes more apparent when all meshes are rendered (see Figure \r
   \label{fig:results_blockgen2}
 \end{figure}
 
-Each city block is assigned a label that helps the subsequent Plot Generation step determine what to generate inside each city block.
+Each city block is assigned a label that helps the subsequent plot generation step determine what to generate inside each city block.
 In Figure \ref{fig:results_blockgen2} these labels are visualized as green triangles, meaning they have not been processed yet.
 The green triangles are also used to mark blocks that became too small after being inset, effectively excluding them from further processing.
 An example of this behavior is shown in Figure \ref{fig:results_blockgen3}.
@@ -42,8 +42,10 @@ An example of this behavior is shown in Figure \ref{fig:results_blockgen3}.
     \includegraphics[width=\textwidth]{figure/results_blockgen4.png}
   \end{subfigure}
 
-  \caption{City blocks with different labels (green/blue) shown without (left) and with (right) buildings rendered. Blocks with green labels are too small, and blocks with blue labels are part of the city center.}
+  \caption{City blocks with different labels (green/blue) shown without (left) and with (right) buildings rendered. Blocks with green labels are too small, and blocks with blue labels have the \textit{skyscrapers} label.}
   \label{fig:results_blockgen3}
 \end{figure}
 
-Finally, the generated blocks are passed on to the plot generation.
+The implemented labels are \textit{industrial}, \textit{surburbs}, \textit{downtown}, \textit{skyscrapers}, \textit{apartments} and \textit{parks}.
+Each label weights what type of content should be generated so that all plots within the same block share a certain theme.
+Finally, once the blocks are generated, they are passed on to the plot generation.
