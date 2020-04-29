@@ -157,8 +157,8 @@ The only difference is that these Agents start on any of the nodes in the road n
 
 The base of the road generator and its strategies allows any kind of street pattern to be produced, given a suitable strategy is implemented.
 In order to limit ourselves in this project, the street strategy was implemented to produce grid-like streets for all city types.
-Furthermore, the configuration of the general street strategy can be configured per city type, which gives a small level of tweaking that matches the given city type better.
+However, the configuration of the general street strategy can be configured per city type, which gives a small level of tweaking so the streets could match the city type better.
 
-Furthermore, the street strategy (and any strategy in general) can watch the population map and react accordingly, either by changing direction or terminating the Agent.
-Since the streets is a major part of the overall shape of the city, by watching the population map, the street strategy can directly shape the city according to the population map.
-If the population density is too low, it can decide to terminate the Agent, making sure it does not create streets and houses in an area where no population exists.
+Furthermore, the street strategy (like other strategies) can watch the population map and react accordingly, either by changing direction or terminating the Agent.
+Since the streets is a major part of the overall shape of the city, by letting the street strategy watch the population map, it could directly shape the city on a more detailed level than the city strategies could.
+If the population density is too low, it could terminate the Agent, making sure it does not create streets and houses in an area where no population exists.
