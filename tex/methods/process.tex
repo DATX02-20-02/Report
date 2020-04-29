@@ -4,13 +4,25 @@ The first subchapter describes how the group approached the software development
 The second subchapter describes the tools and software used to aid the group to collaborate more effectively.
 
 \subsection{Software Development Process}
-The group decided that the development of the application would follow an agile development process inspired by Scrum.
-Agile software development often entails self-organized teams working in iterations, where requirements and solutions actively evolve throughout the development process~\cite{agile101}.
-This way of working suited the project's workflow well because of the loose requirements of when the application can be considered complete.
-For this reason, the group evaluated the progress of the application every other week and defined new goals for the following iteration.
+The group decided that the development of the application would follow an agile development process.
+Agile software development generally involves self-organized teams working in iterations, where requirements and solutions actively evolve throughout the development process~\cite{agile101}.
+This approach seemed befitting the project's loose definition of when the application could be considered complete.
+For this reason, the group decided to develop the application in iterations lasting two weeks.
+During the evaluation of the application, the project group defined new goals constituting the following iteration.
 
-The project group scheduled meetings three times a week on which each group member was required to partake in a stand-up meeting.
-During a stand-up meeting, each group member typically answered the following questions.
+Group meetings were the main means of discussing the status of the project, general improvements, and other topics related to the project.
+All meetings were considered to be mandatory and therefore followed an opt-out regimen.
+
+Initially, the group agreed to meet twice a week for meetings.
+In addition to these meetings, the group decided to meet twice for common work sessions.
+These were not mandatory but the group still enforced an opt-out regimen to encourage collaboration.
+The intended reason for these sessions was to help each other solve problems that often required communication between the different implementations.
+This approach was later discarded in favor of a fully remote workflow instead.
+
+After transitioning to a remote workflow, virtual meetings were held three times a week instead.
+The remote meetings followed the same arrangement as before but with the addition of a stand-up meeting.
+This addition attempted to further coordinate group members' activities and to track the progress of each group member.
+During a stand-up meeting, each group member answered the following questions.
 
 \begin{easylist}
   @ What did I complete since the last meeting that contributed to the iteration goal?
@@ -18,20 +30,17 @@ During a stand-up meeting, each group member typically answered the following qu
   @ Do I see any obstacles that could prevent me or the team from meeting the iteration goal?
 \end{easylist}
 
-These short meetings worked to coordinate group members' activities and to track the progress of each group member.
-
 Since multiple people worked on the same codebase the group considered a certain level of correctness and readability valuable to impose.
-Primarily, this was enforced by requiring code reviews by someone other than the author whenever changes were requested.
-This had benefits in terms of ensuring correctness but also proved a time-consuming task of maintaining which often lead to multiple requests awaiting reviews.
+Primarily, the group enforced this by requiring code reviews by someone other than the author whenever changes were requested.
+One necessary step when reviewing code involved verifying that the submitted code followed a certain checklist of requirements.
+This functioned as our definition of done for when a requested code change would be accepted.
+For example, the project group required that the submitted code should not throw any warning or errors in the Unity Editor. 
 
-When dividing up the workload between group members, each generator described in Section~\ref{sec:city-gen-arch} facilitated a natural division of work.
-Mainly because a defined interface of the data exchanged between the generators had been established early on.
+When dividing up the workload between group members, each generator described in Section~\ref{sec:city-gen-arch} facilitated a natural division of work since a defined interface of the data exchanged between the generators had been established early on.
 This meant that each group member was assigned the main responsibility for one of the generators. This way of splitting up the workload between generators proved both beneficial and disadvantageous in some regard.
 For one, each group member could initially regard the assigned generator as a simple, confined task that could be developed in isolation.
 This allowed group members to implement different parts of the software simultaneously without any major conflicts or bottlenecks.
 For example, the first iteration of the road generator only considered a flat terrain seeing that the terrain generator was not fully implemented yet.
-As the development went on, however, the generators increased in complexity and coupling with the other generators to eventually evolve into the city generating application.
-This facilitated a parallel and efficient workflow but implied only one or two group members had a good understanding of how a particular system was implemented.
 
 \subsection{Collaboration Tools}
 Version control of the application's source code was accomplished by using Git~\cite{git} and hosted on GitHub~\cite{github} for collaboration purposes.
@@ -43,11 +52,11 @@ The project group made use of two CI tools for validating committed code.
 One such tool compiled the code and reported compilation errors on every requested change.
 This made it easy for other reviewers to quickly see whether the requested changes were syntactically legal.
 The second tool analyzed the code and reported stylistic deviations from what the group had defined in the tool's configuration file.
-For example, the tool would report instances of \textit{badly} formatted code indented with 2 spaces instead of 4 according to the project group's defined coding style guide.
+For example, the tool would report instances of \textit{badly} formatted code indented with 2 spaces instead of 4 according to the project group's coding style.
 This tool also directly reformat the code according to the specified format which helped maintain readability since the codebase was consistently formatted.
 
 Administrative documents were stored in a shared folder hosted on Google Drive~\cite{google_drive}.
-This includes documents related to meetings, group contracts, and progress updates.
+This includes documents related to meetings, group contracts, Definition of Done, and progress updates.
 
 Communication within the group was accomplished through the online messaging service Slack~\cite{slack}.
 For conducting meetings, video communication applications such as Discord~\cite{discord} and Zoom~\cite{zoom} were used.
