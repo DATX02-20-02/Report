@@ -1,8 +1,8 @@
 \section{City Block Generation}
 
 Once roads and streets have been generated, the city block generation starts.
-This generation step produces a list of polygons that mark which areas of the terrain are suitable for buildings, parks, and parking lots to be built on.
-City blocks may vary significantly in size but a limit is set on how large they can become (see Figure \ref{fig:results_blockgen1}).
+This generation step produces a list of polygons that mark which areas of the terrain are suitable for buildings, parks, and parking lots.
+City blocks may vary significantly in size, but a limit is set on how large they can become (see Figure \ref{fig:results_blockgen1}).
 
 % TODO: Replace this figure, it has some inset problems.
 \begin{figure}[h!]
@@ -15,7 +15,7 @@ City blocks may vary significantly in size but a limit is set on how large they 
 \end{figure}
 
 Each city block is also guaranteed to be connected to the road network, such that it is surrounded by roads and/or streets.
-Consequently, each block is slightly inset in order to make room for the road meshes.
+Consequently, each block has to be slightly inset in order to make room for the road meshes.
 This necessity becomes more apparent when all meshes are rendered (see Figure \ref{fig:results_blockgen2}).
 
 \begin{figure}[h!]
