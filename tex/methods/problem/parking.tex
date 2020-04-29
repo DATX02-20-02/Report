@@ -24,7 +24,9 @@ As every other generator provides fully scalable content, it would be inconvenie
 If it were to make use of quads with a single texture applied to them, it would remove the possibility of scaling the size of the parking spaces within the quad without scaling the quad itself.
 
 The approach instead elected for was an algorithm that generates the parking spaces individually.
-This algorithm works by first using a function for approximating the largest rectangle inside any given polygon. 
+The main benefit of this approach was that it tackled the issue with the previously mentioned approach, which was scaling.
+This approach instead opted to generate the individual parking spaces so that they would not be limited to the size provided by a texture, this in turn offered more control when scaling the parking lots to fit with any other generated content.
+The algorithm constructed for this approach works by first using a function for approximating the largest rectangle inside any given polygon. 
 The reasoning behind this was the group's observation that parking lots seem to have a rectangular shape generally (see Figure~\ref{fig:parkings}).
 This shape does of course not apply to every parking lot in the world, however attempting to create parking lots of any size and shape would require a lot more effort, and was therefore deemed out of scope for this project. 
 \begin{figure}[H]
@@ -39,7 +41,19 @@ This shape does of course not apply to every parking lot in the world, however a
   \caption{Two examples of parking lots observed by the project group, showcasing the rectangular shapes mentioned above.}
   \label{fig:parkings}
 \end{figure}
-Afterward, based on the size of the rectangle, the algorithm would then generate either two or four columns of parking spaces (see Figure~\ref{fig:sizebased}).
+Afterward, based on the size of the rectangle, the algorithm then generates either two or four columns of parking spaces (see Figure~\ref{fig:sizebased}).
+How this is determined is by judging whether four columns with a gap between them (representing a road within the parking lot) fits inside the approximated rectangle or not.
+Having a road between four columns of parking lots is also visible in the left image in Figure~\ref{fig:parkings}. 
+Without this road, cars would not be able to leave, or enter the parking lot if enough cars are occupying it.
+
+The algorithm also offsets each parking space by a distance that is supposed to approximately represent the size of a theoretical car in our application. 
+The road between is twice as large seeing as parking lots are rarely designed to only be driven on one-way.
+The way the algorithm works is by using the corners of the rectangle as reference points.
+These reference points are then inset to avoid creating parking spaces outside of the rectangle, the algorithm then creates white stripes (representing parking lines) from these inset reference points.
+These are implemented as two parallel processes. 
+The first process generates parking spaces from the top down to the middle and the second process generates parking spaces from the bottom up to the middle, this is done by simply increasing the offset for each iteration.
+When generating parking lots of four columns the algorithm finishes one parking space earlier, consequently the road is generated. 
+
 \begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.485\textwidth}
