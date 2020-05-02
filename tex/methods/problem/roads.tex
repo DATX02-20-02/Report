@@ -27,59 +27,62 @@ Agents could also decide to branch into multiple, new Agents, creating intersect
 
 Agents themselves do not move on their own, but if given a blueprint to create a specific road, which is referred to as a strategy, they can move around and place roads where it is told to move.
 Which strategy to use depends entirely on what the goal of the generation is, but the focus of this project has been to create a flexible base that could be extended to mimic any type of city generation.
-As such, the project only includes basic \textbf{Paris} and \textbf{Manhattan} like strategies, and the generation of main roads are different depending on the city strategy.
-Paris-like cities have distinct rings within the city boundaries, while Manhattan-like cities generally follow a more organized and grid-like structure.
-The generation of the main roads should mimic these characteristics.
+As such, the project only includes basic Paris and Manhattan like strategies, and the generation of main roads are different depending on the city strategy in order to achieve the aesthetics of the specific city type.
+Paris-like cities have distinct rings within the city boundaries, while Manhattan-like cities generally follow a more grid-like structure.
 
 Furthermore, Agents can switch strategy mid-generation, be it randomly, or depending on some variables that the Agent has access to.
 For example, if an Agent detected a relatively low population density, it might decide to switch to a village-type strategy that could produce smaller villages with a different layout than cities like Paris or Manhattan.
 
-Strategies can also define the configuration of the Agent, such as step size, how many steps an Agent can take before terminating, and how many times an Agent can branch.
+Strategies can also define the configuration of the Agent, such as step size, how many steps an Agent can take before terminating (step count), and how many times an Agent can branch.
 The strategy that the Agent uses is responsible for deciding when an Agent should terminate, except for step count which is handled automatically for all strategies.
 
 The road generator uses the city markers as input to create the initial Agents that will start creating the road network.
 Each city type needs its own preset arguments for the Agents, and this was solved by assigning an Agent factory to each city type.
 The goal of the Agent factory is determining starting conditions for Agents depending on the city type.
 
-\begin{wrapfigure}[13]{r}{0.4\textwidth}
-  \centering
-  \raisebox{0pt}[\dimexpr\height-1\baselineskip\relax]{
-    \includegraphics[width=0.36\textwidth]{figure/road_network_paris.png}
-  }
-  \caption{Example of agent strategy building a Paris-like city shape.}
-
-  \label{fig:road_network_paris}
-\end{wrapfigure}
-
 For example, in Figure~\ref{fig:road_network_paris}, the road generator started by creating a ParisAgentFactory, which takes the city position and radius as input, and spawns multiple Agents depending on random variables within the bounds of the input.
 The Agents are also given a Paris-like strategy, which instructs the Agents to generate rings around the city center as well as main roads extending outwards.
 This particular strategy was configured to have a very aggressive branching, which in turn produces lots of intersections.
 
+A similar, but more basic approach, was applied to the Manhattan strategy, but instead of rings, multiple straight main roads were generated (see Figure~\ref{fig:road_network_manhattan}).
+
+\begin{figure}[H]
+  \centering
+  % Use two minipages to add padding for the figure and its caption
+  \begin{minipage}{.45\textwidth}
+    \centering
+    \begin{minipage}{.9\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figure/road_network_paris.png}
+      \caption{Example of Agent strategy building a Paris-like city shape.}
+      \label{fig:road_network_paris}
+    \end{minipage}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+    \begin{minipage}{.9\textwidth}
+      \centering
+      \centering
+      \includegraphics[width=\textwidth]{figure/road_network_manhattan.png}
+      \caption{Example of a basic Agent strategy building a Manhattan-like city shape.}
+      \label{fig:road_network_manhattan}
+    \end{minipage}
+  \end{minipage}
+\end{figure}
+
 
 %% Intersection logic %%
 
-\begin{wrapfigure}[13]{r}{0.4\textwidth}
-  \centering
-  \raisebox{0pt}[\dimexpr\height-1\baselineskip\relax]{
-    \includegraphics[width=0.36\textwidth]{figure/road_intersection.png}
-  }
-
-  \caption{Road intersection and R-Tree bounding boxes}
-
-  \label{fig:road_intersection}
-\end{wrapfigure}
-
 While Agent strategies handle how the Agent moves around in the world, it is not what decides how the roads should be placed.
-When the Agent decides to place a road, it will attempt to find nearby nodes to snap to by searching in multiple ways.
+When the Agent decides to place a road, it will attempt to find nodes in the nearby area to snap to.
 If no nodes to snap to are found, it will create a road between its last position and its new position, and any roads that exist on the path in between will be combined into an intersection.
-Figure~\ref{fig:road_intersection} demonstrates the intersection created after an Agent attempts to cross another road, as well as an optimization technique making use of an R-Tree. %TODO: REFERENCE
+Figure~\ref{fig:road_connection_cases} demonstrates the intersection created after an Agent attempts to cross another road, as well as an optimization technique making use of an R-Tree. %TODO: REFERENCE
 
 The R-Tree is necessary to quickly search for intersecting roads by avoiding to iterate over all nodes in the road network, or else the performance would result in an unusable application.
 Each node is placed in the R-Tree with a bounding box that encapsulates each connecting node.
 It is the RoadNetwork that is responsible for handling these cases when nodes are connecting, not the Agents.
-When two nodes are connected, the road network will search for nearby nodes that intersect with the bounding box of the new connection, as well as a snap radius which is declared in the Agent configuration.
+When two nodes are connected, the road network will search for nearby nodes that intersect with the bounding box of the new connection, as well as a snap radius.
 
-Furthermore, there are a few cases where it is preferable to not create new nodes for Agents, but rather snap to nearby nodes or network edges.
+There are a few cases where it is preferable to not create new nodes for Agents, but rather snap to nearby nodes or network edges.
 The algorithm tests for four different cases, visualized in Figure~\ref{fig:road_connection_cases}.
 
 \begin{figure}[H]
