@@ -1,0 +1,71 @@
+\section{City Generation Architecture}
+
+In order to approach the problem of 3D city generation it was necessary to first break it down into manageable modules that could be worked on in parallel.
+One of these modules had to be responsible for the GUI presented in the previous subchapter.
+This module was named \textit{Application} and could be kept relatively small as most logic would be handled by the Unity engine.
+There also needed to exist some module responsible for the PCG, since that is the core of this research.
+This module was named the \textit{WorldGenerator}.
+\textit{WorldGenerator} was then further split into eight submodules that would each be responsible for a distinct part of the model generation.
+
+The implementation of the user interface would be rather simple and was thus treated as a single module, while the generation needed some architecture to handle the communication between submodules.
+The two main architectures considered for the generation were a function-based and a pipeline-based approach (see Figure~\ref{fig:architecture_approaches}).
+
+The pipeline had the advantage of less overhead since each generator would directly (or through an interface) pass data onto the next.
+However, this lack of overhead could impose limitations and there still needed to exist some module responsible for receiving and exporting all the generated model data.
+Furthermore, when Blomqvist et al. developed a PCG engine, they experienced issues with their pipeline architecture, such as interconnected modules and bias of workload towards the early pipeline stages \cite[p. 45]{ba_landscape}.
+Thus, with these concerns in mind, it seemed reasonable to settle for the function-based architecture instead.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figure/architecture_functions.png}
+    \caption{Function-based architecture. Each sub-generator is treated as an isolated function and \textit{WorldGenerator} controls how and when they are invoked.}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figure/architecture_pipeline.png}
+    \caption{Pipeline-based architecture. The first generator is invoked by \textit{WorldGenerator}, and then each sub-generator passes on its output to the next sub-generator.}
+  \end{subfigure}
+
+  \caption{Two different architecture approaches considered for the generation logic.}
+  \label{fig:architecture_approaches}
+\end{figure}
+
+The function-based architecture showed several promising advantages.
+For one, each generator would only receive input that it actually depended on, while with a pipeline each generator would have had to pass along all its data.
+This separation not only makes debugging easier, but it also improves performance slightly.
+Another recognized advantage was that generators could now be run asynchronously and in separate threads, further benefiting performance.
+Lastly, as generation steps would be invoked from GUI buttons, possibly in non-linear order and with \textit{undo} operations, it was better suited if \textit{WorldGenerator} could communicate with each sub-generator directly.
+Consequently, the function-based architecture was chosen.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lllll}
+    \textbf{Input}                           &               & \textbf{Function}            &               & \textbf{Output}         \\
+    \midrule
+    \textit{Size, Offset, SeaLevel}          & $\rightarrow$ & \textbf{TerrainGenerator}    & $\rightarrow$ & \textit{Terrain}        \\
+    \textit{Terrain, PopulationAmplifier[]}  & $\rightarrow$ & \textbf{PopulationGenerator} & $\rightarrow$ & \textit{PopulationMap}  \\
+    \textit{Terrain, PopulationMap, Markers} & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{RoadNetwork}    \\
+    \textit{RoadNetwork, PopulationMap}      & $\rightarrow$ & \textbf{BlockGenerator}      & $\rightarrow$ & \textit{Block[]}        \\
+    \textit{Block, PopulationMap}            & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot[]}         \\
+    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{BuildingGenerator}   & $\rightarrow$ & \textit{Building}       \\
+    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkGenerator}       & $\rightarrow$ & \textit{Park}           \\
+    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkingGeneartor}    & $\rightarrow$ & \textit{ParkingLot}     \\
+    \bottomrule
+  \end{tabular}
+
+  \caption[]{The proposed generator functions needed to generate the 3D cities. The invocation of these functions are handled by \textit{WorldGenerator}. '\textit{[]}' denotes plural (e.g. list or array) of the preceeding data structure.}
+  \label{table:generators}
+\end{table}
+\vspace{-0.4cm} % Mimic spacing below figures
+
+An overview of the eight generators that were decided upon is shown in Table \ref{table:generators}, while the implementations and responsibilities of these generators will be detailed in the following subchapters.
+
+\input{tex/methods/problem/terrain.tex}
+\input{tex/methods/problem/population.tex}
+\input{tex/methods/problem/roads.tex}
+\input{tex/methods/problem/blocks.tex}
+\input{tex/methods/problem/plots.tex}
+\input{tex/methods/problem/buildings.tex}
+\input{tex/methods/problem/parks.tex}
+\input{tex/methods/problem/parking.tex}

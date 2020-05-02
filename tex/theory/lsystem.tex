@@ -1,4 +1,5 @@
 \section{L-Systems}
+\label{chap:lsystem}
 
 Another fundamental concept in PCG is L-systems.
 An L-system is a type of formal grammar where all symbols are evaluated in parallel.
@@ -7,11 +8,11 @@ These strings can then used to generate complex geometric structures, often with
 The technique's inventor, Aristid Lindenmayer originally used it to model a wide array of plants \cite{lsystem_book}.
 L-systems are formally defined by three parameters which can be denoted as follows:
 
-\begin{itemize}
-  \item V  - The alphabet, consists of replaceable symbols (variables or non-terminals) and static symbols (constants or terminals).
-  \item $\omega$ - The axiom, an initial variable from V which defines the initial state.
-  \item P - The production rules, these are the constraints which determine how variables should be replaced.
-\end{itemize}
+\begin{easylist}
+  @ V  - The alphabet, consists of replaceable symbols (variables or non-terminals) and static symbols (constants or terminals).
+  @ $\omega$ - The axiom, an initial variable from V which defines the initial state.
+  @ P - The production rules, these are the constraints which determine how variables should be replaced.
+\end{easylist}
 
 For instance, $G(V, \omega, P) = (\{A, B\}, A, \{(A \to AB), (B \to A)\})$ would produce
 \begin{align*}
@@ -28,10 +29,10 @@ The above example could be used to build a corridor where A represents empty spa
 
 There is a special case of L-systems which is called \textit{Stochastic bracketed L-systems}.
 Stochastic means that all production rules have a probability of being used for an evaluation, which implies that multiple rules can target the same source string.
-Bracketed means that we have a stack structure where the '\textbf{[}' symbol pushes the current state, and '\textbf{]}' pops and restores the previously pushed state.
+Bracketed means that a stack structure is used where the '\textbf{[}' symbol pushes the current state, and '\textbf{]}' pops and restores the previously pushed state.
 
 By being able to return to a previous state, one can produce content with non-continuous generation.
-This is well expressed in the book \textit{Procedural Content Generation in Games}~\cite[p.77]{PCG_in_games}, where the authors describe the limitations of non-bracketed L-systems in the following way:
+This is well expressed in the book \textit{Procedural Content Generation in Games}~\cite[p.77]{pcg_in_games}, where the authors describe the limitations of non-bracketed L-systems in the following way:
 \begin{center}
 “While interpreting L-system-generated strings as turtle instructions allow us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn 'without lifting the pencil'”. 
 \end{center}
