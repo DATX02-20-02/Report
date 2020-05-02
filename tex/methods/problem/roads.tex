@@ -25,7 +25,7 @@ The second method that were considered involved a worker-based solution, and the
 The worker-based generation approach simulated road workers, which will be referred to as Agents, whose only goal was to walk around the world and create roads dependent on certain strategies.
 Agents could also decide to branch into multiple, new Agents, creating intersections in the road network.
 
-Agents themselves do not move on their own, but if given a blueprint to create a specific road, which is referred to as a strategy, they can move around and place roads where it is told to move.
+Agents themselves do not act on their own, but rather follow instructions for creating roads. These instructions are referred to as strategies, and control how the agents move, build and branch off into new agents.
 Which strategy to use depends entirely on what the goal of the generation is, but the focus of this project has been to create a flexible base that could be extended to mimic any type of city generation.
 As such, the project only includes basic Paris and Manhattan like strategies, and the generation of main roads are different depending on the city strategy in order to achieve the aesthetics of the specific city type.
 Paris-like cities have distinct rings within the city boundaries, while Manhattan-like cities generally follow a more grid-like structure.
