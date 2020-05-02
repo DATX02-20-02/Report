@@ -1,0 +1,23 @@
+\section{Application}
+
+A user interface would be necessary for users to be able to control and see any generation, and for this purpose, a GUI (Graphical User Interface) was chosen as user-friendliness was a key requirement for the application.
+But before the application was designed, it was deemed necessary to first formalize how the users would interact with it by writing down a user flow.
+This user flow went as follows.
+
+\begin{enumerate}
+\item The user starts the application and is greeted with an endless ocean and a few options for terrain generation.
+\item The user clicks on a button that says “Generate Terrain”, which will generate a landmass in the ocean. The user can re-generate a new terrain as many times as they like. They may also modify any optional parameters that affect the generation, but good defaults are provided.
+\item The user places markers on the terrain which represent cities and further specifies how much population each marker roughly represents. The user can also specify optional parameters for each marker e.g. Manhattan-style roads.
+\item The user clicks on a button that says “Generate Roads”, which will generate a rough outline of the road network. This may be generated multiple times.
+\item The user clicks on a button that says “Generate Streets”, which will complete the road network by creating all the streets that go between the main roads. These may also be generated multiple times.
+\item The user clicks on a button that says “Generate Buildings” as many times as they like until they are satisfied with the generated buildings.
+\item Finally, when the user is satisfied they can click on a button that says “Export” and the full model will be exported as a file on the local file system.
+\end{enumerate}
+
+At any time during the flow, the user would be able to control the camera that visualizes the world in order to zoom in and see the model from different perspectives.
+It would also be possible to deviate from the flow by going backward and undoing previous generation steps.
+
+The following subchapters present how such a GUI was implemented, and how the problem of exporting the produced cities as 3D model files was resolved.
+
+\input{tex/methods/application/framework.tex}
+\input{tex/methods/application/export.tex}
