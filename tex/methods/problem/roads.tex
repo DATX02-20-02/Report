@@ -22,7 +22,7 @@ The first was based on a recursive approach where the world was divided into mul
 However, this type of algorithm did not provide realistic-looking results. Regardless of being flexible, it was overly complicated for the purpose of creating a good road network that was supposed to mimic reality.
 The second method that were considered involved a worker-based solution, and the remainder of this chapter describes how this approach was used to generate the cities in the application.
 
-The worker-based generation approach simulates road workers, which will be referred to as Agents, whose only goal was to walk around the world and create roads dependent on certain strategies.
+The worker-based generation approach simulated road workers, which will be referred to as Agents, whose only goal was to walk around the world and create roads dependent on certain strategies.
 Agents could also decide to branch into multiple, new Agents, creating intersections in the road network.
 
 Agents themselves do not move on their own, but if given a blueprint to create a specific road, which is referred to as a strategy, they can move around and place roads where it is told to move.
