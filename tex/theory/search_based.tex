@@ -1,4 +1,4 @@
-\section{Searched-based PCG}
+\section{Search-based PCG}
 
 For some generation purposes it can be challenging to precisely describe desired results, but easier to describe desired properties and to compare alternative results.
 A suitable technique for handling these situations is Search-based PCG (SBPCG).
@@ -7,6 +7,7 @@ SBPCG is a collection of stochastic search algorithms that are combined with dom
 Traditionally such search has primarily been performed using Evolutionary Algorithms (EA) such as the $\mu + \lambda$ evolution strategy (ES) \cite[p.18-20]{pcg_in_games}, and NSGA-II \cite{nsgaii}.
 
 SBPCG via EAs is typically done in the following way.
+\vspace{-0.5cm} % Reasonable spacing before list
 \begin{enumerate}
   \item Manually create or randomize a population of initial content candidates.
   \item Evaluate all candidates with evaluation functions.
