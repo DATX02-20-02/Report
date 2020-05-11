@@ -29,7 +29,7 @@ This was the initial approach that was used in the application, but due to perfo
 The final approach was a combination of the Esri method, and the method which had been previously used. 
 The first step of this approach is to fill the plot with asphalt, but this is not an easy task as the mesh that is projected has to be perfectly aligned with the terrain mesh.
 In order to avoid clipping issues, the algorithm basically cuts out a portion of the terrain in the shape of the plot, and then slightly offsets it upwards.
-This means the mesh will never clip with the terrain, because it is based on the terrain mesh.
+As a result of this, the mesh will never clip with the terrain. 
 
 After that, the second step is to use a function for approximating the largest rectangle inside a polygon to find a suitable rectangle in the plot to generate parking lots in.
 Based on the size of the approximated rectangle, the algorithm then generates multiple rows of parking lot.
