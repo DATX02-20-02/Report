@@ -1,5 +1,8 @@
 \subsection{Population Generation}
 
+% Short description
+The PopulationGenerator function produces an intensity map representing the population density across the terrain (see Table \ref{table:popgen}).
+The terrain parameter is required since certain areas of the terrain needs to be masked off from population, such as such as oceans, rivers, and spiky mountain tops.
 \begin{table}[H]
   \centering
   \begin{tabular}{lllll}
@@ -9,28 +12,23 @@
     \bottomrule
   \end{tabular}
 
-  \caption{Definition of the PopulationGenerator function which is responsible for generating intensity map based on the terrain.}
+  \caption{Definition of the PopulationGenerator function which is responsible for generating an intensity map of population across the terrain.}
   \label{table:popgen}
 \end{table}
 \vspace{-0.4cm} % Mimic spacing below figures
 
-% Short description
-The population generator populates the terrain provided as input.
-Specifically, a intensity map will be generated based on the terrain, which will represent the population density for the entire terrain.
-Areas of high-density population can be altered with user input, which is given as a visual option during the road generation phase.
-When placed, the population density of that area will be drastically increased.
-This marker placement can be repeated multiple times to generate several cities.
+The other input parameter is a set of amplifiers.
+Each amplifier is a 2D geometry visually represented with markers, and gives covered areas drastically increased population.
+Through these amplifiers, the user may designate locations of city centers, and thus interactively modify the population across the terrain.
+An example of this usage can be found in Figure \ref{fig:pop_dens}.
 
-PopulationGenerator is responsible for creating a procedurally generated intensity map describing the population in the world.
-The terrain parameter is required to generate an intensity map since it needs to mask off certain areas in the landscape, such as oceans, rivers, or mountains.
-Then, the generator would use a few layers of simplex noise to create a representation of populations throughout the world.
-Population markers are used to increase population density in a certain area, and these are applied after generating the initial population map.
-Markers are stored within the PopulationAmplifier set, which is the second input for the PopulationGenerator.
-This is useful to make sure the created cities have a higher density, but it will still respect the original population map to some degree.
+To generate the initial population distribution, the generator was implemented with a few layers of simplex noise.
+The population amplifiers from the function input are applied after this initial population map has been generated.
+The noise logic was eventually extracted into a separate module which was then shared with the terrain generator, although with different manually designed layers.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.5\textwidth]{figure/pop_density.png}
+  \includegraphics[width=0.35\textwidth]{figure/pop_density.png}
   \caption{An example of a population map with a Paris city generated within it.}
   \label{fig:pop_dens}
 \end{figure}
