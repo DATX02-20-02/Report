@@ -5,7 +5,8 @@ Once the plot generation is finished the park generation starts working towards 
 The parks are generated through two steps, the first step is to generate a natural looking path, and the second step is to fill the park with objects such as trees, bushes, and rocks. 
 The algorithm for paths works by firstly generating a random point on one of the edges of the plot and then scattering points randomly, although with a minimum distance from one another, across the plot. 
 Secondly the points are sorted by distance, ensuring that the path always traverses to the closest possible point. 
-Finally once all points are found the algorithm either creates a path that loops back to the starting point, or a path towards another random point on the edge of the plot (see ~Figure\ref{fig:parks}).
+Afterward, once all points are found the algorithm either creates a path that loops back to the starting point, or a path towards another random point on the edge of the plot (see ~Figure\ref{fig:parks}).
+Finally, exits/entries are added to the park by creating more paths to the edges of the plot.  
 
 The algorithm for object placement runs after the one for creating paths as the objects have to take the coordinates of the path into consideration.
 The first step of the object placement algorithm is to assign each object-type with an object radius, indicating the distance at which other objects are allowed to be created. 
