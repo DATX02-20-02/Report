@@ -1,1 +1,32 @@
 \section{Process and Workflow}
+
+One main takeaway from this project was that even though we believed our defined scope was reasonable, we didn't take into account how much time one could spend attempting to perfect the parts that were already working.
+An area where this became particularly clear was performance.
+During the course of the project we would often find the generators creating content which was visually sufficient for what we had hoped to achieve, but the process of generating would be slow. 
+The three main parts of the project where we observed that we could increase performance were the following:
+\begin{easylist}
+  @ Decreasing the resolution of which we import our textures.
+  @ Decreasing the triangle-count of buildings.
+  @ Using LOD.
+  @ Combining meshes. 
+ \end{easylist}
+ 
+The first part of the list was simple to tackle and did not require any additional code to be written, we simply had to alter the resolution at which our textures were imported.
+This came from us noticing that the textures were being imported at a default around 2000 pixels, which we could decrease to a staggering 64 and still reach almost indistinguishable results visually, at a dramatic cost in efficiency. 
+
+The second problem was revealed by the fact that after generating buildings FPS suddenly became a major concern. 
+After inspecting this issue we found that the buildings were being composed of a lot more triangles then they needed and this was fixed by ...
+
+Roads ... % IDK LOD STUFF :( 
+
+The fourth and final major adjustment made for increasing performance was to combine some of our generated meshes. 
+% THEO HELP 
+
+Something that could have been utilized more efficiently had we perhaps chosen a more collaborative style when developing our generators rather than dividing them among us, would be re-using already implemented code. 
+This became blatantly obvious when working on the path for the parks.
+At one part of the project, code was being written for generating meshes for the park paths, while code for doing this had already been written and was being used in the road generation. 
+Another problem that arose from this was that the parking lot generator would have probably had to be developed more in collaboration with the road generator in order to find a way to ensure that roads always have an entry to the parking lots.
+
+
+
+
