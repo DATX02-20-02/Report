@@ -31,7 +31,7 @@ The first step of this approach is to fill the plot with asphalt, but this is no
 In order to avoid clipping issues, the algorithm basically cuts out a portion of the terrain in the shape of the plot, and then slightly offsets it upwards.
 As a result of this, the mesh will never clip with the terrain. 
 
-After that, the second step is to use a function for approximating the largest rectangle inside a polygon to find a suitable rectangle in the plot to generate parking lots in.
+Afterward, a function for approximating the largest rectangle inside a polygon is applied to the plot to find a suitable rectangle to generate parking lots in.
 Based on the size of the approximated rectangle, the algorithm then generates multiple rows of parking lot.
 Each row contains a quad that is projected onto the terrain with a transparent texture with only the white parking lot lines in it.
 By modifying the UV coordinates of the quad, the texture can be repeated and scaled to the right size.
