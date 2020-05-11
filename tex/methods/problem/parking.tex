@@ -34,7 +34,7 @@ As a result of this, the mesh will never clip with the terrain.
 Afterward, a function for approximating the largest rectangle inside a polygon is applied to the plot to find a suitable rectangle to generate parking lots in.
 Based on the size of the approximated rectangle, the algorithm generates as many rows of parking lots as it can fit.
 Each row contains a quad that is projected onto the terrain with a transparent texture with only the white parking lot lines in it.
-By modifying the UV coordinates of the quad, the texture can be repeated and scaled to the right size.
+By modifying the UV coordinates of the quad, the texture can be repeated and scaled to any desired size. 
 The plot is also given a certain margin around it to make sure there is enough space around the parking lots for cars to get in and out of the parking area.
 
 The reasoning behind this algorithm was the group's observation that parking lots seem to have a rectangular shape generally (see Figure~\ref{fig:parkings}).
