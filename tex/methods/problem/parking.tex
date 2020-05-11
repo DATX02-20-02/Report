@@ -19,6 +19,10 @@ One considered approach for generating parking lots was Esri CityEngine's \cite{
 What they use, for at least some of their generation is simply covering areas with textures. This can be seen in their parks and parking lots. 
 This was at first considered to be a viable option for the project, only it was found that it offers little alternatives for modification.
 
+Modification, in this remark, includes the shape of the entire parking lot as well as the size of the individual parking spaces.
+As every other generator provides fully scalable content, it would be inconvenient for the ParkingGenerator to be any different.
+By using a single mesh with one texture applied to it, it would remove the possibility of scaling the size of the parking spaces within the mesh without scaling the mesh itself, which is not an option.
+
 Another approach that we considered was to generate each line in the parking area individually which combines together to form multiple parking lots.
 This was the initial approach that was used in the application, but due to performance concerns with dealing with multiple line objects, this had to be changed.
 
