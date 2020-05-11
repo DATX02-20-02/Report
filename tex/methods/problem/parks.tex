@@ -93,7 +93,7 @@ The visual implementation of the paths was done by texture splatting on top of a
 However, as the Unity Terrain needed to be replaced with a mesh generated one, this had to be re-implemented for the third implementation.
 Some different approaches for visualizing the paths were investigated, such as using quad and sphere meshes and then simply placing these along each path.
 The spheres would cause a shape that was still distinguishably circular and the quads would likewise create patterns that were clearly square. 
-The final implementation would instead make use of the logic from the RoadGenerator to create its own internal road network, thereby inheriting the functionality used to generate the corresponding mesh (see Figure~\ref{fig:visuals}).
+The final implementation would instead make use of the logic from the RoadGenerator to create its own internal road network, thereby inheriting the functionality used to generate the corresponding path mesh (see Figure~\ref{fig:visuals}).
 \begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.4\textwidth}
