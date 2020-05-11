@@ -87,7 +87,7 @@ Afterwards, the points are sorted by distance to enforce that the algorithm alwa
 This change was inspired by seeing some paths traverse towards points far away from the starting point only to then traverse to a point close to the starting point.
 Once all goal points have been reached a path is either created back to the starting node, or a new path is created to a randomly selected edge on the plot. 
 This change was made to stop enforcing loops and to add more variety to the generated paths.
-Finally, the algorithm creates exits/entries to the park by projecting a line to closest edge of the plot from some of the points, and then creating a path between them. 
+Finally, the algorithm creates entries to the park by projecting a line to closest edge of the plot from some of the points, and then creating a path between them. 
  
 The visual implementation of the paths was done by texture splatting on top of a Unity Terrain for the first two implementations (see Figure~\ref{fig:linear} and Figure~\ref{fig:texsplat}).
 However, as the Unity Terrain needed to be replaced with a mesh generated one, this had to be re-implemented for the third implementation.
