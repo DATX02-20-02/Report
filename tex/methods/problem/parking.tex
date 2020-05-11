@@ -1,6 +1,7 @@
 \subsection{Parking Lot Generation}
-The ParkingGenerator is implemented as a function that takes a plot and its underlying terrain as input and produces a parking lot as output (see Table~\ref{table:parking}).
+The ParkingGenerator function takes a plot and its underlying terrain as input, and produces a parking lot as output (see Table~\ref{table:parking}).
 This generator in particular is responsible for filling roughly ten percent of the generated cities with parking lots, a percentage based on research conducted in Phoenix,~AZ~\cite{parking_percent}.
+
 \begin{table}[H]
    \centering
    \begin{tabular}{lllll}
@@ -15,30 +16,28 @@ This generator in particular is responsible for filling roughly ten percent of t
  \end{table}
  \vspace{-0.4cm}
 
-One considered approach for generating parking lots was Esri CityEngine's \cite{Esri}.  % having a hard time finding this source, Anton who found it... plz help me. 
-What they use, for at least some of their generation is simply covering areas with textures. This can be seen in their parks and parking lots. 
-This was at first considered to be a viable option for the project, only it was found that it offers little alternatives for modification.
-
+One approach considered for the generation of parking lots was to simply cover areas with textures.
+This would have been a viable option for this project, but it was found that it offers little alternatives for modification.
 Modification, in this remark, includes the shape of the entire parking lot as well as the size of the individual parking spaces.
 As every other generator provides fully scalable content, it would be inconvenient for the ParkingGenerator to be any different.
-By using a single mesh with one texture applied to it, it would remove the possibility of scaling the size of the parking spaces within the mesh without scaling the mesh itself, which is not an option.
+By using a single mesh with one texture applied to it, it would remove the possibility of scaling the size of the parking spaces within the mesh without scaling the mesh itself, which was not an option.
 
-Another approach that was considered, was to generate each line in the parking area individually. 
-This was the initial approach that was used in the application, but due to performance concerns when dealing with multiple line objects, this had to be changed.
+Another approach was to generate each line in the parking area individually. 
+This was the initial approach that was used in the application, but was changed due to performance concerns when dealing with massive amounts of line objects.
 
-The final approach was a combination of the Esri method, and the method which had been previously used. 
+The final approach was a combination of these two methods.
 The first step of this approach is to fill the plot with asphalt, but this is not an easy task as the mesh that is projected has to be perfectly aligned with the terrain mesh.
-How this was solved, was by making the algorithm basically cut out a portion of the terrain in the shape of the plot, and then slightly offsets it upwards.
-As a result of this, the mesh will never clip with the terrain. 
+This was solved by writing an algorithm that essentially cut out a portion of the terrain in the shape of the plot, and then slightly offset it upwards.
+With this method, the mesh would never clip with the terrain. 
 
-Afterward, a function for approximating the largest rectangle inside a polygon is applied to the plot to find a suitable rectangle to generate parking lots in.
-Based on the size of the approximated rectangle, the algorithm generates as many rows of parking lots as it can fit.
-Each row contains a quad that is projected onto the terrain with a transparent texture with only the white parking lot lines in it.
+Subsequently, a function for approximating the largest rectangle inside a polygon is used to find a suitable rectangle to generate parking lots in.
+Based on the size of this rectangle, the algorithm generates as many rows of parking lots as it can fit.
+Each row contains a quad that is projected onto the terrain with a transparent texture where only the white parking lot lines are opaque.
 By modifying the UV coordinates of the quad, the texture can be repeated and scaled to any desired size. 
 The plot is also given a margin around it to make sure there is enough space around the parking lots for cars to get in and out of the parking area.
 
-The reasoning behind this algorithm was the group's observation that parking lots seem to have a rectangular shape generally (see Figure~\ref{fig:parkings}).
-This shape does of course not apply to every parking lot in the world, however attempting to create parking lots of any size and shape would require a lot more effort, and was therefore deemed out of scope for this project. 
+The idea behind the final approach came from the observation that parking lots tend to follow a rectangular shape (see Figure~\ref{fig:parkings}).
+Of course, this shape does not cover all types of parking lot, but it seemed like a reasonable scope for this project.
 
 \begin{figure}[H]
   \centering
@@ -46,24 +45,9 @@ This shape does of course not apply to every parking lot in the world, however a
     \frame{\includegraphics[width=\textwidth]{figure/parking1}}
   \end{subfigure}
   \quad
-  \begin{subfigure}[b]{0.395\textwidth}
+  \begin{subfigure}[b]{0.335\textwidth}
     \frame{\includegraphics[width=\textwidth]{figure/parking2}}
   \end{subfigure}
-  \caption{Two examples of parking lots observed by the project group, showcasing the rectangular shapes mentioned above.}
+  \caption{Two examples of parking lots with rectangular shapes. The photos were taken by the project group using a drone.}
   \label{fig:parkings}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}[b]{0.485\textwidth}
-    \frame{\includegraphics[width=\textwidth]{figure/fourcol}}
-    \caption{Large parking lot consisting of four columns.}
-  \end{subfigure}
-  \quad
-  \begin{subfigure}[b]{0.45\textwidth}
-    \frame{\includegraphics[width=\textwidth]{figure/twocol}}
-    \caption{Small parking lot consisting of two columns.}
-  \end{subfigure}
-    \caption{Two examples of different sized parking lots created by the generator.}
-  \label{fig:sizebased}
 \end{figure}
