@@ -2,7 +2,7 @@
 
 % Short description
 The PopulationGenerator function produces an intensity map representing the population density across the terrain (see Table \ref{table:popgen}).
-The terrain parameter is required since certain areas of the terrain needs to be masked off from population, such as such as oceans, rivers, and spiky mountain tops.
+The terrain parameter is required since certain areas of the terrain need to be masked off from population, such as oceans, rivers, and spiky mountain tops.
 \begin{table}[H]
   \centering
   \begin{tabular}{lllll}
@@ -18,13 +18,13 @@ The terrain parameter is required since certain areas of the terrain needs to be
 \vspace{-0.4cm} % Mimic spacing below figures
 
 The other input parameter is a set of amplifiers.
-Each amplifier is a 2D geometry visually represented with markers, and gives covered areas drastically increased population.
+Each amplifier is a 2D geometry visually represented with markers that gives covered areas drastically increased population.
 Through these amplifiers, the user may designate locations of city centers, and thus interactively modify the population across the terrain.
 An example of this usage can be found in Figure \ref{fig:pop_dens}.
 
 To generate the initial population distribution, the generator was implemented with a few layers of simplex noise.
 The population amplifiers from the function input are applied after this initial population map has been generated.
-The noise logic was eventually extracted into a separate module which was then shared with the terrain generator, although with different manually designed layers.
+The noise logic was eventually extracted into a separate module, which was then shared with the terrain generator, although with different manually designed layers.
 
 \begin{figure}[h!]
   \centering
