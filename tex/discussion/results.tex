@@ -7,7 +7,7 @@ As described in~\ref{section:goal_and_scope}, the quality of the generated city 
 The generated models imports correctly into Blender~\cite{blender}.
 Integration with other third-party tools however, would have to be verified more thoroughly as Blender was the main tool used for ensuring exported models could be imported correctly to an external tool. 
 
-Although, the 3D models are imported correctly in terms of the imported vertices there exists some unintended visual differences.
+Although, the 3D models are imported correctly in terms of the model data there exists some unintended visual differences.
 These differences are however, a consequence of the different rendering pipelines between Unity and any other third-party tool.
 Figure~\ref{fig:blender_shading_result} showcases these visual differences.
 
@@ -39,7 +39,6 @@ The degree of control offered to the user is, with a few exceptions, at the leve
 The exception to this is that the user can dynamically place individual cities and re-generate the content for each subgenerator.
 This distinction highlights an important design choice of either creating a city editor with PCG capabilities or a seed-based city generator capable of producing an infinite world with no dynamic user input whatsoever.
 CityCraft, tries to be both in the sense that each subgenerator is essentially seed-based but imposes some user choices in the placement of cities for example.
-
 Since the goal was for CityCraft to be a rough tool for generating cities that designers later could refine, the option for allowing the user to edit specific roads or alter the content of a selected block might not be deemed essential but would nevertheless significantly aid a designer and improve the level of control.
 
 Diving into the controls available to the users.
@@ -53,7 +52,7 @@ This however was deemed quite time-demanding and will be left as an area of futu
 \textbf{Q5}: \newline
 
 
-% Are users without technical expertise able to correctly use the application? 
+% Are users without technical expertise able to correctly use the application?
 \textbf{Q6}: \newline
 However, the user interface could be improved to provide better feedback to the user.
 
@@ -68,5 +67,7 @@ However, the user interface could be improved to provide better feedback to the 
 
 % Are there any known bugs or crashes in the application?
 \textbf{Q8}: \newline
-No.
+placement of cities rarely crashes/freezes the program
+murar (roads) rare
+
 

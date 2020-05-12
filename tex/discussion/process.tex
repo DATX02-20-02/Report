@@ -8,7 +8,7 @@ The three main parts of the project where we observed that we could increase per
 \begin{easylist}
   @ Decreasing the resolution of which we import our textures.
   @ Decreasing the triangle-count of buildings.
-  @ Using LOD.
+  @ Using Level of Detail~(LOD).
   @ Combining meshes. 
  \end{easylist}
  
@@ -18,7 +18,12 @@ This came from us noticing that the textures were being imported at a default ar
 The second problem was revealed by the fact that after generating buildings FPS suddenly became a major concern. 
 After inspecting this issue we found that the buildings were being composed of a lot more triangles then they needed and this was fixed by ...
 
-Roads ... % IDK LOD STUFF :( 
+% maybe move LOD to road-mesh methods
+The third improvement of performance was using a technique in computer graphics known as level of detail~(LOD).
+LOD typically works by decreasing the visual quality of an object based on some function of the camera distance to that object.
+Typically, different distance intervals are configured to corresponding to different quality meshes.
+The further away the camera is the lower the quality of the mesh becomes as to improve the efficiency of rendering without a noticeable difference to the user.
+In CityCraft, 
 
 The fourth and final major adjustment made for increasing performance was to combine some of our generated meshes. 
 % THEO HELP 
