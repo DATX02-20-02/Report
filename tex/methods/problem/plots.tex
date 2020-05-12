@@ -35,10 +35,9 @@ There is also the issue with concave polygons, where it can become difficult to 
 There is also the issue where you can not reliably let the number of plots be a deciding factor to find the needed cut. 
 
 % Add figures explaing.
-An article about splitting polygons was found that explained how to cut a polygon into $N$ parts, where each piece would have equal size \cite{polygon_splitting_article}. 
+An article about splitting polygons was found that explained how to cut a polygon into $N$ parts, where each part would have equal size \cite{polygon_splitting_article}. 
 In this algorithm, each iteration finds possible cuts that could be made. 
 The cuts are found by finding different ways to draw lines through what is left of the polygon. 
 Some cuts are omitted in cases where concave polygons exist since they can be outside of the polygon. 
-The cut that is closest to the size for each sub-polygon is the one that is applied and added to the output. 
-% We use shortest length though..? Should be mentioned.
+The cut that is the shortest for each sub-polygon is the one that is applied and added to the output. 
 This was ultimately the algorithm used in the final product. 
