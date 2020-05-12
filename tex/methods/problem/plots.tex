@@ -20,22 +20,22 @@ The generation of such plots is managed by PlotGenerator (see Table \ref{table:p
 Each plot also has a label associated with it that determines what type of content should later be generated inside it. 
 The label of the block, along with the population for each plot, is the deciding factor when plot labels are selected. 
 For instance, if the block label is \textit{Park} or a \textit{Parking}, then the entire block is converted to one plot with the same corresponding plot label. 
-However, if the block label is e.g. \textit{Downtown}, then the population density is used to sample a building from a pool of building types. 
+However, if the block label is e.g., \textit{Downtown}, then the population density is used to sample a building from a pool of building types. 
 If the population is high enough, then it is likely that the plot label will be set to \textit{Skyscraper}, to accommodate for the population. 
 
 PlotGenerator was designed because blocks tended to be too large to suit a single structure, such as a building.
 Instead of directly placing multiple buildings on a single block, the block is divided into multiple plots.
-This separation of concern leads to greater modularity and makes it easier mix a large variety of different plot labels within a single block.
+This separation of concern leads to greater modularity and makes it easier to mix a large variety of different plot labels within a single block.
 The core of this plot division problem was essentially about splitting an arbitrary polygon into sensible sub-polygons. 
 
 One of the proposed solutions was to draw a straight line through the block polygon and let the new sub-polygons be the result. 
 This does not, however, result in a good split necessary. 
 It is hard to control the size of the polygons, as some can become quite small. 
-There is also the issue with concave polygons where it can become difficult to create visually pleasing plots with consistency. 
+There is also the issue with concave polygons, where it can become difficult to create visually pleasing plots with consistency. 
 There is also the issue where you can not reliably let the number of plots be a deciding factor to find the needed cut. 
 
 % Add figures explaing.
-An article about splitting polygons was found that explained how to split a polygon into $N$ parts, where each part would have equal size \cite{polygon_splitting_article}. 
+An article about splitting polygons was found that explained how to cut a polygon into $N$ parts, where each piece would have equal size \cite{polygon_splitting_article}. 
 In this algorithm, each iteration finds possible cuts that could be made. 
 The cuts are found by finding different ways to draw lines through what is left of the polygon. 
 Some cuts are omitted in cases where concave polygons exist since they can be outside of the polygon. 
