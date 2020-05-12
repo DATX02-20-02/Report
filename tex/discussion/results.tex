@@ -1,51 +1,72 @@
 \section{Quality of Results}
 
-As described in~\ref{section:goal_and_scope}, the quality of the of the generated city is difficult to measure objectively.
+As described in~\ref{section:goal_and_scope}, the quality of the generated city is difficult to measure objectively.
 
 % Do models correctly integrate with third-party software such as Blender \cite{blender}?
-\textbf{Q1}:
+\textbf{Q1}: \newline
 The generated models imports correctly into Blender~\cite{blender}.
-Integration with other third-party tools however, would have to be verified more thoroughly. 
+Integration with other third-party tools however, would have to be verified more thoroughly as Blender was the main tool used for ensuring exported models could be imported correctly to an external tool. 
 
-Although the 3D models are imported correctly in terms of the imported vertices there still exists some undesired visual differences.
+Although, the 3D models are imported correctly in terms of the imported vertices there exists some unintended visual differences.
 These differences are however, a consequence of the different rendering pipelines between Unity and any other third-party tool.
-Figure~\ref{fig:blender_resulting_city} showcases these differences.
+Figure~\ref{fig:blender_shading_result} showcases these visual differences.
 
 % TODO(anton): Add Figure of resulting model imported into blender
+\begin{figure}[h!]
+  \centering
+  % \includegraphics[width=0.6\textwidth]{figure/blender_shading_result.jpg}
+  \caption{Visual differences between the generated Unity model.}
+  \label{fig:blender_shading_result}
+\end{figure}
 
 % How well is the codebase structured for replacement and expansion of features?
-\textbf{Q2}:
+\textbf{Q2}: \newline
 As the generation is divided into a number of sub-generators it would be easy to add more generators on to the total generation.
-Furthermore the generators themselves are structured in a way that adding more content to them, or modifying them should be a simple adaptation to make. 
+Furthermore, the generators themselves are structured in a way that adding more content to them, or modifying them should be a simple adaptation to make. 
 
 % How much notable variety is there in the generated content?
-\textbf{Q3}:
+\textbf{Q3}: \newline
+In terms of the topological road network generated cities the variety 
+
+The variety in textures and the 
+
 As this might be the hardest question to answer simply by text, here are two resulting cities from the application with varying size and shape.
 
 % How much control do the users have over the generation?
-\textbf{Q4}:
-The user has some varying level of control over the generation at different stages of the generation pipeline.
-however some areas of this could be improved. 
+\textbf{Q4}: \newline
+% TODO(anton): find other description than seed-based
+The degree of control offered to the user is, with a few exceptions, at the level of supplying settings to each subgenerator.
+The exception to this is that the user can dynamically place individual cities and re-generate the content for each subgenerator.
+This distinction highlights an important design choice of either creating a city editor with PCG capabilities or a seed-based city generator capable of producing an infinite world with no dynamic user input whatsoever.
+CityCraft, tries to be both in the sense that each subgenerator is essentially seed-based but imposes some user choices in the placement of cities for example.
 
-Marking the territory on which the user wants to place it city is not entirely accurate when making the marked area very small. 
-On the bright side the user has the ability to undo the work of a generator if that has left him unpleased, an area of improvement here would have been to allow the user to mark a territory of the world after generation is done and 	be able to re-generate that section.
+Since the goal was for CityCraft to be a rough tool for generating cities that designers later could refine, the option for allowing the user to edit specific roads or alter the content of a selected block might not be deemed essential but would nevertheless significantly aid a designer and improve the level of control.
+
+Diving into the controls available to the users.
+The user has some varying level of control over the generation at different stages of the generation pipeline.
+
+Marking the territory on which the user wants to place a city is not entirely accurate when making the marked area very small. 
+On the bright side the user has the ability to undo the work of a generator if that has left him unpleased, an area of improvement here would have been to allow the user to mark a territory of the world after generation is done and be able to re-generate that section.
 This however was deemed quite time-demanding and will be left as an area of future work. 
 
 % Are the cities suitable for use in digital media such as games and film?
-\textbf{Q5}:
+\textbf{Q5}: \newline
+
 
 % Are users without technical expertise able to correctly use the application? 
-\textbf{Q6}:
-The application 
+\textbf{Q6}: \newline
+However, the user interface could be improved to provide better feedback to the user.
 
 % Are there any known visual artifacts in the models?
-\textbf{Q7}:
-One visual artifact we are aware of would be that buildings as well as parking lots are generated right on top of the terrain.
-The larger flaw resulting from this would be that it would seem impossible for theoretical cars to reach the generated parking lots, without driving on top of the grass that is.
-Had there been more time, a solution to this would have been implemented by the group but a lot of things were prioritized more heavily and this is therefore also left as an area of future work. 
-two of the approaches that were considered were either filling the entire plots with asphalt (which would probably have looked the best had there been a suiting texture) and would definitely have looked the best for the buildings.
-The other approach that was considered was somehow creating road from the road network to the parking lot, this however was deemed to be very difficult due to the design of the road network. 
+\textbf{Q7}: \newline
+% TODO(anton): These are not artifacts as they are intended 
+% One visual artifact we are aware of would be that buildings as well as parking lots are generated right on top of the terrain.
+% The larger flaw resulting from this would be that it would seem impossible for theoretical cars to reach the generated parking lots, without driving on top of the grass that is.
+% Had there been more time, a solution to this would have been implemented by the group but a lot of things were prioritized more heavily and this is therefore also left as an area of future work. 
+% two of the approaches that were considered were either filling the entire plots with asphalt (which would probably have looked the best had there been a suiting texture) and would definitely have looked the best for the buildings.
+% The other approach that was considered was somehow creating road from the road network to the parking lot, this however was deemed to be very difficult due to the design of the road network. 
 
 % Are there any known bugs or crashes in the application?
-\textbf{Q8}: No.
+\textbf{Q8}: \newline
+No.
 
