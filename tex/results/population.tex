@@ -16,13 +16,16 @@ Clicking on it will make it yellow, which shows that it is selected.
 \end{figure}
 
 The selected city marker has multiple options:
+\begin{easylist}
+  @ Clicking again and dragging will allow the user to freely reposition the marker.
+  @ Scrolling up and down will increase and decrease the effective radius.
+  @ Deleting it can be done by pressing the Delete key on the keyboard when selected.
+\end{easylist}
 
-It can be moved by clicking again and dragging the marker around,
-it can be resized by scrolling up and down, increasing and decreasing the effective radius of the circle,
-and it can be deleted by pressing the Delete key on the keyboard.
 
-Road generation begins after pressing the generate roads button.
+Population generation begins after pressing the generate roads button.
 Before the roads are generated, a population density map is generated which covers the entire terrain.
 Then, the city marker amplifiers add density to the base noise generated in the spots where it was placed.
 
-Roads and highways will tend towards densely populated areas, and the size of buildings will vary depending on how intense the density is.
+When PopulationGenerator is finished, RoadGenerator begins.
+Its roads and highways will tend towards densely populated areas, and the size of buildings will vary depending on how intense the density is.
