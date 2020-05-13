@@ -1,15 +1,28 @@
 \section{Population Generation}
 
-When the terrain has been generated, the PopulationGenerator commences a visual tool for the user to place a city marker.
-When one or more markers are placed, the road generation begins immediately after pressing the generate roads button. 
+When the terrain has been generated, the PopulationGenerator gives the user a visual tool to place a city marker.
+When one or more markers are placed, they will remain in their designated positions until interacted with by the user, or when the user presses the Generate Roads button.
 
-Roads and highways will tend towards densely populated areas, and the size of buildings will vary depending on how intense the density is.
+A placed city marker can be interacted with by hovering over it, which will turn it red.
+Clicking on it will make it yellow, which shows that it is selected. 
 
 \begin{figure}[h!]
   \centering
 
-  \includegraphics[width=0.8\textwidth]{figure/city_marker_tool.png}
-  \caption{The city marker tool visuals.}
+  \includegraphics[width=0.8\textwidth]{figure/citymarkers.png}
+  \caption{The city marker tool visuals. }
 
-  \label{fig:citymarker}
+  \label{fig:citymarkers}
 \end{figure}
+
+The selected city marker has multiple options:
+
+It can be moved by clicking again and dragging the marker around,
+it can be resized by scrolling up and down, increasing and decreasing the effective radius of the circle,
+and it can be deleted by pressing the Delete key on the keyboard.
+
+Road generation begins after pressing the generate roads button.
+Before the roads are generated, a population density map is generated which covers the entire terrain.
+Then, the city marker amplifiers add density to the base noise generated in the spots where it was placed.
+
+Roads and highways will tend towards densely populated areas, and the size of buildings will vary depending on how intense the density is.
