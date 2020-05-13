@@ -1,26 +1,26 @@
 \section{Process and Workflow}
 
-One main takeaway from this project was that even though we believed our defined scope was reasonable, we didn't take into account how much time one could spend attempting to perfect the parts that were already working.
+One main takeaway from this project was that even though we believed our defined scope was reasonable, we did not take into account how much time one could spend attempting to perfect the parts that were already working.
 An area where this became particularly clear was performance.
 During the course of the project we would often find the generators creating content which was visually sufficient for what we had hoped to achieve, but the process of generating would be slow. 
 The three main parts of the project where we observed that we could increase performance were the following:
 
 \begin{easylist}
-  @ Decreasing the resolution of which we import our textures.
-  @ Decreasing the triangle-count of buildings.
-  @ Using Level of Detail~(LOD).
+  @ Compressing textures.
+  @ Decreasing the triangle-count of objects.
+  @ Using LOD.
   @ Combining meshes. 
  \end{easylist}
  
 The first part of the list was simple to tackle and did not require any additional code to be written, we simply had to alter the resolution at which our textures were imported.
-This came from us noticing that the textures were being imported at a default around 2000 pixels, which we could decrease to a staggering 64 and still reach almost indistinguishable results visually, at a dramatic cost in efficiency. 
+This came from us noticing that the textures were being imported at a very high quality, we could reduce this and still reach almost indistinguishable results visually, and reduce the amount of memory being used drastically. 
 
-The second problem was revealed by the fact that after generating buildings FPS suddenly became a major concern. 
-After inspecting this issue we found that the buildings were being composed of a lot more triangles then they needed and this was fixed by ...
+The second problem was revealed by the fact that after generating buildings frame rate suddenly became a major concern. 
+After inspecting this issue we found that the buildings were being composed of a lot more triangles then they needed and this was fixed by simply the reducing the triangle count. 
 
 % maybe move LOD to road-mesh methods
-The third improvement of performance was using a technique in computer graphics known as level of detail~(LOD).
-LOD typically works by decreasing the visual quality of an object based on some function of the camera distance to that object.
+The third improvement of performance was using LOD.
+LOD works by decreasing the visual quality of an object based on some function of the camera distance to that object.
 Typically, different distance intervals are configured to corresponding to different quality meshes.
 The further away the camera is the lower the quality of the mesh becomes as to improve the efficiency of rendering without a noticeable difference to the user.
 In CityCraft, this technique was used extensively for the roads, intersections and buildings and resulted in significantly improved the performance.
@@ -33,8 +33,6 @@ There was also the issue with each wall segment was their object spawned into th
 This object, called GameObject in Unity, has its render, which also meant an increase in the number of batches needed.
 Combining the wall segments into one building meant a drastic change in memory usage. 
 Only one of each unique material that represented the different wall segments was loaded in Unity.   
-
-% THEO HELP 
 
 Something that could have been utilized more efficiently had we perhaps chosen a more collaborative style when developing our generators rather than dividing them among us, would be re-using already implemented code. 
 This became blatantly obvious when working on the path for the parks.
