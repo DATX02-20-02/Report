@@ -18,14 +18,17 @@ The BuildingGenerator takes three inputs: the plot in which to build, the terrai
 
 As buildings were considered a core part of a convincing modern city, it was essential to have a generator that could produce many different kinds of buildings. 
 This problem was broken down into several sub-generators, each responsible for a particular type of building.
-The sub-generator chosen for a specific plot was largely determined by the plot label.
+The plot label largely determined the sub-generator chosen for a specific plot.
 
 % There are two different strategies implemented in this project for generating buildings: Using an L-system or importing an existing model of a building. 
+Two different strategies were implemented for generating buildings: Using an L-system and by generating some walls with a repeating texture.
 
 % manhattan typ aktiga byggnader passar bra här
+The first strategy was to use L-System to create more diverse looking buildings.
 Multiple stochastic L-systems were used to generate a unique set of buildings. 
-The L-systems were implemented with type parameters to be able to handle the generation of many objects e.g. walls and floors.
+The L-systems were implemented with type parameters to be able to handle the generation of many objects e.g., walls and floors.
 The two types of parameters are the object type in the L-system and the data class that is used for the generation.
+An example of the code to generate wall segments can be found in Figure \ref{fig:lsystem-example}. 
 A building generated via L-systems has some generated floors, where each floor has walls and is built with multiple smaller textured wall segments. 
 Examples of wall segments can be windows, shop windows, and doors.
 
@@ -60,7 +63,43 @@ As an example, the steps for generating a Manhattan-style skyscraper are as foll
     \includegraphics[width=\textwidth]{figure/MirrorFloor.png}
     \caption{MirrorFloor.}
   \end{subfigure}
-
-  \caption{Three different floor types and an example of their wall segment generation}
+  \caption{Three different floor types and an example of their wall segment generation.}
   \label{fig:segmentsgen}
+\end{figure}
+
+The other strategy, using repeated textures, has another method of generating interesting looking buildings. 
+This strategy will generate some walls and fill them in a grid-like pattern, where each rectangle will be applied with a subregion of a larger texture.
+Skyscrapers, where the walls are repetitive, are a good place to apply this strategy. 
+The subregions are selected via UV coordinates. 
+
+%du har en stor repeating texture, två olika sådana av textures, tar små delar av den här textures, och applicerar den på olika ställen av skyskrapan
+%fönstrena blir slumptade. 
+%random uv koordinat
+%random subbild och applicerar det i ett grid. 
+
+\begin{figure}[H]
+  \begin{lstlisting}[]
+    lSystem = new LSystem<ManhattanWallSegmentType, ManhattanSegmentsGeneratorData>();
+
+    lSystem.ShouldContinue(value => value.widthLeft > 0);
+
+    lSystem.CreateRules(ManhattanWallSegmentType.Corner)
+        .Add(0.5f, ManhattanWallSegmentType.Wall)
+        .Add(0.5f, ManhattanWallSegmentType.Window)
+        .OnAccepted(value => new ManhattanSegmentsGeneratorData(value.widthLeft - cornerWidth));
+
+    lSystem.CreateRules(ManhattanWallSegmentType.Window)
+        .Add(0.5f, ManhattanWallSegmentType.Wall)
+        .Add(0.5f, ManhattanWallSegmentType.Window)
+        .ShouldAccept(value => value.widthLeft >= windowWidth)
+        .OnAccepted(value => new ManhattanSegmentsGeneratorData(value.widthLeft - windowWidth));
+
+    lSystem.CreateRules(ManhattanWallSegmentType.Wall)
+        .Add(0.5f, ManhattanWallSegmentType.Wall)
+        .Add(0.5f, ManhattanWallSegmentType.Window)
+        .ShouldAccept(value => value.widthLeft >= wallWidth)
+        .OnAccepted(value => new ManhattanSegmentsGeneratorData(value.widthLeft - wallWidth));
+  \end{lstlisting}
+  \label{fig:lsystem-example}
+  \caption{Example of wall segment generation via L-System in code.}
 \end{figure}
