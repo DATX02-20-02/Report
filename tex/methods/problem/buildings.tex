@@ -21,8 +21,8 @@ This problem was broken down into several sub-generators, each responsible for a
 The plot label largely determined the sub-generator chosen for a specific plot.
 
 % manhattan typ aktiga byggnader passar bra här
-There two strategies used for generating buildings, the first of which used stochastic L-systems to create more diverse buildings.
-The L-systems were implemented with type parameters to be able to handle the generation of many objects, e.g., walls and floors.
+There two strategies used for generating buildings, the first of which used stochastic L-systems to generate diverse buildings.
+The L-systems were implemented with type parameters to be able to handle the generation of many objects e.g. walls and floors.
 The two types of parameters are the object type in the L-system and the data class that is used for the generation.
 An example of the code to generate wall segments can be found in Figure \ref{fig:lsystem-example}. 
 A building generated via L-systems has some generated floors, where each floor has walls and is built with multiple smaller textured wall segments. 
