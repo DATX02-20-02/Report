@@ -46,7 +46,7 @@ Consequently, the function-based architecture was chosen.
     \midrule
     \textit{Size, Offset, SeaLevel}          & $\rightarrow$ & \textbf{TerrainGenerator}    & $\rightarrow$ & \textit{Terrain}        \\
     \textit{Terrain, PopulationAmplifier[]}  & $\rightarrow$ & \textbf{PopulationGenerator} & $\rightarrow$ & \textit{PopulationMap}  \\
-    \textit{Terrain, PopulationMap}          & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{RoadNetwork}    \\
+    \textit{Terrain, PopulationMap, Markers}          & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{RoadNetwork}    \\
     \textit{RoadNetwork, PopulationMap}      & $\rightarrow$ & \textbf{BlockGenerator}      & $\rightarrow$ & \textit{Block[]}        \\
     \textit{Block, PopulationMap}            & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot[]}         \\
     \textit{Plot, Terrain, Population}       & $\rightarrow$ & \textbf{BuildingGenerator}   & $\rightarrow$ & \textit{Building}       \\
@@ -65,7 +65,6 @@ An overview of the eight generators that were decided upon is shown in Table \re
 \input{tex/methods/problem/terrain.tex}
 \input{tex/methods/problem/population.tex}
 \input{tex/methods/problem/roads.tex}
-\input{tex/methods/problem/streets.tex}
 \input{tex/methods/problem/blocks.tex}
 \input{tex/methods/problem/plots.tex}
 \input{tex/methods/problem/buildings.tex}
