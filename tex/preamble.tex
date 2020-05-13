@@ -37,11 +37,12 @@
 \usepackage{systeme}
 \usepackage{bm}
 \usepackage{multicol}
+\usepackage[ruled,vlined]{algorithm2e}
 \usepackage{float}
 \usepackage{siunitx}
 \usepackage[super]{nth}
 \usepackage{xfrac}
-\usepackage[style=ieee]{biblatex}
+\usepackage[style=ieee,dashed=false]{biblatex}
 \usepackage{babel}
 \usepackage{cleveref}
 \addbibresource{refs.bib}
@@ -99,3 +100,28 @@
 
 \newcommand{\citetodo}[1][]{\textsuperscript{\color{red} [CITATION~NEEDED]}}
 \newcommand\todo[1]{\textbf{\textcolor{red}{#1}}}
+
+\definecolor{bluekeywords}{rgb}{0,0,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.64,0.08,0.08}
+\definecolor{xmlcomments}{rgb}{0.5,0.5,0.5}
+\definecolor{types}{rgb}{0.17,0.57,0.68}
+
+\usepackage{listings}
+\lstset{language=[Sharp]C,
+captionpos=b,
+%numbers=left, %Nummerierung
+%numberstyle=\tiny, % kleine Zeilennummern
+frame=lines, % Oberhalb und unterhalb des Listings ist eine Linie
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+morekeywords={partial, var, get, set},
+keywordstyle=\color{bluekeywords},
+stringstyle=\color{redstrings},
+basicstyle=\ttfamily\small,
+}

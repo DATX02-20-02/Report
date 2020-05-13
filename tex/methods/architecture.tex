@@ -48,9 +48,9 @@ Consequently, the function-based architecture was chosen.
     \textit{Terrain, PopulationMap}          & $\rightarrow$ & \textbf{RoadGenerator}       & $\rightarrow$ & \textit{RoadNetwork}    \\
     \textit{RoadNetwork, PopulationMap}      & $\rightarrow$ & \textbf{BlockGenerator}      & $\rightarrow$ & \textit{Block[]}        \\
     \textit{Block, PopulationMap}            & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot[]}         \\
-    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{BuildingGenerator}   & $\rightarrow$ & \textit{Building}       \\
+    \textit{Plot, Terrain, Population}       & $\rightarrow$ & \textbf{BuildingGenerator}   & $\rightarrow$ & \textit{Building}       \\
     \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkGenerator}       & $\rightarrow$ & \textit{Park}           \\
-    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkingGeneartor}    & $\rightarrow$ & \textit{ParkingLot}     \\
+    \textit{Plot, Terrain}                   & $\rightarrow$ & \textbf{ParkingGenerator}    & $\rightarrow$ & \textit{ParkingLot}     \\
     \bottomrule
   \end{tabular}
 
