@@ -32,8 +32,8 @@ Which strategy to use depends entirely on the goal of the generation, but the fo
 As such, this project only includes Paris and Manhattan strategies, with the generation of main roads depending on the city strategy in order to achieve the aesthetics of the specific city type.
 Paris-like cities have distinct rings within the city boundaries, while Manhattan-like cities follow a much more grid-like structure.
 
-Furthermore, Agents may switch strategy mid-generation, be it randomly, or depending on some variables that the Agent has access to.
-For example, if an Agent detected a relatively low population density, it might decide to switch to a village-type strategy that could produce smaller villages with a different layout than cities like Paris or Manhattan.
+Furthermore, strategies may instruct the Agent to switch strategy mid-generation, be it randomly, or depending on some variables that the strategy has access to.
+For example, if a strategy detected a relatively low population density, it might instruct the Agent to switch to a village-type strategy that could produce smaller villages with a different layout than cities like Paris or Manhattan.
 
 Strategies can also define the configuration of the Agent, such as step size, how many steps an Agent can take before terminating (step count), and how many times an Agent can branch.
 The strategy that the Agent uses is responsible for deciding when an Agent should terminate, except for step count which is handled automatically for all strategies.
