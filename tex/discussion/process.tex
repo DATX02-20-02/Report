@@ -1,4 +1,4 @@
-\section{Process and Workflow}
+\section{Performance}
 
 One main takeaway from this project was that even though we believed our defined scope was reasonable, we did not take into account how much time one could spend attempting to perfect the parts that were already working.
 An area where this became particularly clear was performance.
@@ -8,33 +8,42 @@ The three main parts of the project where we observed that we could increase per
 \begin{easylist}
   @ Compressing textures.
   @ Decreasing the triangle-count of objects.
-  @ Using LOD.
+  @ Using Level of Detail (LOD).
   @ Combining meshes. 
  \end{easylist}
  
-The first part of the list was simple to tackle and did not require any additional code to be written, we simply had to alter the resolution at which our textures were imported.
-This came from us noticing that the textures were being imported at a very high quality, we could reduce this and still reach almost indistinguishable results visually, and reduce the amount of memory being used drastically. 
+The first part was simple to tackle and did not require any additional code to be written, we simply altered the resolution at which our textures were being compressed.
+This came from us noticing that the textures were being rendered at a very high quality.
+We could reduce this and still reach almost indistinguishable results visually while reducing the amount of memory being used drastically. 
 
-The second problem was revealed by the fact that after generating buildings frame rate suddenly became a major concern. 
-After inspecting this issue we found that the buildings were being composed of a lot more triangles then they needed and this was fixed by simply the reducing the triangle count. 
+The second part was identified by the fact that after generating buildings frame rate suddenly became a major concern. 
+After inspecting this issue we found that the buildings were being composed of a lot more triangles than necessary and this was fixed by simply reducing the triangle count. 
 
 % maybe move LOD to road-mesh methods
 The third improvement of performance was using LOD.
 LOD works by decreasing the visual quality of an object based on some function of the camera distance to that object.
-Typically, different distance intervals are configured to corresponding to different quality meshes.
+Typically, different distance intervals are configured to correspond to meshes with of different quality.
 The further away the camera is the lower the quality of the mesh becomes as to improve the efficiency of rendering without a noticeable difference to the user.
-In CityCraft, this technique was used extensively for the roads, intersections and buildings and resulted in significantly improved the performance.
+In CityCraft, this technique was used extensively which significantly improved the performance.
 
 The fourth and final major adjustment made for increasing performance was to combine some of our generated meshes. 
 Combining meshes for the building generator, when using the L-system strategy, was crucial for lowering memory usage. 
-The first version had a mesh for each wall segment, and each wall segment had its material with an accompanying texture. 
-The consequence was memory usage peaking over 10GB with a medium-large city. 
-There was also the issue with each wall segment was their object spawned into the world.
-This object, called GameObject in Unity, has its render, which also meant an increase in the number of batches needed.
+The first version had a mesh for each wall segment, and each wall segment had a material with an accompanying texture. 
+This lead to memory usage peaking over 10GB with a medium-large city. 
 Combining the wall segments into one building meant a drastic change in memory usage. 
-Only one of each unique material that represented the different wall segments was loaded in Unity.   
 
-Something that could have been utilized more efficiently had we perhaps chosen a more collaborative style when developing our generators rather than dividing them among us, would be re-using already implemented code. 
+
+
+\section{Process and Workflow}
+When dividing up the workload between group members, each generator described in Chapter~\ref{sec:city-gen-arch} facilitated a natural division of work since a exchange of data between the generators had been established early on.
+This way of splitting up the workload between generators proved both beneficial and disadvantageous in some regard.
+
+For one, each group member could initially regard the assigned generator as a simple, confined task that could be developed in isolation.
+This allowed group members to implement different parts of the software simultaneously without any major conflicts or bottlenecks.
+For example, the first iteration of the road generator only considered a flat terrain seeing that the terrain generator was not fully implemented yet.
+
+On the other hand this workflow implied only one or two group members had a good understanding of how a particular system was implemented.
+Therefore re-using already implemented code could have been more efficiently utilized had we chosen a more collaborative style when developing our generators rather than dividing them among us.
 This became blatantly obvious when working on the path for the parks.
 At one part of the project, code was being written for generating meshes for the park paths, while code for doing this had already been written and was being used in the road generation. 
 Another problem that arose from this was that the parking lot generator would have probably had to be developed more in collaboration with the road generator in order to find a way to ensure that roads always have an entry to the parking lots.
