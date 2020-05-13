@@ -19,16 +19,26 @@ This generator in particular is responsible for filling roughly ten percent of t
 One approach considered for the generation of parking lots was to simply cover areas with textures.
 This would have been a straightforward option to implement, but it was found that it offers little alternatives for modification.
 For example, the shape of the entire parking lot as well as the size of the individual parking spaces would be difficult to adjust afterwards using this approach.
+Furthermore, using a mesh with one texture applied to it would remove the possibility of scaling the size of the parking spaces within the mesh without scaling the mesh itself.
 As every other generator provides fully scalable content, it would be inconvenient for the ParkingGenerator to be any different.
-Furthermore, using a mesh with one texture applied to it would remove the possibility of scaling the size of the parking spaces within the mesh without scaling the mesh itself, which was not an option.
 
 Another approach was to generate each line in the parking area individually. 
 This was the initial approach that was used in the application, but was changed due to performance concerns when dealing with massive amounts of line objects.
 
 The final approach was a combination of these two methods.
-The first step of this approach is to fill the plot with asphalt, but this is not an easy task as the mesh that is projected has to be perfectly aligned with the terrain mesh.
-This was solved by writing an algorithm that essentially cut out a portion of the terrain in the shape of the plot, and then slightly offset it upwards.
-With this method, the mesh would never clip with the terrain. 
+The first step of this approach is to fill the plot with asphalt, but this is not an easy task.
+This could be achieved by projecting an asphalt mesh onto the plot, however this mesh would need to be perfectly aligned with the terrain mesh.
+This was solved by writing an algorithm that essentially cut out a portion of the terrain mesh in the shape of the plot then slightly offsetting it upwards to avoid overlapping triangles with the terrain. (See Figure~\ref{fig:methods_parking_terrain_projector}).
+With this method, the mesh would never clip with the terrain.
+
+\begin{figure}[H]
+  \centering
+
+  \includegraphics[width=0.8\textwidth]{figure/terrain_projector.png}
+  \caption{Mesh projected onto the terrain.}
+
+  \label{fig:methods_parking_terrain_projector}
+\end{figure}
 
 Subsequently, a function for approximating the largest rectangle inside a polygon is used to find a suitable rectangle to generate parking lots in.
 Based on the size of this rectangle, the algorithm generates as many rows of parking lots as it can fit.
