@@ -40,8 +40,9 @@ With this method, the mesh would never clip with the terrain.
   \label{fig:methods_parking_terrain_projector}
 \end{figure}
 
-To place a parking lot, a function to approximate the largest rectangle inside a polygon is used to find a suitable rectangle to generate parking lots in.
-Based on the size of this rectangle, the algorithm generates as many rows of parking lots as it can fit.
+The second step is to place parking lots in suitable locations within the plot.
+This was done using a function to approximate the largest rectangle inside a polygon which finds a suitable rectangle to generate parking lots in.
+Based on the size of the approximated rectangle, the algorithm generates as many rows of parking lots as it can fit.
 Each row contains a quad that is projected onto the terrain with a transparent texture where only the white parking lot lines are opaque.
 By modifying the UV coordinates of the quad, the texture can be repeated and scaled to any desired size. 
 The plot is also given a margin around it to make sure there is enough space around the parking lots for cars to get in and out of the parking area.
