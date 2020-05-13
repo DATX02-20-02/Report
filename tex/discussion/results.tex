@@ -3,11 +3,11 @@
 As described in~\ref{section:goal_and_scope}, the quality of the generated city is difficult to measure objectively.
 
 % Do models correctly integrate with third-party software such as Blender \cite{blender}?
-\textbf{Q1}: \newline
+\textbf{Q1}:
 The generated models imports correctly into Blender~\cite{blender}.
-Integration with other third-party tools however, would have to be tested more thoroughly as Blender was the main tool used for ensuring exported models could be imported correctly to an external tool. 
+Integration with other third-party tools however, would have to be tested more thoroughly as Blender was the main tool used for testing exported models could be imported correctly to an external tool. 
 
-Although, the 3D models are imported correctly in terms of the model data there exists some unintended visual differences.
+Although the 3D models are imported correctly in terms of their model data there exists some unintended visual differences.
 These differences are however, a consequence of the different rendering pipelines between Unity and any other third-party tool.
 Figure~\ref{fig:blender_shading_result} showcases these visual differences.
 
@@ -15,18 +15,27 @@ Figure~\ref{fig:blender_shading_result} showcases these visual differences.
 \begin{figure}[h!]
   \centering
   % \includegraphics[width=0.6\textwidth]{figure/blender_shading_result.jpg}
-  \caption{Visual differences between the generated Unity model.}
+  \caption{Visual differences between Unity and Blender of a generated city.}
   \label{fig:blender_shading_result}
 \end{figure}
 
+Importing a generated city into Blender also takes a substantial amount of time in comparison to when exporting the files from within CityCraft.
+The cause for this is unknown it might be that.
+
+In conclusion, the integration with third-party software such as Blender works albeit with some frustration.
 
 % How well is the codebase structured for replacement and expansion of features?
-\textbf{Q2}: \newline
+\textbf{Q2}:
+Another aspect that was considered was how well the codebase structured for replacement and expansion of new features.
 As the generation is divided into a number of sub-generators it would be easy to add more generators on to the total generation.
 Furthermore, the generators themselves are structured in a way that adding more content to them, or modifying them should be a simple adaptation to make. 
 
+Implementing more complicated features that has to alter previously generated content are however one limiting factor.
+For example, a feature that was of interest was to create road entrances that lead into parking lots.
+This feature was however difficult to implement as accessing and creating a junction in the previously generated road network might alter some intermediate generation steps and break the function-based architecture.
+
 % How much notable variety is there in the generated content?
-\textbf{Q3}: \newline
+\textbf{Q3}:
 When discussing the variety of the generated cities the group distinguished between the overarching structural variety and the variety in textures and shapes of the content.
 In terms of the topological structure or layout of the generated cities the group is content with the variety offered.
 Each city has a unique look and vary in their size and layout in a way that the group considers realistic enough.
@@ -46,10 +55,11 @@ This variety is showcased in Figure~\ref{fig:discussion_city_layout_variety}.
 \end{figure}
 
 The variety in textures and shape variety of skyscrapers, buildings and roads are however limited.
-Roads for example, always have the same appearance in terms of their shape and texture.
+Roads for example, always have the same appearance in terms of their cross-section and texture.
+
 
 % How much control do the users have over the generation?
-\textbf{Q4}: \newline
+\textbf{Q4}:
 % TODO(anton): find other description than seed-based
 The degree of control offered to the user is, with a few exceptions, at the level of supplying static settings to each subgenerator.
 The exception to this is that the user can dynamically place individual cities and re-generate the content for each subgenerator.
@@ -59,22 +69,27 @@ Since the goal was for CityCraft to be a rough tool for generating cities that d
 
 Diving into the controls available to the users.
 The user has some varying level of control over the generation at different stages of the generation pipeline.
-Terrain generation offers the most options available while the city generator offers no parameters to the user. 
+Terrain generation offers the most options while the city subgenerator offers no parameters to the user. 
 
 Marking the territory on which the user wants to place a city is not entirely accurate when making the marked area very small. 
 On the bright side the user has the ability to undo the work of a generator if that has left him unpleased, an area of improvement here would have been to allow the user to mark a territory of the world after generation is done and be able to re-generate that section.
 This however was deemed quite time-demanding and will be left as an area of future work. 
 
 % Are the cities suitable for use in digital media such as games and film?
-\textbf{Q5}: \newline
-
+\textbf{Q5}:
+The cities generated by CityCraft are by no means mature enough for use in any production quality digital media.
+Some limiting factors for this assessment include the texture quality and unrealistic gaps between the roads and surrounding buildings, parks and parking lots.
+Although, the cities generated might find its use cases as a city template that designers would have to refine by hand.
 
 % Are users without technical expertise able to correctly use the application?
-\textbf{Q6}: \newline
-However, the user interface could be improved to provide better feedback to the user.
+\textbf{Q6}:
+When evaluating whether a user without any technical expertise would be able to correctly use the application the group concluded that that is the case.
+This was concluded with the reasoning that all implementation details are irrelevant to the user.
+Admittedly, the application has not undergone any form of user testing to verify this but since all technical 
+The user interface could be improved to provide better feedback to the user.
 
 % Are there any known visual artifacts in the models?
-\textbf{Q7}: \newline
+\textbf{Q7}:
 % TODO(anton): These are not artifacts as they are intended 
 % One visual artifact we are aware of would be that buildings as well as parking lots are generated right on top of the terrain.
 % The larger flaw resulting from this would be that it would seem impossible for theoretical cars to reach the generated parking lots, without driving on top of the grass that is.
@@ -83,17 +98,17 @@ However, the user interface could be improved to provide better feedback to the 
 % The other approach that was considered was somehow creating road from the road network to the parking lot, this however was deemed to be very difficult due to the design of the road network. 
 
 % Are there any known bugs or crashes in the application?
-\textbf{Q8}: \newline
+\textbf{Q8}:
 There exists some infrequent bugs and crashes that are possible to achieve when using CityCraft.
 Here, we will cover some of the most critical bugs of the application.
 
 % Placement of cities crash
 One known issue is that the placement of cities, under some unknown condition, freezes the application.
-This rarely happens but is considered the most critical issue observed as it completely obstructs the user from using the application.
+This rarely happens but is considered the most critical issue as it completely obstructs the user from using the application.
 
 % Road Walls
 Another bug possible is that the mesh generated for road intersections can become huge and cover half the world.
-The cause for this is known, however due to the time limit hasn't been address.
+The cause for this is known, however due to the time limit hasn't been address properly.
 % TODO: add figure?
 
 
