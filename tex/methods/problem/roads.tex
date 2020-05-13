@@ -77,7 +77,7 @@ A similar, but more basic approach, was applied to the Manhattan strategy, but i
 While strategies handle how the Agent move, they do not decide how the roads should be placed.
 When an Agent decides to place a road, it will attempt to find nodes in the nearby area to snap to.
 If no such nodes are found, it will create a road between its previous position and its new position, and any roads that exist on the path in-between will be combined into an intersection.
-Figure~\ref{fig:road_connection_cases} demonstrates the intersection created after an Agent attempts to cross another road, as well as an optimization technique making use of an R-Tree data structure \citetodo{}.
+Figure~\ref{fig:road_connection_cases} demonstrates the intersection created after an Agent attempts to cross another road, as well as an optimization technique making use of an R-Tree data structure \cite{wiki:R-tree}.
 
 The R-Tree is necessary to quickly search for intersecting roads by avoiding to iterate over all nodes in the road network, or else the performance would result in an unusable application.
 Each node is placed in the R-Tree with a bounding box that encapsulates each connecting node.
@@ -96,7 +96,7 @@ The algorithm tests for four different cases, visualized in Figure~\ref{fig:road
 \end{figure}
 
 % Move below? The caseenum should probably directly below the figure.
-The solutions to the first three cases are similar to those found in CityGen \citetodo{}, but these were not enough as it often happened that nodes still appeared close to roads without creating an intersection. % TODO: REFERENCE
+The solutions to the first three cases are similar to those found in the description of the snapping algorithm in the CityGen paper\cite{citygen_paper}, but these were not enough as it often happened that nodes still appeared close to roads without creating an intersection. % TODO: REFERENCE
 To combat this, the solution in the fourth case was added.
 
 \begin{CaseEnum}
