@@ -96,7 +96,7 @@ The algorithm tests for four different cases, visualized in Figure~\ref{fig:road
 \end{figure}
 
 % Move below? The caseenum should probably directly below the figure.
-The solutions to the first three cases are similar to those found in the description of the snapping algorithm in the CityGen paper\cite{citygen_paper}, but these were not enough as it often happened that nodes still appeared close to roads without creating an intersection. % TODO: REFERENCE
+The solutions to the first three cases are similar to those found in the description of the snapping algorithm in the CityGen paper \cite[p. 6]{citygen_paper}, but these were not enough as it often happened that nodes still appeared close to roads without creating an intersection.
 To combat this, the solution in the fourth case was added.
 
 \begin{CaseEnum}
@@ -105,8 +105,8 @@ To combat this, the solution in the fourth case was added.
   If a node is found, a connection between the previous node and that node will be made, making sure to re-run the algorithm in case paths are blocking.
 
   \item When there is a road between the origin node and the destination node, a new node will be created, splitting the road where the intersection point is.
-  The destination node is then discarded, but note that in Figure~\ref{fig:road_intersection}, the destination node was \textbf{not} discarded.
-  In this project, however, the Agent will always stop at the intersection point rather than walk past it.
+  The destination node is then discarded, and the connection will be made from the origin node to the new node that was created.
+  Agents will always stop at the intersection point instead of where it attempted to place the destination node.
 
   \item There are cases where an Agent lands just slightly before another road, but not near enough any other nodes.
   In these cases, the best approach is attempting to extend the node forward a certain distance (the snapping distance), and check if any other roads are intersecting.
