@@ -1,9 +1,28 @@
 \section{Related Works}
 
-% Background to explain context and significance of the question we are addressing.
+Generation of cities has been an active area of research for almost 20 years by now, with the \textit{Procedural Modeling of Cities} paper by Müller et al. being the pioneer \cite{muller_city_gen}.
+This paper outlines the \textit{CityEngine} system, which makes heavy use of L-systems (explained in Chapter \ref{chap:lsystem}) to generate Manhattan-style cities from various image maps as input.
+The system produces impressive results, and the paper itself proposes many interesting ideas that extend beyond L-systems.
+\textit{CityEngine} later evolved into a commercial application \cite{esri}, demonstrating the real-life potential of this type of software.
+Unfortunately, \textit{CityEngine} is quite expensive and remains closed-source.
+Nonetheless, the original paper has been a major inspiration for our work.
 
-% A lot of stuff
-% http://vterrain.org/Culture/BldCity/Proc/
-% CityGen
-% Introversion
-% Papers
+Kelly and McCabe have also made significant contributions to this field with the development of \textit{Citygen} \cite{citygen_paper}, and the conduction of a prestudy \cite{citygen_paper_prestudy} summarizing common city generation techniques. 
+\textit{Citygen} is an interactive system where users model cities in real-time, being heavily assisted and accelerated with the use of PCG techniques.
+The paper emphasizes road generation and lot subdivision, detailing several intriguing concepts such as road graph hierarchy, snap algorithms for road segments, and strategies for building roads between significant elevation differences.
+
+A tendency found amongst early work on road generation is that L-systems have frequently been used.
+Another common approach has been agent-based generation \cite{agent_based_roads}, especially in more recent work \cite{tmwhere} \cite{robin}.
+Recently, there have also been some experimentation done using the WaveFunctionCollapse (WFC) algorithm \cite{wavefunc} to generate roads \cite{wavefunc_roads}.
+However, it remains difficult to determine WFC's potential compared to previous approaches as more research needs to be done \cite[p.50]{wavefunc_roads}.
+
+Outside of academia, there has also been promising work done related to city generation.
+A decade-old tech demo from \textit{Introversion Software} shows a promising generation of the outline of a city, complete with a graphical interface \cite{subversion}.
+The \textit{SceneCity} plugin for Blender \cite{blender} is able to produce highly detailed buildings connected by grid-based roads \cite{scenecity}.
+Impressive PCG cities can also be found in modern games such as \textit{Marvel's Spider-Man} \cite{pcg_spiderman} and \textit{The Sinking City} \cite{pcg_sunken_city}.
+
+Unfortunately, most progress towards city generation so far remains closed-source and behind paywalls.
+Exceptions exist but tend to be deprecated or incomplete solutions.
+Our contribution aims to deviate from this by being open-source, free, and able to generate cities complete with terrain, roads, and buildings.
+With this, we believe that the progress of city generation will be more accessible to industry and academia alike.
+Accordingly, ideas presented in previous work will be combined in various ways to produce a complete, standalone city generation software.
