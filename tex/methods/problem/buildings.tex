@@ -26,7 +26,7 @@ The L-systems were implemented with type parameters to be able to handle the gen
 The two types of parameters are the object type in the L-system and the data class that is used for the generation.
 An example of the code to generate wall segments can be found in Figure \ref{fig:lsystem-example}. 
 A building generated via L-systems has some generated floors, where each floor has walls and is built with multiple smaller textured wall segments. 
-These wall segments can, for example, be windows, shop windows, and doors.
+These wall segments include windows, shop windows, and doors.
 
 As an example, the steps for generating a Manhattan-style skyscraper are as follows:
 \begin{enumerate}
@@ -96,5 +96,5 @@ This strategy, although quite simple, provided useful variation for windows, whi
         .OnAccepted(value => new ManhattanSegmentsGeneratorData(value.widthLeft - wallWidth));
   \end{lstlisting}
   \label{fig:lsystem-example}
-  \caption{Example of wall segment generation via L-System in code. Notice how, for example, when the wall segment type is Wall, then there is a 50/50 chance of the next segment being a Wall or a Window.}
+  \caption{Example of wall segment generation via L-System in code. Notice how the \textit{Wall} segment types have a 50\% chance of the next segment being another \textit{Wall}, or a \textit{Window}.}
 \end{figure}
