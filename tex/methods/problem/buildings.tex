@@ -96,5 +96,5 @@ This strategy, although quite simple, provided useful variation for windows, whi
         .OnAccepted(value => new ManhattanSegmentsGeneratorData(value.widthLeft - wallWidth));
   \end{lstlisting}
   \label{fig:lsystem-example}
-  \caption{Example of wall segment generation via L-System in code. Notice how, for example, when the wall segment type is Wall, then there is a 50/50 chance of the next segment being a Wall or a Window.}
+  \caption{Example of wall segment generation via L-System in code. Notice how the \textit{Wall} segment types have a 50\% chance of the next segment being another \textit{Wall}, or a \textit{Window}.}
 \end{figure}
