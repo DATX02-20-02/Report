@@ -1,7 +1,7 @@
 \subsection{Road Generation}
 
 After the city markers are specified and the population density map has been created, it is time to generate the road network.
-Using the marker, the road generator creates workers called Agents in the area specified by the markers and assigns them strategies depending on city type for that marker.
+Using the markers, the road generator creates workers called Agents in the area specified by the markers and assigns them strategies depending on the corresponding city type.
 The purpose of the strategies is solely to give Agents instructions for movement and termination.
 Strategies take a few different variables into account when it decides these actions, for example the amount of steps an Agent has taken so far, the population density or if the Agent landed on an existing road.
 The application has Agent strategies for Paris and Manhattan cities, and an example of these are shown in Figure~\ref{fig:results_city_paris} and Figure~\ref{fig:results_city_manhattan}.
