@@ -1,20 +1,31 @@
 \section{Plot Generation}
 Each block that is sent into the PlotGenerator is treated differently depending on what the block label is. 
-There are four different block labels: 
+If the block label is either \textit{Parks} or \textit{Parking}, then the PlotGenerator does not split the block. 
+The entire block is turned into a plot and is sent to ParkGenerator or ParkingGenerator respecitvely.
+The rest of the block labels are split into n parts, where n depends on the area of the block and some randomness. 
 
-\begin{itemize}
-    \item[\textit{Empty: }] Block is converted into one plot with the label \textit{Empty}.
-    \item[\textit{Building: }] Block is split into 1-2 plots with the label \textit{Manhattan}. The generated plots have the same area. An example can be seen in Figure \ref{fig:plot_split}. %Right now in master it's either skyscraper or Apartments, but in L-system-buildings it's only Manhattan. I'm going to write that's only manhattan-style buildings 
-    \item[\textit{Park}/\textit{Parking: }] Block is converted into one plot with the label \textit{Park} or \textit{Parking} respectively.  
-\end{itemize}
+In Figure \ref{fig:plot} and \ref{fig:plot2} are examples of the output for the PlotGenerator.
 
-\begin{figure}[h!]
-    \centering
-  
-    \includegraphics[width=0.8\textwidth]{figure/PlotSplit.png}
-    \caption{Example of PlotGenerator splitting blocks with label \textit{Building}.}
-  
-    \label{fig:plot_split}
-  \end{figure}
-  
-With the different plot labels, if not \textit{Empty}, respective generator are used to fill these plot of lands with content. 
+\begin{figure}[H]
+  \centering
+
+  \includegraphics[width=0.8\textwidth]{figure/plot2.png}
+  \caption{Closeup of plot splitting.}
+
+  \label{fig:plot2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+
+  \includegraphics[width=0.8\textwidth]{figure/plot.png}
+  \caption{Plot splitting for a city.}
+
+  \label{fig:plot}
+\end{figure}
+
+Each plot is assigned a plot label, used to find the correct content generator.
+The plot labels are \textit{Manhattan}, \textit{Skyscraper}, \textit{Park}, \textit{Parking}, and \textit{Empty}.
+\textit{Manhattan} and \textit{Skyscraper} are two different sub-generators for BuildingGenerator. 
+\textit{Park} and \textit{Parking} has ParkGenerator and ParkingGenerator respecitvely.
+If the plot label is \textit{Empty}, then no content is generated upon the plot. 
