@@ -1,28 +1,17 @@
 \section{Future Work}
-The areas which was concluded by the group to be of interest when conducting future work was slightly mentioned in the results chapter, however here they are discussed more in depth.
+This subchapter highlights the possibilities of expanding CityCraft, mainly focusing on different ways to evolve the application beyond what we had time to develop.
+An obvious way to further develop CityCraft would be to simply add more stuff onto the generators, such as additional road networks strategies, buildings types, and objects inside parks.
+This would not only be a good way to stress the system, but would also make the generated cities further resemble reality.
+ 
+As terrain was never a core focus of CityCraft, it would be fitting to give the user the option of providing the terrain themself, rather than generating it. 
+The user could also be given the ability to either freely draw the population map, or to provide a heat map by importing an image. 
+The road generation could also be expanded to include road markings, road signs, and possibly bridges, in order to further mimic the real world.
+  
+One way to further develop the building generation would be to simply include a larger set of textures, or to algorithmically generate textures in order to further increase visual variety.
+Another area of interest is to generate the interiors of buildings as well as adding public transport infrastructure.
+As for the parks, the generation of paths was implemented in a way that did not consider concave polygons, the two approaches for solving this which we considered were either altering the algorithm for paths, or alternatively, altering the way we divide plots.
 
-The generation of the terrain could be further developed to include such features as rivers flowing from mountain tops and also having more climates than the ones we stuck with.
-This could include such things as massive forests, saharan-like deserts or snow-covered landscapes.
-The terrain is currently also not very detailed, which is definitely something that could be worked on. 
-As for now, a population map is generated and the user can control its parameters, however the user has no control of its placement. 
-Adding the option for the user to mark the population map similarly to how the cities are marked would be a possible feature to enhance the users control. 
-
-The generation of the road network could in practice be worked on infinitely.
-By constantly developing new strategies and refining the way the agents work, one could end up generating strategies for each city known to man.
-However, a more sensible way to address further working on the road network would be to simply add a couple more strategies, after investigating what more common road networks look like in the real world.
-The road network could also be expanded to include road markings, and road signs, and possibly bridges, in order to further mimic the real world.  
-
-Generating buildings is also a task of seemingly endless variety. 
-The future work most likely to be adapted here would be to include a larger set of textures, or to algorithmically generate textures in order to further increase the variety of building's appearance while not limiting them to the placement of said textures.
-Another area which would be interesting to pursue would be to generate the interiors of the buildings. 
-One could also intend to add structures such as airports, churches, police stations, and many many more. 
-
-The park generation could mainly benefit from adding more objects, and finding suitable ways to fit them in the world.
-Some such objects were touched on in the method chapter for this generator, but a lot more could be added.
-Changes could also be done in size, as well as shape in order to achieve more varying looks. 
-One could give some cities each a probability of generating something similar to Hyde Park (London) or Central Park (NYC) which would likely produce some very interesting results.
-The path generator was implemented in a way that did not consider concave polygons, this could be solved in a variety of ways by either altering the algorithm for paths, or alternatively, altering the way we divide plots to avoid this entirely. 
-
-The parking lot generation could simply be extended by adding more shapes than the rectangular ones used in this project.
-
-
+However, the primary goal of future work should be to validate the theoretical system that CityCraft implements.
+This could be done by comparing the algorithms and architecture proposed in this report with other approaches.
+For instance, Voronoi Diagrams, WaveFunctionCollapse, and Machine Learning are all potential options for such comparisons.
+By doing this, one could better identify the possible strengths and weaknesses with our proposed system.
