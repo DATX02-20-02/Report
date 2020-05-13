@@ -26,6 +26,14 @@ The further away the camera is the lower the quality of the mesh becomes as to i
 In CityCraft, this technique was used extensively for the roads, intersections and buildings and resulted in significantly improved the performance.
 
 The fourth and final major adjustment made for increasing performance was to combine some of our generated meshes. 
+Combining meshes for the building generator, when using the L-system strategy, was crucial for lowering memory usage. 
+The first version had a mesh for each wall segment, and each wall segment had its material with an accompanying texture. 
+The consequence was memory usage peaking over 10GB with a medium-large city. 
+There was also the issue with each wall segment was their object spawned into the world.
+This object, called GameObject in Unity, has its render, which also meant an increase in the number of batches needed.
+Combining the wall segments into one building meant a drastic change in memory usage. 
+Only one of each unique material that represented the different wall segments was loaded in Unity.   
+
 % THEO HELP 
 
 Something that could have been utilized more efficiently had we perhaps chosen a more collaborative style when developing our generators rather than dividing them among us, would be re-using already implemented code. 
