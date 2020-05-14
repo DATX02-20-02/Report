@@ -24,7 +24,7 @@ The plot label largely determined the sub-generator chosen for a specific plot.
 There two strategies used for generating buildings, the first of which used stochastic L-systems to generate diverse buildings.
 The L-systems were implemented with type parameters to be able to handle the generation of many objects e.g. walls and floors.
 The two types of parameters are the object type in the L-system and the data class that is used for the generation.
-An example of the code to generate wall segments can be found in Figure \ref{fig:lsystem-example}. 
+An example of the code to generate wall segments can be found in Figure \ref{fig:lsystem_example}.
 A building generated via L-systems has some generated floors, where each floor has walls and is built with multiple smaller textured wall segments. 
 These wall segments include windows, shop windows, and doors.
 
@@ -95,6 +95,6 @@ This strategy, although quite simple, provided useful variation for windows, whi
         .ShouldAccept(value => value.widthLeft >= wallWidth)
         .OnAccepted(value => new ManhattanSegmentsGeneratorData(value.widthLeft - wallWidth));
   \end{lstlisting}
-  \label{fig:lsystem-example}
   \caption{Example of wall segment generation via L-System in code. Notice how the \textit{Wall} segment types have a 50\% chance of the next segment being another \textit{Wall}, or a \textit{Window}.}
+  \label{fig:lsystem_example}
 \end{figure}
