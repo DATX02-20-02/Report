@@ -38,7 +38,8 @@ Furthermore, the generators themselves are structured in a way that adding more 
 
 Implementing more complicated features that has to alter previously generated content is however one limiting factor.
 For example, a feature that was of interest was to create road entrances that lead into parking lots.
-Accessing and creating a junction in the previously generated road network however, introduces new information that intermediate generation steps hasn't previously considered.
+Accessing and creating a junction in the previously generated road network introduces new data that intermediate generation steps has not previously considered.
+Because of this, any modification to a previous generation step would require re-generation of all intermediate steps, which is not an optimal solution.
 
 % How much notable variety is there in the generated content?
 \textbf{Q3}:
