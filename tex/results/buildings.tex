@@ -16,7 +16,7 @@ An example of a skyline shaped by these buildings is shown in Figure \ref{fig:sk
 \textit{Manhattan} buildings are generated with stochastic L-systems, providing versatility via modular floor- and wall-type L-systems.
 The final implementation had one floor-type and four wall-type generators, Figure \ref{fig:wall-segment-generator} shows examples of this in action.
 \textit{FirstFloor} is the first floor type for every building, its wall segment generator produces a combination of shop windows, walls, and doors.
-After the \textit{FirstFloor}, the floor-type generator repeats one of the following floor-type until the desired building height has been reached.
+After the \textit{FirstFloor}, the floor-type generator repeats one of the following floor-types until the desired building height has been reached.
 Note that each floor-type has its own wall segment generator that is run once per wall, and copied for each floor. 
 
 \begin{itemize}
