@@ -1,9 +1,9 @@
 \section{City Generation Architecture}
 \label{sec:city-gen-arch}
 
-In order to approach the problem of 3D city generation it was necessary to first break it down into manageable modules that could be worked on in parallel.
+To approach the problem of 3D city generation it was necessary to first break it down into manageable modules that could be worked on in parallel.
 One of these modules had to be responsible for the GUI presented in the previous subchapter.
-This module was named \textit{Application} and could be kept relatively small as most logic would be handled by the Unity engine.
+This module was named \textit{Application} and could be kept relatively small as the Unity engine would handle most logic.
 There also needed to exist some module responsible for the PCG, since that is the core of this research.
 This module was named the \textit{WorldGenerator}.
 WorldGenerator was then further split into eight submodules that would each be responsible for a distinct part of the model generation.
