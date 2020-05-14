@@ -22,6 +22,8 @@ First off, the resulting noise has a visually grid-like structure.
 This is often undesired in graphics since it creates arbitrary patterns in the noise.
 Moreover, neighboring lattice points sometimes greatly differ in values which can result in sudden changes in intensity.
 
+\newpage
+
 Gradient noise solves the major problems present in value noise by randomizing $n$-dimensional gradient vectors at each lattice point, instead of real numbers.
 This modification ensures that the interpolated values have smooth continuous gradients (i.e. partial derivatives) and not just smoothly interpolated values.
 

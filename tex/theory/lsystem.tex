@@ -23,8 +23,9 @@ For instance, $G(V, \omega, P) = (\{A, B\}, A, \{(A \to AB), (B \to A)\})$ would
   n &= 4: ABAABABA \\
   &\dots
 \end{align*}
+\vspace{-1.0cm}
 
-for the first 4 evaluation iterations. The symbols of the resulting string can then be interpreted as different actions.
+for the first four evaluation iterations. The symbols of the resulting string can then be interpreted as different actions.
 The above example could be used to build a corridor where A represents empty space and B represents a door.
 
 There is a special case of L-systems which is called \textit{Stochastic bracketed L-systems}.
@@ -33,8 +34,10 @@ Bracketed means that a stack structure is used where the '\textbf{[}' symbol pus
 
 By being able to return to a previous state, one can produce content with non-continuous generation.
 This is well expressed in the book \textit{Procedural Content Generation in Games}~\cite[p.77]{pcg_in_games}, where the authors describe the limitations of non-bracketed L-systems in the following way:
+
+\vspace{-0.5cm}
 \begin{center}
-“While interpreting L-system-generated strings as turtle instructions allow us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn 'without lifting the pencil'”. 
+\textbf{“}While interpreting L-system-generated strings as turtle instructions allow us to draw complex fractal shapes, we are fundamentally limited by the constraint that the figures must be drawable in one continuous line—the whole shape must be drawn 'without lifting the pencil'\textbf{”}. 
 \end{center}
 
 The ideas from L-systems can also be extended beyond strings, with some examples being Shape grammars \cite{shape_grammars} and Graph grammars \cite{graph_grammars}.
