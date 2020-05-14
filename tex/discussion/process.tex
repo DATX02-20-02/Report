@@ -2,7 +2,7 @@
 
 One main takeaway from this project was that even though we believed our defined scope was reasonable, we did not take into account how much time one could spend attempting to perfect the parts that were already working.
 An area where this became particularly clear was performance.
-Throughtout development, we would often find generators which produced visually sufficient content, but whose generation process was slow. 
+Throughout development, we would often find generators that produced visually sufficient content, but whose generation process was slow. 
 The three main parts of the project where we observed that we could increase performance were the following:
 
 \begin{easylist}
@@ -23,7 +23,7 @@ After inspecting this issue we found that the buildings were being composed of a
 % maybe move LOD to road-mesh methods
 The third improvement of performance was using LOD.
 LOD works by decreasing the visual quality of an object based on some function of the camera distance to that object.
-Typically, different distance intervals are configured to correspond to meshes with different quality.
+Typically, different distance intervals are configured to correspond to meshes of varying visual quality.
 The further away the camera is, the lower the quality of the mesh becomes as to improve the efficiency of rendering without a noticeable difference to the user.
 In CityCraft, this technique was used extensively which significantly improved the performance.
 
@@ -41,7 +41,7 @@ For one, each group member could initially regard the assigned generator as a si
 This allowed group members to implement different parts of the software simultaneously without any major conflicts or bottlenecks.
 For example, the first iteration of the road generator only considered a flat terrain seeing that the terrain generator was not fully implemented yet.
 
-The downside was that only one or two group members had a good understanding of how each particular subgenerator was implemented.
+The downside was that only one or two group members had a good understanding of how each particular sub-generator was implemented.
 Consequently, re-using already implemented code could have been more efficiently utilized had we chosen a more dynamic collaboration style.
 This became most obvious when working on the path for the parks.
 In one part of the project, code was being written for generating meshes for the park paths, while code for doing this had already been written and was being used in the road generation.

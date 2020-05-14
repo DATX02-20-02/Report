@@ -8,7 +8,7 @@ The application has Agent strategies for Paris and Manhattan cities, and an exam
 
 How the roads are created and connected is entirely up to the road network.
 It handles placing down road nodes and connecting them together, making sure that intersections are created where necessary.
-The Agents simply instruct the road network where it wants to place down roads, and the network handles the rest while also providing the Agent with information of how the road network was modified.
+The Agents instruct the road network where they want to place down roads, and the network handles the rest while also providing the Agent with information on how the road network was modified.
 Then, the strategies can use that information and react accordingly, for example to terminate the Agent.
 
 From Figure~\ref{fig:results_real_city_manhattan} we can clearly observe the distinct grid-like structure of the road network, which in turn was the goal for our Manhattan generation strategy.
@@ -66,14 +66,14 @@ In the generated city in Figure~\ref{fig:results_city_paris}, the structure does
 \end{figure}
 
 Both city types have streets branching out from their main roads, which in turn also branch out from themselves to form a grid-like street neighborhood.
-These streets are created using a street strategy which is shared between the strategies used for the two different city types, however it is possible to implement more complex street strategies for other types of cities.
+These streets are created using a street strategy that is shared between the strategies used for the two different city types, however it is possible to implement more complex street strategies for other types of cities.
 
-The base of the road generator and its strategies allows any kind of street pattern to be produced, given a suitable strategy is implemented.
+The base of the road generator and its strategies allows any street pattern to be produced, given a suitable strategy is implemented.
 In order to limit ourselves in this project, the street strategy was implemented to produce grid-like streets for all city types.
 However, the configuration of the general street strategy can be configured per city type, which gives a small level of tweaking so the streets could match the city type better.
 
 The generated cities are connected by the road network through what is called highways.
 Highways are created by the Agents through highway strategies when they have traveled far away from the designated city markers.
-The purpose of the highway strategy is simply to create longer roads with little change in direction.
+The purpose of the highway strategy is to create longer roads with little change in direction.
 It also aims to follow the population map density to some degree, especially navigating towards higher populated areas.
 This results in highways which typically connect cities together.

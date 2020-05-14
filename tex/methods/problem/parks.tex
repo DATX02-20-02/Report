@@ -40,7 +40,7 @@ It was considered important to be able to distinguish the park-objects based on 
 This is referred to as giving each object-type a radius relative to other object-types.
 A function was then constructed to search within the radius of each object and make sure no object could be created within another object's radius (see Figure~\ref{fig:radius}).
 This implementation is based on Poisson Disc Sampling \cite{poisson_fast} in a manner that it scatters points randomly across the plot, while maintaining a distance from each already created point.
-Here the object-radius is used in order to determine how closely objects may stack. 
+Here the object-radius is used to determine how close objects may be placed. 
 When the paths were implemented, a slight adjustment also had to be made to the algorithm for object placement, such that all objects took into consideration the coordinates of the path and were not placed on top of it.
 \begin{figure}[H]
   \centering
@@ -58,10 +58,10 @@ The first implementation of the algorithm created two random points within the p
 The program then traveled the park at random until it found a path to the goal, at which point it would find a new way back to the starting point. 
 It was however, quickly discovered that this approach had some problems.
  
-One of these problems were that the paths would look unnatural when taking steps far away from the goal. 
+One of these problems was that the paths would look unnatural when taking steps far away from the goal. 
 A solution to this was to revert the path to its previous node if it took a step which was further away from the goal than it had previously been, this was an instant improvement in appearance. 
 However, after observing many of the generated paths from this approach the paths still looked linear. 
-This was believed to be because simply going from one point to another and not straying off too much from the goal could not produce much more interesting results than that (see Figure~\ref{fig:linear}).
+This was believed to be because simply going from one point to another and not straying of too much from the goal could not produce much more interesting results than that (see Figure~\ref{fig:linear}).
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.85\linewidth]{figure/linear.png}
