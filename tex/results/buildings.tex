@@ -1,13 +1,12 @@
 \section{Building Generation}
 
-
 Building generation produces two different types of buildings: one for plots labeled \textit{Manhattan}, and one for those labeled \textit{Skyscraper}. 
 An example of a skyline shaped by these buildings is shown in Figure \ref{fig:skyline-result}.
 
 \begin{figure}[H]
   \centering
 
-  \includegraphics[width=0.7\textwidth]{figure/skyline.PNG}
+  \includegraphics[width=0.9\textwidth]{figure/skyline.PNG}
   \caption{Skyline of \textit{Manhattan} and \textit{Skyscraper} buildings together, taller buildings being the skyscrapers}
 
   \label{fig:skyline-result}
@@ -19,11 +18,11 @@ The final implementation had one floor-type and four wall-type generators, Figur
 After the \textit{FirstFloor}, the floor-type generator repeats one of the following floor-types until the desired building height has been reached.
 Note that each floor-type has its own wall segment generator that is run once per wall, and copied for each floor. 
 
-\begin{itemize}
-  \item \textit{NormalFloor} - generates wall and window segments, but it only generates half of the wall. For the other half, it copies the first half and reverses it. 
-  \item \textit{EveryOtherFloor} - alternates between wall and window segments.
-  \item \textit{RepeatWindowFloor} - only generates window segments.
-\end{itemize}
+\begin{easylist}
+  @ \textit{NormalFloor} - generates wall and window segments, but it only generates half of the wall. For the other half, it copies the first half and reverses it. 
+  @ \textit{EveryOtherFloor} - alternates between wall and window segments.
+  @ \textit{RepeatWindowFloor} - only generates window segments.
+\end{easylist}
 
 Each of these strategies also start and end with a corner segment. 
 
