@@ -22,7 +22,7 @@ This function uses the terrain to place down roads, the population map to determ
 Three approaches were considered when designing the road generator.
 The first was based on a recursive approach where the world was divided into cells with roads placed between the cells, forming a similar structure to Voronoi Diagrams.
 However, this type of algorithm did not provide realistic-looking results.
-Regardless of being flexible, it was overly complicated for the purpose of creating a realistic road networks.
+Regardless of being flexible, it was overly complicated for the purpose of creating realistic road networks.
 The second approach was search-based and would involve ML to produce structures based on data.
 However, proper data appeared difficult to gather and evaluation of candidate solutions would become highly challenging.
 
@@ -41,7 +41,7 @@ The strategy that the Agent uses is responsible for deciding when an Agent shoul
 
 The road generator uses the city markers as input to create the initial Agents that will start creating the road network.
 Each city type needs its own preset arguments for the Agents, and this was solved by assigning an Agent factory to each city type.
-The goal of the Agent factory is determining starting conditions for Agents depending on the city type.
+The goal of the Agent factory is determining starting conditions for Agents depending on city type.
 
 In Figure~\ref{fig:road_network_paris}, the road generator started by creating a ParisAgentFactory, which takes the city position and radius as input, and spawns multiple Agents depending on random variables within the bounds of the input.
 The Agents are given a Paris-like strategy, which instructs the Agents to generate rings around the city center as well as main roads extending outwards.
@@ -52,17 +52,17 @@ A similar, but more basic approach, was applied to the Manhattan strategy, but i
 \begin{figure}[H]
   \centering
   % Use two minipages to add padding for the figure and its caption
-  \begin{minipage}{.45\textwidth}
+  \begin{minipage}[b][][b]{.3825\textwidth}
     \centering
-    \begin{minipage}{.9\textwidth}
+    \begin{minipage}[b][][b]{.9\textwidth}
       \centering
       \includegraphics[width=\textwidth]{figure/road_network_paris.png}
       \caption{Example of the Paris road strategy.}
       \label{fig:road_network_paris}
     \end{minipage}
   \end{minipage}
-  \begin{minipage}{.45\textwidth}
-    \begin{minipage}{.9\textwidth}
+  \begin{minipage}[b][][b]{.5175\textwidth}
+    \begin{minipage}[b][][b]{.9\textwidth}
       \centering
       \centering
       \includegraphics[width=\textwidth]{figure/road_network_manhattan.png}
@@ -160,10 +160,6 @@ The aim was to produce highways that mimic the structure of highways in the real
 When the road generator is finished with the general layout of the city, the final step of generating the city roads is streets.
 This was accomplished using the same road generator and Agents, but with a different strategy, which also shows the level of flexibility of the Agent-based approach.
 The only difference is that these Agents start on any of the nodes in the road network and uses a street strategy, instead of starting as a city type strategy.
-
-The base of the road generator and its strategies allows any kind of street pattern to be produced, given a suitable strategy is implemented.
-In order to limit ourselves in this project, the street strategy was implemented to produce grid-like streets for all city types.
-However, the configuration of the general street strategy can be configured per city type, which gives a small level of tweaking so the streets could match the city type better.
 
 Furthermore, the street strategy (like other strategies) can watch the population map and react accordingly, either by changing direction or terminating the Agent.
 Since the streets is a major part of the overall shape of the city, by letting the street strategy watch the population map, it could directly shape the city on a more detailed level than the city strategies could.
