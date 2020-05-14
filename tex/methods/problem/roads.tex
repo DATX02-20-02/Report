@@ -22,7 +22,7 @@ This function uses the terrain to place down roads, the population map to determ
 Three approaches were considered when designing the road generator.
 The first was based on a recursive approach where the world was divided into cells with roads placed between the cells, forming a similar structure to Voronoi Diagrams.
 However, this type of algorithm did not provide realistic-looking results.
-Regardless of being flexible, it was overly complicated for the purpose of creating a realistic road networks.
+Regardless of being flexible, it was overly complicated for the purpose of creating realistic road networks.
 The second approach was search-based and would involve ML to produce structures based on data.
 However, proper data appeared difficult to gather and evaluation of candidate solutions would become highly challenging.
 
@@ -41,7 +41,7 @@ The strategy that the Agent uses is responsible for deciding when an Agent shoul
 
 The road generator uses the city markers as input to create the initial Agents that will start creating the road network.
 Each city type needs its own preset arguments for the Agents, and this was solved by assigning an Agent factory to each city type.
-The goal of the Agent factory is determining starting conditions for Agents depending on the city type.
+The goal of the Agent factory is determining starting conditions for Agents depending on city type.
 
 In Figure~\ref{fig:road_network_paris}, the road generator started by creating a ParisAgentFactory, which takes the city position and radius as input, and spawns multiple Agents depending on random variables within the bounds of the input.
 The Agents are given a Paris-like strategy, which instructs the Agents to generate rings around the city center as well as main roads extending outwards.
