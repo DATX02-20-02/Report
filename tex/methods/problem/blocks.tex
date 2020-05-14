@@ -19,12 +19,12 @@ The generation of such blocks is managed by BlockGenerator (see Table~\ref{table
 
 % The example labels are incorrect, but I could make a code PR that fixes that.
 This function uses the road network from the road generation to find suitable areas of land to extract, and it uses the population map from the population generation to determine which type of city block it should label each area as.
-Examples of such labels include: \textit{industrial}, \textit{surburbs}, \textit{downtown}, \textit{skyscrapers}, \textit{apartments} and \textit{parks}.
+Examples of such labels include: \textit{industrial}, \textit{suburbs}, \textit{downtown}, \textit{skyscrapers}, \textit{apartments} and \textit{parks}.
 
 The labeling of city blocks was implemented in a rather simple manner.
 Each label was restricted to only occur within a specific range of population density and was given a weighted probability of occurring compared to other valid labels.
 In practice, this was accomplished by assigning each label a probability distribution that could then be queried using the population density of the city block area.
-This approach makes it possible to distribute the frequency of labels based on population as well as proximity, which subsequentily can be used to mimic patterns found in real-world cities such as San Francisco (see Figure \ref{fig:san_francisco}).
+This approach makes it possible to distribute the frequency of labels based on population as well as proximity, which subsequently can be used to mimic patterns found in real-world cities such as San Francisco (see Figure \ref{fig:san_francisco}).
 
 \begin{figure}[h!]
   \centering
@@ -76,8 +76,8 @@ The solution, first proposed by Petovan \cite{petovan}, can be described as foll
     \item If the turtle tries to traverse an edge it has already traversed, then terminate this turtle.
     \item If the turtle found back to the start node, then
       \begin{enumerate}
-        \item if the turtle has turned an accumulated amount of 360 degrees conter-clockwise, discard it.
-        \item otherwise, add the nodes the turtle visisted to a list of minimum cycles.
+        \item if the turtle has turned an accumulated amount of 360 degrees counterclockwise, discard it.
+        \item otherwise, add the nodes the turtle visited to a list of minimum cycles.
       \end{enumerate}
       %
   \end{enumerate}
