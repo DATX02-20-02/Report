@@ -12,21 +12,21 @@
 
 The Building Generator creates buildings for the plots whose labels are \textit{Manhattan} or \textit{Skyscraper}. 
 An example of a skyline with both \textit{Manhattan} and \textit{Skyscraper} can be seen in Figure \ref{fig:skyline-result}.
-\textit{Manhattan} buildings are very versatile via the possibility to have different floor types L-systems and different wall segment L-systems. 
-The final implementation had a single floor type generator called \textit{StraightManhattanFloorsGenerator (Straight)}. 
-The name was derived from the possibility of having buildings that became smaller as the building grew higher. 
-This was never implemented, though. 
+\textit{Manhattan} buildings are very versatile via the possibility to have different floor types L-systems and different wall segment L-systems.
+The final implementation had one floor type generator and four wall segment generator. 
+The floor type generator always generated the first floor with \textit{FirstFloor} type.
+After that, it repeats one of three remaining floor types until the desired height has been met. 
+Note first that each wall segment generation starts and ends with a corner segment. 
+Explanation of the four floor types, and its wall segment generation:
 
-\textit{Straight} can generate four different floor types: \textit{First}, \textit{Normal}, \textit{EveryOther}, and \textit{RepeatWindow}. 
-An L-system is used to generate the floor types. The axiom is \textit{First} and one of \textit{Normal}, \textit{EveryOther}, or \textit{RepeatWindow}. 
-The generation is quite simple. It just repeats one of the last three mentioned floor types until it has reached its desired height. 
+\begin{itemize}
+  \item \textit{FirstFloor} - generates a combination of shop windows, walls, and doors. 
+  \item \textit{NormalFloor} - generates wall and window segments, but it only generates half of the wall. For the other half, it copies the first half and reverses it. 
+  \item \textit{EveryOtherFloor} - alternates between wall and window segments.
+  \item \textit{RepeatWindowFloor} - only generates window segments.
+\end{itemize}
 
-The different floor types mentioned represent an L-system that generates some wall segments for the floor per walls. 
-First can generate \textit{Corner}, \textit{ShopWindow}, \textit{Wall}, and \textit{Door}. \textit{Normal} can generate \textit{Corner}, \textit{Wall}, and \textit{Window}, but it only generates half of the wall. 
-For the other half, it copies the first half and reverses it. \textit{EveryOther} can generate \textit{Corner}, \textit{Wall}, and \textit{Window}. 
-It switches though between \textit{Wall} and \textit{Window}. The last floor type, \textit{RepeatWindow}, can only generate \textit{Corner} and \textit{Window}. 
-It only has windows between the corners. An example of the generation of \textit{Straight}, with the four different floor types, can be found in Figure \ref{fig:wall-segment-generator}.
-
+In Figure \ref{fig:wall-segment-generator}, there are examples of the one floor type generator and the four different wall segment generators.
 
 \begin{figure}[H]
   \centering
@@ -38,12 +38,12 @@ It only has windows between the corners. An example of the generation of \textit
   \quad
   \begin{subfigure}[b]{0.25\textwidth}
     \includegraphics[width=\textwidth]{figure/building-normal.PNG}
-    \caption{\textit{MirrorFloor}.}
+    \caption{\textit{NormalFloor}.}
   \end{subfigure}
   \quad
   \begin{subfigure}[b]{0.25\textwidth}
       \includegraphics[width=\textwidth]{figure/building-only-window.PNG}
-      \caption{\textit{OnlyWindowFloor}.}
+      \caption{\textit{RepeatWindowFloor}.}
   \end{subfigure}
   
   \caption{The three different wall segment generators. Notice that each building has a \textit{FirstFloor} wall segment generator on the first floor.}
@@ -51,7 +51,6 @@ It only has windows between the corners. An example of the generation of \textit
 \end{figure}
 
 Skyscraper has two different textures from which different sub-regions were sampled. In Figure \ref{fig:skyscraper-result}, you can see examples of them. 
-
 
   \begin{figure}[H]
     \centering
