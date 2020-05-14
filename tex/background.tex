@@ -5,8 +5,8 @@
 % What is PCG? (definition and explain with examples)
 PCG is a family of algorithms that automatically (and often randomly) generates synthetic media such as 3D models, textures, items, quests, levels and music~\cite[p.1]{pcg_in_games}.
 Typically, this generation is achieved by combining manually designed assets with stochastic, yet controllable algorithms.
-The algorithms are restricted by domain-specific rules to only produce desired content, and utilize randomness within these constraints to generate diverse results~\cite{gamasutra}.
-For instance, a correct PCG algorithm for car generation always produces functional cars, but the resulting cars will still vary by configurable properties such as wheels, seats, size, engine, price, and name.
+The algorithms are restricted by domain-specific rules only to produce desired content, and utilize randomness within these constraints to generate diverse results~\cite{gamasutra}.
+For instance, a correct PCG algorithm for car generation always produces functional cars. However, the resulting cars will still vary by configurable properties such as wheels, seats, size, engine, price, and name.
 
 % History
 In the early 1980s, PCG was primarily used in games as a workaround for the limited storage space in computers~\cite[p.4]{pcg_in_games}.
@@ -33,7 +33,7 @@ Meanwhile, offline generation has typically significantly looser requirements si
 Online generation, however, has the crucial advantage of being able to dynamically adjust its generated content based on user interactions.
 
 % Examples usages of offline generation
-Offline generation is arguably the most common type of generation due to its broad definition and its loose restrictions.
+Offline generation is arguably the most common type of generation due to its broad definition and loose restrictions.
 It is commonly used to accelerate the work of artists by generating good candidates which artists can then manually refine. Examples of such usage include the creation of landscape in \textit{Oblivion} \cite{elder_scrolls_iv}.
 This approach is also the typical way software like SpeedTree \cite{speedtree} is used, and is the intended way to use the city generation software presented in this report.
 
@@ -54,8 +54,8 @@ Although PCG itself is not a recipe for success, as seen with the launch of \tex
 
 % Tied to games, but movies as well.
 Nowadays, the terms \textit{PCG} and \textit{procedural generation} are heavily tied to games, with some even describing PCG as ``the algorithmic creation of game content'' \cite[p.1]{pcg_in_games}.
-Although games have seen several benefits from PCG, such as improved variation and replayability, it is worth noting that the field has seen extensive use in other mediums as well.
+Although games have seen several benefits from PCG, such as improved variation and replayability, it is worth noting that the field has seen extensive use in other mediums.
 One such medium being film.
-For example, the software package MASSIVE was used throughout the \textit{Lord of the Rings} trilogy to generate crowd-related visual effects \cite{massive}, and generation of vegetation using SpeedTree has become an industry standard \cite{speedtree_cinema}.
+For example, the software package MASSIVE was used throughout the \textit{Lord of the Rings} trilogy to generate crowd-related visual effects \cite{massive}, and generation of vegetation using SpeedTree has become an industry-standard \cite{speedtree_cinema}.
 % Nonetheless, PCG is rarely marketed in the film industry.
 Nonetheless, most PCG research seems to target games.

@@ -40,7 +40,7 @@ It was considered important to be able to distinguish the park-objects based on 
 This is referred to as giving each object-type a radius relative to other object-types.
 A function was then constructed to search within the radius of each object and make sure no object could be created within another object's radius (see Figure~\ref{fig:radius}).
 This implementation is based on Poisson Disc Sampling \cite{poisson_fast} in a manner that it scatters points randomly across the plot, while maintaining a distance from each already created point.
-Here the object-radius is used in order to determine how closely objects may stack. 
+Here the object-radius is used in order to determine how close objects may stack. 
 When the paths were implemented, a slight adjustment also had to be made to the algorithm for object placement, such that all objects took into consideration the coordinates of the path and were not placed on top of it.
 \begin{figure}[H]
 \includegraphics[width=\linewidth]{figure/radiuscontrol.png}
@@ -57,7 +57,7 @@ The first implementation of the algorithm created two random points within the p
 The program then traveled the park at random until it found a path to the goal, at which point it would find a new way back to the starting point. 
 It was however, quickly discovered that this approach had some problems.
  
-One of these problems were that the paths would look unnatural when taking steps far away from the goal. 
+One of these problems was that the paths would look unnatural when taking steps far away from the goal. 
 A solution to this was to revert the path to its previous node if it took a step which was further away from the goal than it had previously been, this was an instant improvement in appearance. 
 However, after observing many of the generated paths from this approach the paths still looked linear. 
 This was believed to be because simply going from one point to another and not straying off too much from the goal could not produce much more interesting results than that (see Figure~\ref{fig:linear}).
@@ -68,7 +68,7 @@ This was believed to be because simply going from one point to another and not s
 \end{figure}
 The second implementation of the algorithm was inspired by the flaws which had been demonstrated by its predecessor, more specifically its linear shapes and its tendency to create steps with abrupt angle-changes.
 As a result of this, it was for the second implementation decided that rather than having a start and goal, the path would consist of an array of points, which all had to be visited before the path would be completed.
-This was changed in order to try to get rid off the linearity presented in the first implementation.
+This was changed in order to try to get rid of the linearity presented in the first implementation.
 For this implementation a control of how many degrees a step in the path could differ from the current point to its previous step was also added.
 This was done to avoid the zigzag-like patterns caused by the angle-changes from the first implementation.
 The second implementation would just like the first one look for one assigned point, but in this case start searching for the next point after finding the previous one and continue doing so until all points have been found (see Figure~\ref{fig:texsplat}). 

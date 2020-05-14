@@ -30,7 +30,7 @@ This approach makes it possible to distribute the frequency of labels based on p
   \centering
   \includegraphics[width=0.6\textwidth]{figure/san_francisco.jpg}
 
-  \caption{San Francisco skyline has a cluster of skyscrapers in the city center  and suburbs surrounding it \cite{san_francisco_img}. This pattern should be possible to mimic using weighted labels.}
+  \caption{San Francisco skyline has a cluster of skyscrapers in the city center and suburbs surrounding it \cite{san_francisco_img}. This pattern should be possible to mimic using weighted labels.}
   \label{fig:san_francisco}
 \end{figure}
 
@@ -52,7 +52,7 @@ This iteration would help counter the limitation mentioned in the first iteratio
   \centering
   \includegraphics[width=0.3\textwidth]{figure/extend_block.png}
 
-  \caption{Conceptual example of what the second city block extraction iteration could have produced. Here, the new cycle $BCDEF$ has been formed. Intersections are illustrated as nodes, roads as edges, and the extended block is colored green.}
+  \caption{Conceptual example of what the second city block extraction iteration could have produced. Here, the new cycle of $BCDEF$ has been formed. Intersections are illustrated as nodes, roads as edges, and the extended block is colored green.}
   \label{fig:extend_block}
 \end{figure}
 
@@ -62,7 +62,7 @@ These asymptotic time complexities might suffice for small cities, but not for m
 Thus, either significant constraints had to be made, or another solution had to be found.
 
 Fortunately, another solution was found.
-Unlike typical graphs found in discrete mathematics, these road networks are constrained by a physical space, and are therefore a type of geometric graph.
+Unlike typical graphs found in discrete mathematics, these road networks are constrained by physical space, and are therefore a type of geometric graph.
 Essentially, each node has a position relative to others and each edge has an angle relative to others.
 With this information it actually becomes possible to solve the MCB problem, seemingly in only $\mathcal{O}(n + m)$.
 
@@ -76,7 +76,7 @@ The solution, first proposed by Petovan \cite{petovan}, can be described as foll
     \item If the turtle tries to traverse an edge it has already traversed, then terminate this turtle.
     \item If the turtle found back to the start node, then
       \begin{enumerate}
-        \item if the turtle has turned an accumulated amount of 360 degrees counterclockwise, discard it.
+        \item If the turtle has turned an accumulated amount of 360 degrees counter-clockwise, discard it.
         \item otherwise, add the nodes the turtle visited to a list of minimum cycles.
       \end{enumerate}
       %
