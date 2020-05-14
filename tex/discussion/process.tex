@@ -2,19 +2,20 @@
 
 One main takeaway from this project was that even though we believed our defined scope was reasonable, we did not take into account how much time one could spend attempting to perfect the parts that were already working.
 An area where this became particularly clear was performance.
-During the course of the project, we would often find the generators creating content that was visually sufficient for what we had hoped to achieve, but the process of generating would be slow. 
+Throughtout development, we would often find generators which produced visually sufficient content, but whose generation process was slow. 
 The three main parts of the project where we observed that we could increase performance were the following:
 
 \begin{easylist}
   @ Compressing textures.
-  @ Decreasing the triangle-count of objects.
-  @ Using Level of Detail (LOD).
+  @ Decreasing the triangle count of imported and generated models.
+  @ Implementing Level of Detail (LOD).
   @ Combining meshes. 
- \end{easylist}
+\end{easylist}
  
 The first part was simple to tackle and did not require any additional code to be written, we simply altered the resolution at which our textures were being compressed.
-This came from us noticing that the textures were being rendered at a very high quality.
-We could reduce this and still reach almost indistinguishable results visually while reducing the amount of memory being used drastically. 
+This issue itself was noticed when memory consumption suddenly started to increase at a rapid rate.
+Our solution, to drastically compress the textures, made runtime visuals degrade somewhat.
+However, full texture quality is still used when exporting the models, which was seen as more important.
 
 The second part was identified by the fact that after generating buildings frame rate suddenly became a major concern. 
 After inspecting this issue we found that the buildings were being composed of a lot more triangles than necessary and this was fixed by simply reducing the triangle count. 
@@ -23,15 +24,14 @@ After inspecting this issue we found that the buildings were being composed of a
 The third improvement of performance was using LOD.
 LOD works by decreasing the visual quality of an object based on some function of the camera distance to that object.
 Typically, different distance intervals are configured to correspond to meshes with different quality.
-The further away the camera is the lower the quality of the mesh becomes as to improve the efficiency of rendering without a noticeable difference to the user.
+The further away the camera is, the lower the quality of the mesh becomes as to improve the efficiency of rendering without a noticeable difference to the user.
 In CityCraft, this technique was used extensively which significantly improved the performance.
 
 The fourth and final major adjustment made for increasing performance was to combine some of our generated meshes. 
 Combining meshes for the building generator, when using the L-system strategy, was crucial for lowering memory usage. 
 The first version had a mesh for each wall segment, and each wall segment had a material with an accompanying texture. 
-This lead to memory usage peaking over 10GB with a medium-large city. 
+This lead to memory usage peaking over $10$GB with a medium-sized city. 
 Combining the wall segments into one building meant a drastic change in memory usage. 
-
 
 \section{Process and Workflow}
 When dividing up the workload between group members, each generator described in Chapter~\ref{sec:city-gen-arch} facilitated a natural division of work since an exchange of data between the generators had been established early on.
