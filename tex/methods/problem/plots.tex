@@ -1,1 +1,43 @@
-\subsection{Plot Generation}
+\subsection{Plot Generation}  
+
+In this project, a plot is defined as a continuous area of land within a block that is suitable for containing a single building, park, or parking lot.
+The generation of such plots is managed by PlotGenerator (see Table \ref{table:plotgen}).
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lllll}
+    \textbf{Input}                           &               & \textbf{Function}            &               & \textbf{Output}         \\
+    \midrule
+    \textit{Block, PopulationMap}            & $\rightarrow$ & \textbf{PlotGenerator}       & $\rightarrow$ & \textit{Plot[]}         \\
+    \bottomrule
+  \end{tabular}
+
+  \caption{Definition of the PlotGenerator function, which is responsible to split a block into one or more plot.}
+  \label{table:plotgen}
+\end{table}
+\vspace{-0.4cm} 
+
+Each plot also has a label associated with it that determines what type of content should later be generated inside it. 
+The label of the block, along with the population for each plot, is the deciding factor when plot labels are selected. 
+For instance, if the block label is \textit{Park} or \textit{Parking}, then the entire block is converted to one plot with the corresponding plot label. 
+However, if the block label is \textit{Downtown}, then the population density is used to sample a building from a pool of building types. 
+As the population increases, so does the probability that the plot label will be set to \textit{Skyscraper}, to accommodate for the population. 
+
+PlotGenerator was designed because blocks tended to be too large to suit a single structure, such as a building.
+Instead of directly placing multiple buildings on a single block, the block is divided into multiple plots.
+This separation of concern leads to greater modularity and makes it easier to mix a large variety of different plot labels within a single block.
+The core of this plot division problem was essentially about splitting an arbitrary polygon into sensible sub-polygons. 
+
+One of the proposed solutions was to draw a straight line through the block polygon and let the new sub-polygons be the result. 
+This does not, however, result in a good split necessary. 
+It is hard to control the size of the polygons, as some can become quite small. 
+There is also the issue with concave polygons, where it can become difficult to create visually pleasing plots with consistency. 
+One can not either reliably let the number of plots be a deciding factor to find the needed cut. 
+
+% Add figures explaing.
+An article about splitting polygons was found that explained how to cut a polygon into $N$ parts, where each part would have equal size \cite{polygon_splitting_article}. 
+In this algorithm, each iteration finds possible cuts that could be made. 
+The cuts are found by finding different ways to draw lines through what is left of the polygon. 
+Some cuts are omitted in cases where concave polygons exist since they can be outside of the polygon. 
+The cut that is the shortest for each sub-polygon is the one that is applied and added to the output. 
+This was ultimately the algorithm used in the final product. 

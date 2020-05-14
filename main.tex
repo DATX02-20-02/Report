@@ -4,25 +4,42 @@
   \input{tex/frontmatter.tex}
   \newpage
 
+  \thispagestyle{empty}
+  \pagestyle{empty}
+
   \input{tex/abstract.tex}
+
+  \thispagestyle{empty}
+  \pagestyle{empty}
+
   \newpage
   \input{tex/abstract_swedish.tex}
+
+  \thispagestyle{empty}
+  \pagestyle{empty}
+
   \newpage
   \input{tex/acknowledgements.tex}
-  \newpage
-  \input{tex/glossary.tex}
+  % \newpage
+  % \input{tex/glossary.tex}
+
+  \thispagestyle{empty}
+  \pagestyle{empty}
 
   \tableofcontents
   \thispagestyle{empty}
   \pagestyle{empty}
+  \addtocontents{toc}{\protect\thispagestyle{empty}}
 
   \listoffigures
   \thispagestyle{empty}
   \pagestyle{empty}
+  \addtocontents{lof}{\protect\thispagestyle{empty}}
 
   \listoftables
   \thispagestyle{empty}
   \pagestyle{empty}
+  \addtocontents{lot}{\protect\thispagestyle{empty}}
 
   \pagestyle{plain}
   \pagenumbering{arabic}
