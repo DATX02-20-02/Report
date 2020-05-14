@@ -7,20 +7,24 @@ Figure~\ref{fig:plot2} and \ref{fig:plot} demonstrates some example outputs from
 
 \begin{figure}[H]
   \centering
-
-  \includegraphics[width=0.8\textwidth]{figure/plot2.png}
-  \caption{Close-up of the plot splitting algorithm.}
-
-  \label{fig:plot2}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-
-  \includegraphics[width=0.8\textwidth]{figure/plot.png}
-  \caption{Generated plots within a larger city.}
-
-  \label{fig:plot}
+  % Use two minipages to add padding for the figure and its caption
+  \begin{minipage}[b][][b]{.40\textwidth}
+    \centering
+    \begin{minipage}[b][][b]{.9\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figure/plot2.png}
+      \caption{Close-up of the plot splitting algorithm.}
+      \label{fig:plot2}
+    \end{minipage}
+  \end{minipage}
+  \begin{minipage}[b][][b]{.50\textwidth}
+    \begin{minipage}[b][][b]{.9\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figure/plot.png}
+      \caption{Generated plots within a larger city.}
+      \label{fig:plot}
+    \end{minipage}
+  \end{minipage}
 \end{figure}
 
 Each plot is assigned a plot label depending on the size of the plot and the population map.
