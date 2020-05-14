@@ -5,7 +5,7 @@
 This chapter presents CityCraft, the standalone city generation software that was implemented as a result of this research.
 CityCraft is a graphical desktop application that lets users interactively generate 3D cities, which can be exported as glTF files and used in third-party modeling software such as Blender.
 The application combines computer graphics theory and several PCG techniques to achieve its results.
-An example of CityCraft in use is shown in Figure \ref{fig:screenshot}, and a CityCraft generated model is shown rendered in Blender in Figure \ref{fig:blender}.
+An example of CityCraft is shown in Figure~\ref{fig:screenshot}, and a CityCraft generated model rendered in Blender is shown in Figure~\ref{fig:blender}.
 
 \begin{figure}[H]
   \centering
@@ -17,13 +17,13 @@ An example of CityCraft in use is shown in Figure \ref{fig:screenshot}, and a Ci
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{figure/results/screenshot.png}
+  \includegraphics[width=\textwidth]{figure/results/blender_render}
 
   \caption{A city model exported from CityCraft and rendered inside Blender.}
   \label{fig:blender}
 \end{figure}
 
-CityCraft's GUI follows the \textit{Wizard} design pattern \cite{yer_a_wizard} to guide its users through the generation process, which is split into four steps (see Figure \ref{fig:guisteps}).
+CityCraft's GUI follows the \textit{Wizard} design pattern~\cite{yer_a_wizard} to guide its users through the generation process, which is split into four steps (see Figure~\ref{fig:guisteps}).
 The four generation steps are terrain, roads, streets, and cities.
 The last of which performs the generation of buildings, parks, and parking lots. 
 
@@ -46,8 +46,8 @@ The last of which performs the generation of buildings, parks, and parking lots.
   \label{fig:guisteps}
 \end{figure}
 
-The four generation steps of the GUI are implemented as eight PCG-based generators, all of which are orchestrated by a single module called the \textit{WorldGenerator}.
-The following subchapters will go into detail about the results that each of these generators produces and how their results contribute to the final city models.
+The four steps of the GUI are implemented as eight PCG-based generators, all of which are orchestrated by a single module called the \textit{WorldGenerator}.
+The following subchapters will explain the details about the results of what each of these generators produces and how their results contribute to the final city models.
 
 \input{tex/results/terrain.tex}
 \input{tex/results/population.tex}

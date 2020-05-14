@@ -7,17 +7,25 @@ As described in~\ref{section:goal_and_scope}, the quality of the generated city 
 The generated models import correctly into Blender~\cite{blender}.
 Integration with other third-party tools, however, would have to be tested more thoroughly as Blender was the main tool used for testing the correctness of the exported models.
 
+
 Although the 3D models are imported correctly in terms of their model data there exist some unintended visual differences.
 These differences are, however, a consequence of the different rendering pipelines between Unity and any other third-party tool.
 Figure~\ref{fig:blender_shading_result} showcases these visual differences in Blender.
 
-% TODO(anton): Add Figure of resulting model imported into blender
-% \begin{figure}[h!]
-%   \centering
-%   \includegraphics[width=1\textwidth]{figure/discussion_blender_import}
-%   \caption{Visual differences between Unity and Blender of a generated city.}
-%   \label{fig:blender_shading_result}
-% \end{figure}
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figure/blender_unity_comparison_blender}
+    \caption{CityCraft scene rendered in Blender.}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figure/blender_unity_comparison_unity}
+    \caption{CityCraft scene rendered in Unity.}
+  \end{subfigure}
+  \caption{Visual differences of cities when rendering in Blender and Unity.}
+  \label{fig:blender_unity_comparison}
+\end{figure}
 
 Importing a generated city into Blender also takes a substantial amount of time in comparison to when exporting the files from within CityCraft.
 The importing can take up to 5 minutes on a modern desktop computer.
