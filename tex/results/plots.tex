@@ -1,9 +1,9 @@
 \section{Plot Generation}
-Each block that is sent into the PlotGenerator is treated differently depending on what the block label is. 
-If the block label is either \textit{Parks} or \textit{Parking}, the entire block is turned into a plot and is sent to the ParkGenerator or ParkingGenerator respectively.
+Each block that is sent into the "PlotGenerator" is treated differently depending on what the block label is. 
+If the block label is either \textit{Parks} or \textit{Parking}, the entire block is turned into a plot and is sent to the "ParkGenerator" or "ParkingGenerator" respectively.
 The rest of the block labels are split into multiple parts, where the amount of resulting plots depend on the area of the block as well as some random variables. 
 
-Figure~\ref{fig:plot2} and \ref{fig:plot} demonstrates some example outputs from the PlotGenerator.
+Figure~\ref{fig:plot2} and \ref{fig:plot} demonstrates some example outputs from the "PlotGenerator".
 
 \begin{figure}[H]
   \centering
@@ -23,8 +23,10 @@ Figure~\ref{fig:plot2} and \ref{fig:plot} demonstrates some example outputs from
   \label{fig:plot}
 \end{figure}
 
-Each plot is assigned a plot label, which is later used for the WorldGenerator to determine what should be generated within the plot.
+Each plot is assigned a plot label depending on the size of the plot and the population map.
 The plot labels are \textit{Manhattan}, \textit{Skyscraper}, \textit{Park}, \textit{Parking}, and \textit{Empty}.
-\textit{Manhattan} and \textit{Skyscraper} are two different sub-generators for BuildingGenerator. 
-\textit{Park} and \textit{Parking} are used by the ParkGenerator and the ParkingGenerator respectively.
-If the plot label is \textit{Empty}, then no content is generated upon the plot. 
+\textit{Manhattan} and \textit{Skyscraper} are two different sub-generators for "BuildingGenerator". 
+\textit{Park} and \textit{Parking} are used by the "ParkGenerator" and the "ParkingGenerator" respectively.
+If the plot label is \textit{Empty}, then no content is generated upon the plot.
+Larger plots are always assigned with the \textit{Park} label.
+The purpose of the plot labels is to let other generators know what should be generated within the plot.
