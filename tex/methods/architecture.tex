@@ -6,7 +6,7 @@ One of these modules had to be responsible for the GUI presented in the previous
 This module was named \textit{Application} and could be kept relatively small as most logic would be handled by the Unity engine.
 There also needed to exist some module responsible for the PCG, since that is the core of this research.
 This module was named the \textit{WorldGenerator}.
-\textit{WorldGenerator} was then further split into eight submodules that would each be responsible for a distinct part of the model generation.
+WorldGenerator was then further split into eight submodules that would each be responsible for a distinct part of the model generation.
 
 The implementation of the user interface would be rather simple and was thus treated as a single module, while the generation needed some architecture to handle the communication between submodules.
 The two main architectures considered for the generation were a function-based and a pipeline-based approach (see Figure~\ref{fig:architecture_approaches}).
@@ -20,12 +20,12 @@ Thus, with these concerns in mind, it seemed reasonable to settle for the functi
   \centering
   \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\textwidth]{figure/architecture_functions.png}
-    \caption{Function-based architecture. Each sub-generator is treated as an isolated function and \textit{WorldGenerator} controls how and when they are invoked.}
+    \caption{Function-based architecture. Each sub-generator is treated as an isolated function and WorldGenerator controls how and when they are invoked.}
   \end{subfigure}
   \quad
   \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\textwidth]{figure/architecture_pipeline.png}
-    \caption{Pipeline-based architecture. The first generator is invoked by \textit{WorldGenerator}, and then each sub-generator passes on its output to the next sub-generator.}
+    \caption{Pipeline-based architecture. The first generator is invoked by WorldGenerator, and then each sub-generator passes on its output to the next sub-generator.}
   \end{subfigure}
 
   \caption{Two different architecture approaches considered for the generation logic.}
@@ -36,7 +36,7 @@ The function-based architecture showed several promising advantages.
 For one, each generator would only receive input that it actually depended on, while with a pipeline each generator would have had to pass along all its data.
 This separation not only makes debugging easier, but it also improves performance slightly.
 Another recognized advantage was that generators could now be run asynchronously and in separate threads, further benefiting performance.
-Lastly, as generation steps would be invoked from GUI buttons, possibly in non-linear order and with \textit{undo} operations, it was better suited if \textit{WorldGenerator} could communicate with each sub-generator directly.
+Lastly, as generation steps would be invoked from GUI buttons, possibly in non-linear order and with \textit{undo} operations, it was better suited if WorldGenerator could communicate with each sub-generator directly.
 Consequently, the function-based architecture was chosen.
 
 \begin{table}[H]
@@ -55,7 +55,7 @@ Consequently, the function-based architecture was chosen.
     \bottomrule
   \end{tabular}
 
-  \caption[]{The proposed generator functions needed to generate the 3D cities. The invocation of these functions are handled by \textit{WorldGenerator}. '\textit{[]}' denotes plural (e.g. list or array) of the preceeding data structure.}
+  \caption[]{The proposed generator functions needed to generate the 3D cities. The invocation of these functions are handled by WorldGenerator. '\textit{[]}' denotes plural (e.g. list or array) of the preceeding data structure.}
   \label{table:generators}
 \end{table}
 \vspace{-0.4cm} % Mimic spacing below figures
