@@ -69,8 +69,8 @@ With this information it actually becomes possible to solve the MCB problem, see
 The solution, first proposed by Petovan \cite{petovan}, can be described as follows:
 \vspace{-0.5cm} % Reasonable spacing before list
 \begin{enumerate}
-  \item For each node, dispatch a \textit{turtle} along each connected edge.
-  \item Let the \textit{turtle} traverse the graph by always following the edge closest (in counter-clockwise direction) to the previously traversed edge. Essentially, let the turtle always follow the rightmost edge relative to its current heading.
+  \item For each node, dispatch a \textit{turtle} along each connected edge. In this context, \textit{turtle} represents a unit that is able to traverse the graph.
+  \item Let the turtle traverse the graph by always following the edge closest (in counter-clockwise direction) to the previously traversed edge. Essentially, let the turtle always follow the rightmost edge relative to its current heading.
   \begin{enumerate}
     \item If the turtle tries to traverse some edge in a direction that has already been explored (potentially by another turtle), then terminate this turtle.
     \item If the turtle tries to traverse an edge it has already traversed, then terminate this turtle.
